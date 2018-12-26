@@ -1,0 +1,27 @@
+@charset "UTF-8";
+	
+	body {
+		background: #00506d;
+	}
+
+	header {
+		height: 80px;
+		width: 100%;
+		position: fixed;
+		top: 0;
+		left: 0;
+		z-index: 5;
+		background: #25b99a;
+		box-shadow: 0px 2px 4px rgba(44, 62, 80, 0.15);
+		border-bottom-left-radius: 15px;
+		border-bottom-right-radius: 15px;
+	}
+
+	header_title {
+		color:#fff;
+		font-size: 28px;
+		font-weight: 600;
+		margin-top: 20px;
+		margin-left: 18px;
+		display: inline-block; 
+	}
