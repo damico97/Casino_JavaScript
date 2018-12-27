@@ -25,3 +25,23 @@
 		margin-left: 18px;
 		display: inline-block; 
 	}
+
+
+	.deckScroll {
+  		background-color: #00506d;
+  		overflow: auto;
+  		white-space: nowrap;
+  		max-height: 120px;
+  		margin-top: 100px; 
+  		margin-left: 20px;
+  		margin-right: 20px;
+	}
+
+	.deckScroll img {
+		height: 110px;
+		padding-right: 10px; 
+	}
+
+
+
+
