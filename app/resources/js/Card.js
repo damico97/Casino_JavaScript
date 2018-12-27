@@ -1,3 +1,12 @@
+/*
+ * ************************************************************
+ * * Name:  Joseph Damico                                     *
+ * * Project:  Casino Android-Java                            *
+ * * Class:  CMPS: 366-01                                     *
+ * * Date:  December 12, 2018                                 *
+ * ************************************************************
+ */
+
 class Card {
 
 	/**
@@ -128,23 +137,24 @@ class Card {
 		// Adding the name / value to the name string
         // Check if card is an Ace
         if (this.mValue == 1) {
-            name = "Ace";
+            name += "Ace";
         }
         // Check if card is a Jack
         else if (this.mValue == 11) {
-            name = "Jack";
+            name += "Jack";
         }
         // Check if card is a Queen
         else if (this.mValue == 12) {
-            name = "Queen";
+            name += "Queen";
         }
         // Check if card is a King
         else if (this.mValue == 13) {
-            name = "King";
+            name += "King";
         }
         // Card is not a face card, use it's number
         else {
-            name = this.mValue.toString();
+        	var value = this.mValue;
+            name += String(value);
         }
 
         // Add "of" to the name string
