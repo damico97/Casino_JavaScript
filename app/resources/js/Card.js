@@ -131,6 +131,11 @@ class Card {
 	}
 
 
+	/**
+     * getName(), returns the full name of the card
+     * @param None
+     * @return String, which is the full name of the card [i.e. Ace of Spades]
+     */
 	getName() {
 		var name = "";
 

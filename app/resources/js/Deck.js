@@ -10,33 +10,39 @@
 
  class Deck {
 
+ 	/**
+ 	 * Deck(), Constructor for the Deck Class
+ 	 */
  	Deck() {
  		this.mCardDeck = new Array();
  		this.mDeckSize = 0;
  	}
 
 
- 	createNewCard(suit, value, abbv) {
- 		var nCard = new Card();
- 		nCard.newCard(suit, value, abbv);
-
- 		//this.mCardDeck.push(new Card(suit, value, abbv));
- 		this.mCardDeck = Array();
- 		this.mCardDeck.push(nCard);
- 		this.mDeckSize = this.mDeckSize + 1;
- 	}
-
-
+	/**
+	 * get(), Return the card in the deck at given index
+	 * @param None
+	 * @return The card from the given index
+	 */
  	get(index) {
  		return this.mCardDeck[index];
  	}
 
 
+ 	/**
+ 	 * deckSize(), Returns the size of the deck array
+ 	 * @param None
+ 	 * @return The size of the deck array
+ 	 */
  	deckSize() {
  		return this.mCardDeck.length;
  	}
 
 
+ 	/**
+ 	 * shffleDeck(), Shuffles the new deck so the cards are in a ramond order
+ 	 * @param None
+ 	 */
  	shuffleDeck() {
  		for (let i = this.mCardDeck.length - 1; i > 0; i--) {
         	const j = Math.floor(Math.random() * (i + 1));
@@ -45,6 +51,10 @@
  	}
 
 
+ 	/**
+ 	 * initializeDeck(), Creates a New Deck, fills the deck, and calls the shuffle function
+ 	 * @param None
+ 	 */
  	initializeDeck() {
  		// Create all the cards
  		// Spades Suite
