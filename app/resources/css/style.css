@@ -2,10 +2,11 @@
 	
 	body {
 		background: #00506d;
+		padding-top: 80px;
 	}
 
 	header {
-		height: 80px;
+		height: 60px;
 		width: 100%;
 		position: fixed;
 		top: 0;
@@ -17,31 +18,112 @@
 		border-bottom-right-radius: 15px;
 	}
 
-	header_title {
+	header title {
 		color:#fff;
 		font-size: 28px;
 		font-weight: 600;
-		margin-top: 20px;
+		margin-top: 10px;
 		margin-left: 18px;
 		display: inline-block; 
 	}
 
+	header button {
+		position: fixed;
+		top: 7px;
+		right: 20px;
+		height: 45px;
+		width: 45px;
+		z-index: 2;
+		border-radius: 25px;
+		background: #fff;
+		border: 0px;
+		box-shadow: none;
+		outline: none;
+		display: inline-block;
+	}
 
+
+	.controls {
+		position: absolute;
+		top: 840px;
+		right: 100px;
+		background-color: #00506d;
+  		overflow: auto;
+  		white-space: nowrap;
+  		max-height: 60px;
+  		padding-left: 10px;
+  		padding-top: 10px;
+  		padding-bottom: 5px;
+	}
+
+
+	.controls button {
+		height:50px;
+		width: 100px;
+		border-radius: 15px;
+		background-color: #fff;
+		color: black;
+		font-size: 20px;
+		font-weight: 400;
+		padding: 10px;
+		cursor: pointer;
+		float: left;
+	}
+
+
+	/* Deck View Items */
+	/* Scroll View */
 	.deckScroll {
   		background-color: #00506d;
   		overflow: auto;
   		white-space: nowrap;
-  		max-height: 120px;
-  		margin-top: 100px; 
+  		max-height: 80px;
+  		margin-top: 5px; 
   		margin-left: 20px;
   		margin-right: 20px;
 	}
 
+	/* Item Views For Each Card */ 
 	.deckScroll img {
-		height: 110px;
+		height: 75px;
 		padding-right: 10px; 
 	}
 
+
+	.computerHand {
+		position: absolute;
+		top: 180px;
+		right: 0px;
+		background-color: #00506d;
+  		overflow: auto;
+  		white-space: nowrap;
+  		max-height: 160px;
+  		padding-left: 10px;
+  		padding-top: 10px;
+  		padding-bottom: 5px;
+	}
+
+	.computerHand img {
+		height: 135px;
+		padding-right: 100px;
+	}
+
+
+	.humanHand {
+		position: absolute;
+		top: 690px;
+		right: 0px;
+		background-color: #00506d;
+  		overflow: auto;
+  		white-space: nowrap;
+  		max-height: 140px;
+	}
+
+	.humanHand img {
+		height: 135px;
+		margin-right: 100px;
+		cursor: pointer;
+	}
 
 
 

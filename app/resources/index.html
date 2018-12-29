@@ -22,7 +22,10 @@
 	<body>
 
 		<header>
-			<header_title>Casino</header_title>
+			<title>Casino</title>
+			<button id="button_save">
+				
+			</button>
 		</header>
 
 
@@ -30,9 +33,28 @@
 			<!-- Cards -->
 		</div>
 
+		<div class="computerHand" id="computerHand">
+			<img src="images/others/blank_card.png" id="c_card_1">
+			<img src="images/others/blank_card.png" id="c_card_2">
+			<img src="images/others/blank_card.png" id="c_card_3">
+			<img src="images/others/blank_card.png" id="c_card_4">
+		</div>
+
+		<div class="humanHand" id="humanHand">
+			<img src="images/others/blank_card.png" id="h_card_1">
+			<img src="images/others/blank_card.png" id="h_card_2">
+			<img src="images/others/blank_card.png" id="h_card_3">
+			<img src="images/others/blank_card.png" id="h_card_4">
+		</div>
+
+		<div class="controls" id="controls">
+			<button id="button_test">Test</button>
+		</div>
+
 		<!-- JavaScripts -->
 		<script src="js/Card.js"></script>
 		<script src="js/Deck.js"></script>
+		<script src="js/Player.js"></script>
 		<script src="js/Casino.js"></script>
 	</body>
 </html>

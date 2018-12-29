@@ -52,6 +52,14 @@
 
 
  	/**
+ 	 *
+ 	 */
+ 	dealCard() {
+ 		var temp = this.mCardDeck.shift();
+ 		return temp;
+ 	}
+
+ 	/**
  	 * initializeDeck(), Creates a New Deck, fills the deck, and calls the shuffle function
  	 * @param None
  	 */
@@ -281,7 +289,6 @@
  		this.shuffleDeck();
  	}
  }
-
 
 
 
