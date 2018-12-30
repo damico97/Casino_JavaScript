@@ -97,14 +97,14 @@
 		background-color: #00506d;
   		overflow: auto;
   		white-space: nowrap;
-  		max-height: 160px;
+  		height: 160px;
   		padding-left: 10px;
   		padding-top: 10px;
   		padding-bottom: 5px;
 	}
 
 	.computerHand img {
-		height: 135px;
+		height: 145px;
 		padding-right: 100px;
 	}
 
@@ -116,12 +116,16 @@
 		background-color: #00506d;
   		overflow: auto;
   		white-space: nowrap;
-  		max-height: 140px;
+  		max-height: 160px;
 	}
 
 	.humanHand img {
-		height: 135px;
-		margin-right: 100px;
+		height: 155px;
+		padding-top: 10px;
+		padding-left: 10px;
+		padding-bottom: 10px;
+		padding-right: 10px;
+		margin-right: 90px;
 		cursor: pointer;
 	}
 
