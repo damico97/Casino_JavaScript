@@ -14,10 +14,6 @@
  	 * Deck(), Constructor for the Deck Class
  	 */
  	Deck() {
- 		// Log
- 		console.log("Deck Class - Deck(): Called");
-
- 		// Initialize variables for the class
  		this.mCardDeck = new Array();
  		this.mDeckSize = 0;
  	}
@@ -29,10 +25,6 @@
 	 * @return The card from the given index
 	 */
  	get(index) {
- 		// Log
- 		console.log("Deck Class - get(): Called");
-
- 		// Return the card from the deck at the given index
  		return this.mCardDeck[index];
  	}
 
@@ -43,10 +35,6 @@
  	 * @return The size of the deck array
  	 */
  	deckSize() {
- 		// Log
- 		console.log("Deck Class - deckSize(): Called");
-
- 		// Return the length of the deck array
  		return this.mCardDeck.length;
  	}
 
@@ -56,10 +44,6 @@
  	 * @param None
  	 */
  	shuffleDeck() {
- 		// Log
- 		console.log("Deck Class - shuffleDeck(): Called");
-
- 		// Shuffle the deck
  		for (let i = this.mCardDeck.length - 1; i > 0; i--) {
         	const j = Math.floor(Math.random() * (i + 1));
         	[this.mCardDeck[i], this.mCardDeck[j]] = [this.mCardDeck[j], this.mCardDeck[i]];
@@ -68,20 +52,12 @@
 
 
  	/**
- 	 * dealCard(), Removes the first card from the deck and returns it, just as if you took the top card of a deck to deal it
- 	 * @param None
- 	 * @return Card, which was the first card from the deck
+ 	 *
  	 */
  	dealCard() {
- 		// Log
- 		console.log("Deck Class - dealCard(): Called");
-
- 		// Local variable to store card that is being dealt
  		var temp = this.mCardDeck.shift();
- 		// Return the card
  		return temp;
  	}
-
 
  	/**
  	 * initializeDeck(), Creates a New Deck, fills the deck, and calls the shuffle function
