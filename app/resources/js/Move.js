@@ -20,6 +20,13 @@
  		this.mCardSelected = false;
  	}
 
+ 	resetMove() {
+ 		this.mHandCard = null;
+ 		this.mCardSelected = false;
+
+ 		//this.mTableCards.clear;
+ 	}
+
 
  	checkCardSelected() {
  		return this.mCardSelected;

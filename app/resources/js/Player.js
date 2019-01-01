@@ -51,5 +51,6 @@
 
 		table.addCardToTable(card);
  		this.mPlayerHand.splice(index, 1);
+ 		move.resetMove();
  	}
  }

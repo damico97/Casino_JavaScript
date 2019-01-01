@@ -19,21 +19,7 @@
 	::-webkit-scrollbar-thumb {
 		border-radius: 10px;
 		background: #f2f2f2;
-		/*
-		background: linear-gradient(left, #6b96db, #cecece);
-		border: 1px solid #aaa;
-		*/
 	}
-
-	/*
-	::-webkit-scrollbar-hover {
-		background: #fff;
-	}
-
-	::-webkit-scrollbar-thumbactive {
-		background: linear-gradient(left, #22ADD4, #1E98BA);
-	}
-	*/
 
 	header {
 		height: 60px;
@@ -134,7 +120,7 @@
 	}
 
 	.tableScroll img {
-		height: 150px;
+		height: 145px;
 		padding-top: 10px;
 		padding-left: 10px;
 		padding-bottom: 10px;
