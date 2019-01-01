@@ -5,6 +5,36 @@
 		padding-top: 80px;
 	}
 
+	::-webkit-scrollbar {
+		width: 5px;
+		border: 1px solid #ccc;
+	}
+
+	::-webkit-scrollbar-track {
+		border-radius: 10px;
+		background: rgba(255, 255, 255, 0.15);
+		border: 1px solid #ccc;
+	}
+
+	::-webkit-scrollbar-thumb {
+		border-radius: 10px;
+		background: #f2f2f2;
+		/*
+		background: linear-gradient(left, #6b96db, #cecece);
+		border: 1px solid #aaa;
+		*/
+	}
+
+	/*
+	::-webkit-scrollbar-hover {
+		background: #fff;
+	}
+
+	::-webkit-scrollbar-thumbactive {
+		background: linear-gradient(left, #22ADD4, #1E98BA);
+	}
+	*/
+
 	header {
 		height: 60px;
 		width: 100%;
@@ -50,7 +80,7 @@
 		background-color: #00506d;
   		overflow: auto;
   		white-space: nowrap;
-  		max-height: 55px;
+  		max-height: 65px;
   		padding-left: 10px;
   		padding-top: 5px;
   		padding-bottom: 5px;
@@ -79,7 +109,7 @@
   		background-color: #00506d;
   		overflow: auto;
   		white-space: nowrap;
-  		max-height: 80px;
+  		max-height: 100px;
   		margin-top: 5px; 
   		margin-left: 20px;
   		margin-right: 20px;
@@ -97,9 +127,9 @@
 		top:510px;
 		right:50px;
 		background-color: #00506d;
-  		overflow-y: scroll;
+  		overflow: auto;
   		white-space: nowrap;
-  		height: 160px;
+  		height: 165px;
   		max-width: 1250px;
 	}
 
@@ -117,12 +147,12 @@
 
 	.computerHand {
 		position: absolute;
-		top: 180px;
+		top: 185px;
 		right: 0px;
 		background-color: #00506d;
   		overflow: auto;
   		white-space: nowrap;
-  		height: 125px;
+  		height: 135px;
   		padding-left: 10px;
   		padding-top: 10px;
   		padding-bottom: 5px;
@@ -153,25 +183,4 @@
 		margin-right: 60px;
 		border-radius: 15px;
 		cursor: pointer;
-	}
-
-
-	::-webkit-scrollbar-track {
-		border-radius: 10px;
-		background: rgba(0, 0, 0, 0.1);
-		border: 1px solid #ccc;
-	}
-
-	::-webkit-scrollbar-thumb {
-		border-radius: 10px;
-		background: linear-gradient(left, #fff, #e4e4e4);
-		border: 1px solid #aaa;
-	}
-
-	::-webkit-scrollbar-hover {
-		background: #fff;
-	}
-
-	::-webkit-scrollbar-thumb:active {
-		background: linear-gradient(left, #22ADD4, #1E98BA);
 	}
