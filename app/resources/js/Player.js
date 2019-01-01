@@ -28,7 +28,12 @@
  	}
 
  	handLength() {
- 		return this.mPlayerHand.length;
+ 		if (undefined == this.mPlayerHand) {
+ 			return 0;
+ 		}
+ 		else {
+ 			return this.mPlayerHand.length;
+ 		}
  	}
 
  	getHandCardAtIndex(index) {
@@ -38,5 +43,13 @@
  		else {
  			console.log("ERROR!! - {Player} getHandCardAtIndex()");
  		}
+ 	}
+
+ 	trailCard(move, table) {
+ 		var card = move.getHandCard();
+ 		var index = this.mPlayerHand.indexOf(move.getHandCard());
+
+		table.addCardToTable(card);
+ 		this.mPlayerHand.splice(index, 1);
  	}
  }

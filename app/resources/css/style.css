@@ -32,7 +32,7 @@
 		top: 7px;
 		right: 20px;
 		height: 45px;
-		width: 45px;
+		width: 75px;
 		z-index: 2;
 		border-radius: 25px;
 		background: #fff;
@@ -50,22 +50,24 @@
 		background-color: #00506d;
   		overflow: auto;
   		white-space: nowrap;
-  		max-height: 60px;
+  		max-height: 55px;
   		padding-left: 10px;
-  		padding-top: 10px;
+  		padding-top: 5px;
   		padding-bottom: 5px;
 	}
 
 
 	.controls button {
-		height:50px;
-		width: 100px;
+		height: 50px;
+		width: 150px;
 		border-radius: 15px;
 		background-color: #fff;
 		color: black;
 		font-size: 20px;
-		font-weight: 400;
-		padding: 10px;
+		font-weight: 500;
+		padding: 1px;
+		margin-left: 10px;
+		margin-right: 5px;
 		cursor: pointer;
 		float: left;
 	}
@@ -90,6 +92,29 @@
 	}
 
 
+	.tableScroll {
+		position: absolute;
+		top:510px;
+		right:50px;
+		background-color: #00506d;
+  		overflow-y: scroll;
+  		white-space: nowrap;
+  		height: 160px;
+  		max-width: 1250px;
+	}
+
+	.tableScroll img {
+		height: 150px;
+		padding-top: 10px;
+		padding-left: 10px;
+		padding-bottom: 10px;
+		padding-right: 10px;
+		margin-right: 15px;
+		border-radius: 15px;
+		cursor: pointer;
+	}
+
+
 	.computerHand {
 		position: absolute;
 		top: 180px;
@@ -97,21 +122,21 @@
 		background-color: #00506d;
   		overflow: auto;
   		white-space: nowrap;
-  		height: 160px;
+  		height: 125px;
   		padding-left: 10px;
   		padding-top: 10px;
   		padding-bottom: 5px;
 	}
 
 	.computerHand img {
-		height: 145px;
+		height: 110px;
 		padding-right: 100px;
 	}
 
 
 	.humanHand {
 		position: absolute;
-		top: 690px;
+		top: 680px;
 		right: 0px;
 		background-color: #00506d;
   		overflow: auto;
@@ -125,7 +150,8 @@
 		padding-left: 10px;
 		padding-bottom: 10px;
 		padding-right: 10px;
-		margin-right: 90px;
+		margin-right: 60px;
+		border-radius: 15px;
 		cursor: pointer;
 	}
 
