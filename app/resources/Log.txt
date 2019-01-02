@@ -1,0 +1,57 @@
+Joe Damico Work Log for JavaScript Casino Project
+
+Dec 26, 2018:
+	- Started research for working in JavaScript, and using HTML for views
+	- Watched a few tutorials for working in this envorinment
+	(1 Hour 30 Minutes)
+
+	- Ported the Card Class into JavaScript
+	(45 Minutes)
+
+	- Created the initial view for the game, basing it off the tutorial that I watched 
+	on YouTube
+	(1 Hour)
+TOTAL: 3.25 Hours
+
+
+Dec 27, 2018:
+	- Ported the Deck Class into JavaScript, and did the documentation of for the class
+	(45 Minutes)
+
+	- Created the Deck View, also having to learn how to create a scrollable view
+	(30 Minutes)
+TOTAL: 1.25 Hours
+
+
+Dec 28, 2018:
+	- Created a Basic view to show both player's hands, using image views that are hardcoded.
+	This was mostly done to prove that the game was working when dealing cards to both players.
+	(45 Minutes)
+TOTAL: 45 Minutes
+
+
+Dec 29, 2018:
+	- Added the ability to click on the cards to select them and highlight the background to show
+	that the cards have been selected.
+	(45 Minutes)
+TOTAL: 45 Minutes
+
+
+Jan 1, 2019:
+	- Added the table view, having to create my own view handler, similar to a Recycler View in Android
+	so I can have any number of cards but also have an index assosiated with each card so we can understand
+	which card the user has clicked on.
+	(2 Hours)
+
+	- Added the ability for the user to trail a card from it's hand
+	(30 Minutes)
+
+	- Created a custom scroll bar for the entire html page so that if the program is ran on a windows maching, 
+	the scroll bar doesn't look like it's from Windows 95
+	(15 Minutes)
+
+	- Changed the human's hand view to use the custom indexed view adapter that I created for the Table so we don't
+	have to use the hardcoded image views for the human's hand. At this time I left the computers hand with the hardcoded
+	views because we do not have to click on anything their. It's just for show.
+	(45 Mintues)
+TOTAL: 3.5 Hours
