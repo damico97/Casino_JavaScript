@@ -5,6 +5,7 @@
 		padding-top: 80px;
 	}
 
+	/* CSS For a Custom Scroll Bar */
 	::-webkit-scrollbar {
 		width: 5px;
 		border: 1px solid #ccc;
@@ -20,6 +21,7 @@
 		border-radius: 10px;
 		background: #f2f2f2;
 	}
+
 
 	header {
 		height: 60px;
@@ -130,7 +132,6 @@
 		cursor: pointer;
 	}
 
-
 	.computerHand {
 		position: absolute;
 		top: 185px;
@@ -146,14 +147,14 @@
 
 	.computerHand img {
 		height: 110px;
-		padding-right: 100px;
+		padding-right: 80px;
 	}
 
 
 	.humanHand {
 		position: absolute;
 		top: 680px;
-		right: 0px;
+		left: 840px;
 		background-color: #00506d;
   		overflow: auto;
   		white-space: nowrap;
