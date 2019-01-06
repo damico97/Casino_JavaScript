@@ -58,6 +58,7 @@ var human = new Player();
 var computer = new Player();
 var table = new Table();
 var move = new Move();
+var consoleLog = new ConsoleLog();
 
 deck.initializeDeck();
 
@@ -85,11 +86,11 @@ if (human.handLength() == 0 && computer.handLength() == 0) {
 updateView(view, deck, human, computer, table, move);
 
 
-document.getElementById("button_test").addEventListener('click', function() {
+document.getElementById("button_gameBoard_test").addEventListener('click', function() {
 	changePage('PageTest', 'PageGameBoard');
 });
 
-document.getElementById("button_capture").addEventListener('click', function() {
+document.getElementById("button_gameBoard_capture").addEventListener('click', function() {
 	for (var i = 0; i < move.moveTableCardLength(); i++) {
 		console.log(move.moveGetTableCard(i).getAbbv());
 	}
@@ -102,7 +103,7 @@ document.getElementById("button_capture").addEventListener('click', function() {
 	updateView(view, deck, human, computer, table, move);
 });
 
-document.getElementById("button_trail").addEventListener('click', function() {
+document.getElementById("button_gameBoard_trail").addEventListener('click', function() {
 	if (move.checkCardSelected()) {
 		human.trailCard(move, table);
 		checkGameStatus(view, deck, human, computer, table, move);
@@ -110,18 +111,17 @@ document.getElementById("button_trail").addEventListener('click', function() {
 	}
 });
 
-document.getElementById("button_computer").addEventListener('click', function() {
+document.getElementById("button_gameBoard_computer").addEventListener('click', function() {
 	move.setHandCard(computer.getHandCardAtIndex(0));
 	computer.trailCard(move, table);
 	checkGameStatus(view, deck, human, computer, table, move);
 	updateView(view, deck, human, computer, table, move);
 });
 
+document.getElementById("button_gameBoard_console").addEventListener('click', function() {
+	changePage('PageConsole', 'PageGameBoard');
+});
 
-
-
-
-
-
-
-
+document.getElementById("button_console_goBack").addEventListener('click', function() {
+	changePage('PageGameBoard', 'PageConsole');
+});

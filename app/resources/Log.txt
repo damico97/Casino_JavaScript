@@ -57,7 +57,7 @@ Jan 1, 2019:
 TOTAL: 3.5 Hours
 
 
-Jan 4, 2018:
+Jan 4, 2019:
 	- The user can now capture cards, had to work out a bunch of bugs, which required me to learn how passing objects works
 	in JavaScript.
 	(2 Hours 15 Minutes)
@@ -67,6 +67,11 @@ Jan 4, 2018:
 
 	- Extended the player's class to handel the pile and making a capture move.
 	(15 Minutes)
-	
+TOTAL: 3 Hours
 
+
+Jan 5, 2019:
+	- Started testing how to have multiple view pages in the HTML File so we can have multiple views throughout the game
+	without loosing all the game data
+	(30 Minutes)
 

@@ -65,13 +65,14 @@
 			<!-- Control Buttons -->
 			<div class="controls" id="controls">
 				<!-- Buttons -->
-				<button id="button_test">Test</button>
-				<button id="button_build">Build</button>
-				<button id="button_multi">Multi Build</button>
-				<button id="button_extend">Extend Build</button>
-				<button id="button_capture">Capture</button>
-				<button id="button_trail">Trail</button>
-				<button id="button_computer">Computer Move</button>
+				<button id="button_gameBoard_test">Test</button>
+				<button id="button_gameBoard_build">Build</button>
+				<button id="button_gameBoard_multi">Multi Build</button>
+				<button id="button_gameBoard_extend">Extend Build</button>
+				<button id="button_gameBoard_capture">Capture</button>
+				<button id="button_gameBoard_trail">Trail</button>
+				<button id="button_gameBoard_computer">Computer Move</button>
+				<button id="button_gameBoard_console">View Console</button>
 			</div>
 		</div>
 		<!-- End Game Board Page -->
@@ -85,6 +86,23 @@
 		</div>
 		<!-- End Test Page -->
 
+		<!-- Console Log Page -->
+		<div id="PageConsole" style="display:none">
+			<header>
+				<title>Console</title>
+			</header>
+
+			<div class="consoleText" id="consoleTextView">
+				<!-- Text -->
+			</div>
+
+			<div class="controls" id="controls">
+				<!-- Buttons -->
+				<button id="button_console_goBack">Go Back</button>
+			</div>
+		</div>
+		<!-- End Console Log Page -->
+
 	</body>
 
 
@@ -95,5 +113,6 @@
 	<script src="js/Table.js"></script>
 	<script src="js/Move.js"></script>
 	<script src="js/View.js"></script>
+	<script src="js/ConsoleLog.js"></script>
 	<script src="js/Casino.js"></script>
 </html>
