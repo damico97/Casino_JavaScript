@@ -10,7 +10,12 @@ function updateView(view, deck, human, computer, table, move) {
 
 function checkGameStatus(view, deck, human, computer, table, move) {
 	if (human.handLength() == 0 && computer.handLength() == 0) {
-		dealCards(human, computer, deck);
+		if (deck.deckSize() < 8) {
+
+		}
+		else {
+			dealCards(human, computer, deck);
+		}
 		//updateView(view, deck, human, computer, table, move);
 	}
 	else {
@@ -32,6 +37,12 @@ function dealCards(human, computer, deck) {
 			}
 		}
 	}
+}
+
+function changePage(shown, hidden) {
+	document.getElementById(shown).style.display='block';
+	document.getElementById(hidden).style.display='none';
+	return false;
 }
 
 
@@ -73,6 +84,10 @@ if (human.handLength() == 0 && computer.handLength() == 0) {
 
 updateView(view, deck, human, computer, table, move);
 
+
+document.getElementById("button_test").addEventListener('click', function() {
+	changePage('PageTest', 'PageGameBoard');
+});
 
 document.getElementById("button_capture").addEventListener('click', function() {
 	for (var i = 0; i < move.moveTableCardLength(); i++) {

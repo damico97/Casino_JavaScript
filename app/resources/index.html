@@ -21,59 +21,79 @@
 
 	<body>
 
-		<header>
-			<title>Casino</title>
-			<button id="button_save">
-				
-			</button>
-		</header>
+		<!-- Game Board Pages -->
+		<div id="PageGameBoard">
+			<header>
+				<title>Casino</title>
+				<button id="button_save"></button>
+			</header>
+
+			<!-- Deck Views -->
+			<div class="deckScroll" id="deckView">
+				<!-- Cards -->
+			</div>
+
+			<!-- Computer Views -->
+			<!-- Computer's Hand -->
+			<div class="computerHand" id="computerHand">
+				<img src="images/others/blank_card.png" id="c_card_1">
+				<img src="images/others/blank_card.png" id="c_card_2">
+				<img src="images/others/blank_card.png" id="c_card_3">
+				<img src="images/others/blank_card.png" id="c_card_4">
+			</div>
 
 
-		<div class="deckScroll" id="deckView">
-			<!-- Cards -->
+			<!-- Table Views -->
+			<!-- Loose Table Cards -->
+			<div class="tableScroll" id="tableView">
+				<!-- Cards -->
+			</div>
+
+
+			<!-- Human Views -->
+			<!-- Human's Pile-->
+			<div class="humanPile" id="humanPileView">
+				<!-- Cards -->
+			</div>
+
+			<!-- Human's Hand -->
+			<div class="humanHand" id="humanHandView">
+				<!-- Cards -->
+			</div>
+
+
+			<!-- Control Buttons -->
+			<div class="controls" id="controls">
+				<!-- Buttons -->
+				<button id="button_test">Test</button>
+				<button id="button_build">Build</button>
+				<button id="button_multi">Multi Build</button>
+				<button id="button_extend">Extend Build</button>
+				<button id="button_capture">Capture</button>
+				<button id="button_trail">Trail</button>
+				<button id="button_computer">Computer Move</button>
+			</div>
 		</div>
+		<!-- End Game Board Page -->
 
-
-		<div class="computerHand" id="computerHand">
-			<img src="images/others/blank_card.png" id="c_card_1">
-			<img src="images/others/blank_card.png" id="c_card_2">
-			<img src="images/others/blank_card.png" id="c_card_3">
-			<img src="images/others/blank_card.png" id="c_card_4">
+		<!-- Test Page -->
+		<div id="PageTest" style="display:none">
+			<header>
+				<title>Test Page</title>
+				<button id="button_save"></button>
+			</header>
 		</div>
+		<!-- End Test Page -->
 
-
-		<div class="tableScroll" id="tableView">
-			<!-- Cards -->
-		</div>
-
-
-		<div class="humanPile" id="humanPileView">
-			<!-- Cards -->
-		</div>
-
-		<div class="humanHand" id="humanHandView">
-			<!-- Cards -->
-		</div>
-
-
-		<div class="controls" id="controls">
-			<!-- Buttons -->
-			<button id="button_build">Build</button>
-			<button id="button_multi">Multi Build</button>
-			<button id="button_extend">Extend Build</button>
-			<button id="button_capture">Capture</button>
-			<button id="button_trail">Trail</button>
-			<button id="button_computer">Computer Move</button>
-		</div>
-
-
-		<!-- JavaScripts -->
-		<script src="js/Card.js"></script>
-		<script src="js/Deck.js"></script>
-		<script src="js/Player.js"></script>
-		<script src="js/Table.js"></script>
-		<script src="js/Move.js"></script>
-		<script src="js/View.js"></script>
-		<script src="js/Casino.js"></script>
 	</body>
+
+
+	<!-- JavaScripts -->
+	<script src="js/Card.js"></script>
+	<script src="js/Deck.js"></script>
+	<script src="js/Player.js"></script>
+	<script src="js/Table.js"></script>
+	<script src="js/Move.js"></script>
+	<script src="js/View.js"></script>
+	<script src="js/Casino.js"></script>
 </html>
