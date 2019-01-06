@@ -35,4 +35,12 @@
  			console.log("ERROR!! - {Table} [getTableCardAtIndex]");
  		}
  	}
+
+ 	deleteTableCardAtIndex(index) {
+ 		this.mTableCards.splice(index, 1);
+ 	}
+
+ 	findTableCardIndex(card) {
+ 		return this.mTableCards.indexOf(card);
+ 	}
  }

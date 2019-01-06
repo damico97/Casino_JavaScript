@@ -55,3 +55,18 @@ Jan 1, 2019:
 	views because we do not have to click on anything their. It's just for show.
 	(45 Mintues)
 TOTAL: 3.5 Hours
+
+
+Jan 4, 2018:
+	- The user can now capture cards, had to work out a bunch of bugs, which required me to learn how passing objects works
+	in JavaScript.
+	(2 Hours 15 Minutes)
+
+	- Created the view for the human's pile
+	(30 Minutes)
+
+	- Extended the player's class to handel the pile and making a capture move.
+	(15 Minutes)
+	
+
+

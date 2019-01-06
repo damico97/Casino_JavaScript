@@ -24,7 +24,12 @@
  		this.mHandCard = null;
  		this.mCardSelected = false;
 
- 		//this.mTableCards.clear;
+ 		if (undefined == this.mTableCards) {
+
+ 		}
+ 		else {
+ 			this.mTableCards = [];
+ 		}
  	}
 
 
@@ -33,9 +38,56 @@
  	}
 
 
+ 	checkPossibleCapture() {
+ 		var tableTotal = 0;
+ 		for (var i = 0; i < this.mTableCards.length; i++) {
+ 			tableTotal += this.mTableCards[i].getValue();
+ 		}
+
+ 		if (tableTotal % this.mHandCard.getValue() == 0) {
+ 			console.log("True");
+ 			return true;
+ 		}
+ 		else {
+ 			if (tableTotal % this.mHandCard.getValue() + 13 == 0) {
+ 				console.log("True");
+ 				return true;
+ 			}
+ 			else {
+ 				console.log("False");
+ 				return false;
+ 			}
+ 		}
+ 	}
+
+
  	setHandCard(nCard) {
  		this.mHandCard = nCard;
  		this.mCardSelected = true;
+ 	}
+
+
+ 	moveAddTableCard(nCard) {
+ 		if (undefined == this.mTableCards) {
+ 			this.mTableCards = new Array();
+ 			this.mTableCards[0] = nCard;
+ 		}
+ 		else {
+ 			this.mTableCards.push(nCard);
+ 		}
+ 	}
+
+ 	moveTableCardLength() {
+ 		return this.mTableCards.length;
+ 	}
+
+ 	moveGetTableCard(index) {
+ 		if (index >= 0 && index < this.moveTableCardLength()) {
+ 			return this.mTableCards[index];
+ 		}
+ 		else {
+ 			console.log("ERROR!! - {Table} [getTableCardAtIndex]");
+ 		}
  	}
 
 

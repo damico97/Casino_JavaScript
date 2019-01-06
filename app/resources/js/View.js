@@ -31,6 +31,28 @@ class View {
 		}
 	}
 
+	setUpHumanPileView(human) {
+		var humanPileView = document.getElementById("humanPileView");
+
+		while (humanPileView.hasChildNodes()) {
+			humanPileView.removeChild(humanPileView.lastChild);
+		}
+
+		for (var i = 0; i < human.pileLength(); i++) {
+			var card_path = "images/cards/";
+			var card_prefix = "card_";
+			var card_name = "";
+
+			var card = human.getPileCardAtIndex(i).getAbbv();
+			card_name += card_path + card_prefix;
+			card_name += card.toLowerCase() + ".png";
+
+			var card_image = document.createElement("img");
+			card_image.src = card_name;
+			humanPileView.appendChild(card_image);
+		}
+	}
+
 	setupHumanHandView(human, move) {
 		var humanHandView = document.getElementById("humanHandView");
 
@@ -94,7 +116,7 @@ class View {
 	}
 
 
-	setupTableCardView(table) {
+	setupTableCardView(table, move) {
 		var tableCardView = document.getElementById("tableView");
 
 		while (tableCardView.hasChildNodes()) {
@@ -146,6 +168,7 @@ class View {
 		            	if (cardSelected[_td.id] == false) {
 		            		_td.style.backgroundColor = "rgb(37, 185, 154)";
 		            		cardSelected[_td.id] = true;
+		            		move.moveAddTableCard(table.getTableCardAtIndex(_td.id));
 		            	}
 		                else {
 		                	_td.style.backgroundColor = "rgb(0, 80, 109)";
@@ -167,7 +190,7 @@ class View {
 		}
 
 		for (var i = 0; i < deck.deckSize(); i++) {
-			var card_path = "images/cards/"
+			var card_path = "images/cards/";
 			var card_prefix = "card_";
 			var card_name = "";
 

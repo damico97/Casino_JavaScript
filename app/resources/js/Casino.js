@@ -3,7 +3,8 @@
 function updateView(view, deck, human, computer, table, move) {
 	view.showComputerHand(computer);
 	view.setupHumanHandView(human, move);
-	view.setupTableCardView(table);
+	view.setUpHumanPileView(human);
+	view.setupTableCardView(table, move);
 	view.setUpDeckView(deck);
 }
 
@@ -32,6 +33,8 @@ function dealCards(human, computer, deck) {
 		}
 	}
 }
+
+
 
 var humanTurn = true;
 
@@ -70,6 +73,19 @@ if (human.handLength() == 0 && computer.handLength() == 0) {
 
 updateView(view, deck, human, computer, table, move);
 
+
+document.getElementById("button_capture").addEventListener('click', function() {
+	for (var i = 0; i < move.moveTableCardLength(); i++) {
+		console.log(move.moveGetTableCard(i).getAbbv());
+	}
+	
+	if (move.checkPossibleCapture()) {
+		human.captureCards(move, table);
+	}
+
+	checkGameStatus(view, deck, human, computer, table, move);
+	updateView(view, deck, human, computer, table, move);
+});
 
 document.getElementById("button_trail").addEventListener('click', function() {
 	if (move.checkCardSelected()) {
