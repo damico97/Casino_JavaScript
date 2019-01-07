@@ -159,7 +159,7 @@ class Card {
         // Card is not a face card, use it's number
         else {
         	var value = this.mValue;
-            name += String(value);
+            name += Number(value);
         }
 
         // Add "of" to the name string

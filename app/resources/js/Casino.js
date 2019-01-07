@@ -17,7 +17,6 @@ function checkGameStatus(tournament, view, deck, human, computer, table, move) {
 		else {
 			tournament.dealCards();
 		}
-		//updateView(view, deck, human, computer, table, move);
 	}
 	else {
 		// Do Nothing
@@ -30,9 +29,7 @@ function changePage(shown, hidden) {
 	return false;
 }
 // END Functions 
-//------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-console.log("New Deck");
+//--------------------------------------------------------------------------------------------------------------------------------
 
 var boardViews = new BoardViews();
 var consoleViews = new ViewsConsole();
@@ -61,10 +58,6 @@ updateView(boardViews, tournament, deck, human, computer, table, move, consoleLo
 
 
 // Even Listeners for the control buttons
-document.getElementById("button_gameBoard_test").addEventListener('click', function() {
-	changePage('PageTest', 'PageGameBoard');
-});
-
 document.getElementById("button_gameBoard_capture").addEventListener('click', function() {
 	for (var i = 0; i < move.moveTableCardLength(); i++) {
 		console.log(move.moveGetTableCard(i).getAbbv());
@@ -88,7 +81,7 @@ document.getElementById("button_gameBoard_trail").addEventListener('click', func
 
 document.getElementById("button_gameBoard_computer").addEventListener('click', function() {
 	move.setHandCard(computer.getHandCardAtIndex(0));
-	alert(computer.trailCard(move, table));
+	alert("Computer's Move Selection:\n" + computer.trailCard(move, table));
 	checkGameStatus(tournament, boardViews, deck, human, computer, table, move);
 	updateView(boardViews, tournament, deck, human, computer, table, move, consoleLog);
 });

@@ -73,14 +73,14 @@ class Tournament {
         temp += "Round: " + "<br><br>";
 
         temp += "Computer:<br>";
-        temp += tab + "Score: " + this.mComputer.getScore() + "<br>";
-        temp += tab + "Hand: " + this.mComputer.handToString() + "<br>";
-        temp += tab + "Pile: " + this.mComputer.pileToString() + "<br><br>";
+        temp += "\u00A0\u00A0\u00A0\u00A0" + "Score: " + this.mComputer.getScore() + "<br>";
+        temp += "\u00A0\u00A0\u00A0\u00A0" + "Hand: " + this.mComputer.handToString() + "<br>";
+        temp += "\u00A0\u00A0\u00A0\u00A0" + "Pile: " + this.mComputer.pileToString() + "<br><br>";
 
         temp += "Human:<br>";
-        temp += tab + "Score: " + this.mHuman.getScore() + "<br>";
-        temp += tab + "Hand: " + this.mHuman.handToString() + "<br>";
-        temp += tab + "Pile: " + this.mHuman.pileToString() + "<br><br>";
+        temp += "\u00A0\u00A0\u00A0\u00A0" + "Score: " + this.mHuman.getScore() + "<br>";
+        temp += "\u00A0\u00A0\u00A0\u00A0" + "Hand: " + this.mHuman.handToString() + "<br>";
+        temp += "\u00A0\u00A0\u00A0\u00A0" + "Pile: " + this.mHuman.pileToString() + "<br><br>";
 
         temp += "Table: " + this.mTable.tableLooseCardsToString() + "<br><br>";
 

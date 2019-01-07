@@ -117,7 +117,7 @@
 
  		this.mPlayerHand.splice(index, 1);
 
-		temp = "User played the " + card.getName() + " to capture...<br>";
+		temp = "Played the " + card.getName() + " to capture...<br>";
 
  		this.addCardToPile(move.getHandCard());
 
@@ -143,7 +143,7 @@
  		var card = move.getHandCard();
  		var index = this.mPlayerHand.indexOf(move.getHandCard());
 
-		temp = "User trailed the " + card.getName() + " from it's hand";
+		temp = "Trailed the " + card.getName() + " from it's hand";
 
 		table.addCardToTable(card);
  		this.mPlayerHand.splice(index, 1);
