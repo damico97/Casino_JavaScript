@@ -74,4 +74,19 @@ Jan 5, 2019:
 	- Started testing how to have multiple view pages in the HTML File so we can have multiple views throughout the game
 	without loosing all the game data
 	(30 Minutes)
+TOTAL: 30 Minutes
+
+
+Jan 6, 2019:
+	- Finished the new page view for the console log so we can see everything that happens in the game in text form, similar
+	to how you would view the game back in the C++ version.
+	(30 Minutes)
+
+	- Now everything the program updates the HTML views for the game board it also writes the board in text form into the consoleLog 
+	class so when the user wants to see the console, you can see every status change in the game.
+	(30 Minutes)
+
+	- Trouble shot some bugs that arrised, all were fixed.
+	(30 Minutes)
+	
 

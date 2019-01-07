@@ -4,7 +4,11 @@ class ConsoleLog {
     }
 
     addToLogText(nEntry) {
-        this.mLogText += nEntry + "\n\n";
+        this.mLogText += nEntry + "<br><br>";
+    }
+
+    initLogText(nEntry) {
+        this.mLogText = nEntry + "<br><br>";
     }
 
     getLogText() {

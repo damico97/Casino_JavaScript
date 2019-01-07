@@ -52,13 +52,16 @@
 		top: 7px;
 		right: 20px;
 		height: 45px;
-		width: 75px;
+		width: 125px;
 		z-index: 2;
 		border-radius: 25px;
 		background: #fff;
+		font-size: 20px;
+		font-weight: 500;
 		border: 0px;
 		box-shadow: none;
 		outline: none;
+		cursor: pointer;
 		display: inline-block;
 	}
 
@@ -192,4 +195,14 @@
 		margin-right: 60px;
 		border-radius: 15px;
 		cursor: pointer;
+	}
+
+
+	.consoleText {
+		color:#fff;
+		font-size: 18px;
+		font-weight: 400;
+		margin-top: 5px;
+		margin-left: 18px;
+		overflow: auto;
 	}

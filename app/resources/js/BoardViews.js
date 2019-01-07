@@ -1,4 +1,4 @@
-class View {
+class BoardViews {
 
 	showComputerHand( computer) {
 		var blankCard = "images/others/blank_card.png";

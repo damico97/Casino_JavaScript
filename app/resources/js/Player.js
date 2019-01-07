@@ -81,6 +81,16 @@
 		}
  	}
 
+	handToString() {
+		var temp = "";
+
+		for (var i = 0; i < this.mPlayerHand.length; i++) {
+			temp += this.mPlayerHand[i].getAbbv() + " ";
+		}
+
+		return temp;
+	}
+
  	captureCards(move, table) {
  		var card = move.getHandCard();
  		var index = this.mPlayerHand.indexOf(card);

@@ -1,11 +1,12 @@
 
 
-function updateView(view, deck, human, computer, table, move) {
+function updateView(view, deck, human, computer, table, move, consoleLog) {
 	view.showComputerHand(computer);
 	view.setupHumanHandView(human, move);
 	view.setUpHumanPileView(human);
 	view.setupTableCardView(table, move);
 	view.setUpDeckView(deck);
+	consoleLog.addToLogText(this.boardToString(deck, human, computer, table));
 }
 
 function checkGameStatus(view, deck, human, computer, table, move) {
@@ -45,13 +46,45 @@ function changePage(shown, hidden) {
 	return false;
 }
 
+function boardToString(deck, human, computer, table) {
+	var temp = "";
+	var tab = "   ";
+
+	temp = "------------------------------------------------------------------------------------------------------------------------------------------------------" + "<br>";
+	temp += "Round: " + "<br><br>";
+
+	temp += "Computer:<br>";
+	temp += tab + "Score: " + "<br>";
+	temp += tab + "Hand: " + computer.handToString() + "<br>";
+	temp += tab + "Pile: " + "<br><br>";
+
+	temp += "Human:<br>";
+	temp += tab + "Score: " + "<br>";
+	temp += tab + "Hand: " + human.handToString() + "<br>";
+	temp += tab + "Pile: " + "<br><br>";
+
+	temp += "Table: " + "<br><br>";
+
+	temp += "Build Owner: " + "<br><br>";
+
+	temp += "Last Capture: " + "<br><br>";
+
+	temp += "Deck: " + deck.deckToString() + "<br><br>";
+
+	temp += "Next Player: " + "<br>";
+	temp += "------------------------------------------------------------------------------------------------------------------------------------------------------";
+
+	return temp;
+}
+
 
 
 var humanTurn = true;
 
 console.log("New Deck");
 
-var view = new View();
+var boardViews = new BoardViews();
+var consoleViews = new ViewsConsole();
 
 var deck = new Deck();
 var human = new Player();
@@ -61,6 +94,7 @@ var move = new Move();
 var consoleLog = new ConsoleLog();
 
 deck.initializeDeck();
+consoleLog.initLogText("New Deck:" + '<br>' + deck.deckToString());
 
 if (human.handLength() == 0 && computer.handLength() == 0) {
 	// Deal Cards
@@ -80,10 +114,9 @@ if (human.handLength() == 0 && computer.handLength() == 0) {
 			}
 		}
 	}
-	updateView(view, deck, human, computer, table, move);
 }
 
-updateView(view, deck, human, computer, table, move);
+updateView(boardViews, deck, human, computer, table, move, consoleLog);
 
 
 document.getElementById("button_gameBoard_test").addEventListener('click', function() {
@@ -99,26 +132,27 @@ document.getElementById("button_gameBoard_capture").addEventListener('click', fu
 		human.captureCards(move, table);
 	}
 
-	checkGameStatus(view, deck, human, computer, table, move);
-	updateView(view, deck, human, computer, table, move);
+	checkGameStatus(boardViews, deck, human, computer, table, move);
+	updateView(boardViews, deck, human, computer, table, move, consoleLog);
 });
 
 document.getElementById("button_gameBoard_trail").addEventListener('click', function() {
 	if (move.checkCardSelected()) {
 		human.trailCard(move, table);
-		checkGameStatus(view, deck, human, computer, table, move);
-		updateView(view, deck, human, computer, table, move);
+		checkGameStatus(boardViews, deck, human, computer, table, move);
+		updateView(boardViews, deck, human, computer, table, move, consoleLog);
 	}
 });
 
 document.getElementById("button_gameBoard_computer").addEventListener('click', function() {
 	move.setHandCard(computer.getHandCardAtIndex(0));
 	computer.trailCard(move, table);
-	checkGameStatus(view, deck, human, computer, table, move);
-	updateView(view, deck, human, computer, table, move);
+	checkGameStatus(boardViews, deck, human, computer, table, move);
+	updateView(boardViews, deck, human, computer, table, move, consoleLog);
 });
 
 document.getElementById("button_gameBoard_console").addEventListener('click', function() {
+	consoleViews.setUpConsoleView(consoleLog);
 	changePage('PageConsole', 'PageGameBoard');
 });
 

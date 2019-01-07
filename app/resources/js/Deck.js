@@ -57,7 +57,22 @@
  	dealCard() {
  		var temp = this.mCardDeck.shift();
  		return temp;
- 	}
+	}
+	
+
+	/**
+	 * 
+	 */
+	deckToString() {
+		var temp = "";
+
+		for (var i = 0; i < this.deckSize(); i++) {
+			temp += this.mCardDeck[i].getAbbv() + " ";
+		}
+
+		return temp;
+	}
+
 
  	/**
  	 * initializeDeck(), Creates a New Deck, fills the deck, and calls the shuffle function
