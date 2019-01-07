@@ -1,0 +1,2 @@
+1.) Constructors do not seem to actually do anything, they do not initalize anything
+2.) Arrays are funky and pushing objects into them are much more difficult then it needs to be 

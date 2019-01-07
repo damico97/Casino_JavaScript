@@ -1,21 +1,21 @@
 
 
-function updateView(view, deck, human, computer, table, move, consoleLog) {
+function updateView(view, tournament, deck, human, computer, table, move, consoleLog) {
 	view.showComputerHand(computer);
 	view.setupHumanHandView(human, move);
 	view.setUpHumanPileView(human);
 	view.setupTableCardView(table, move);
 	view.setUpDeckView(deck);
-	consoleLog.addToLogText(this.boardToString(deck, human, computer, table));
+	consoleLog.addToLogText(tournament.boardToString());
 }
 
-function checkGameStatus(view, deck, human, computer, table, move) {
+function checkGameStatus(tournament, view, deck, human, computer, table, move) {
 	if (human.handLength() == 0 && computer.handLength() == 0) {
 		if (deck.deckSize() < 8) {
 
 		}
 		else {
-			dealCards(human, computer, deck);
+			tournament.dealCards();
 		}
 		//updateView(view, deck, human, computer, table, move);
 	}
@@ -24,62 +24,13 @@ function checkGameStatus(view, deck, human, computer, table, move) {
 	}
 }
 
-function dealCards(human, computer, deck) {
-	for (var i = 0; i < 2; i++) {
-		for (var j = 0; j < 4; j++) {
-			if (i == 0) {
-				human.addCardToHand(deck.dealCard());
-			}
-			else if (i == 1) {
-				computer.addCardToHand(deck.dealCard());
-			}
-			else {
-				console.log("ERROR");
-			}
-		}
-	}
-}
-
 function changePage(shown, hidden) {
 	document.getElementById(shown).style.display='block';
 	document.getElementById(hidden).style.display='none';
 	return false;
 }
-
-function boardToString(deck, human, computer, table) {
-	var temp = "";
-	var tab = "   ";
-
-	temp = "------------------------------------------------------------------------------------------------------------------------------------------------------" + "<br>";
-	temp += "Round: " + "<br><br>";
-
-	temp += "Computer:<br>";
-	temp += tab + "Score: " + "<br>";
-	temp += tab + "Hand: " + computer.handToString() + "<br>";
-	temp += tab + "Pile: " + "<br><br>";
-
-	temp += "Human:<br>";
-	temp += tab + "Score: " + "<br>";
-	temp += tab + "Hand: " + human.handToString() + "<br>";
-	temp += tab + "Pile: " + "<br><br>";
-
-	temp += "Table: " + "<br><br>";
-
-	temp += "Build Owner: " + "<br><br>";
-
-	temp += "Last Capture: " + "<br><br>";
-
-	temp += "Deck: " + deck.deckToString() + "<br><br>";
-
-	temp += "Next Player: " + "<br>";
-	temp += "------------------------------------------------------------------------------------------------------------------------------------------------------";
-
-	return temp;
-}
-
-
-
-var humanTurn = true;
+// END Functions 
+//------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 console.log("New Deck");
 
@@ -93,32 +44,23 @@ var table = new Table();
 var move = new Move();
 var consoleLog = new ConsoleLog();
 
-deck.initializeDeck();
+var humanTurn = true;
+
+var tournament = new Tournament();
+tournament.setMembers(deck, human, computer, table, move, consoleLog, humanTurn);
+
+tournament.initalizeScores();
+
+tournament.initalizeDeck();
 consoleLog.initLogText("New Deck:" + '<br>' + deck.deckToString());
 
-if (human.handLength() == 0 && computer.handLength() == 0) {
-	// Deal Cards
-	for (var i = 0; i < 3; i++) {
-		for (var j = 0; j < 4; j++) {
-			if (i == 0) {
-				human.addCardToHand(deck.dealCard());
-			}
-			else if (i == 1) {
-				computer.addCardToHand(deck.dealCard());
-			}
-			else if (i == 2) {
-				table.addCardToTable(deck.dealCard());
-			}
-			else {
-				console.log("ERROR - In Dealing Cards");
-			}
-		}
-	}
-}
+tournament.dealInitalCards();
 
-updateView(boardViews, deck, human, computer, table, move, consoleLog);
+updateView(boardViews, tournament, deck, human, computer, table, move, consoleLog);
 
 
+
+// Even Listeners for the control buttons
 document.getElementById("button_gameBoard_test").addEventListener('click', function() {
 	changePage('PageTest', 'PageGameBoard');
 });
@@ -129,26 +71,26 @@ document.getElementById("button_gameBoard_capture").addEventListener('click', fu
 	}
 	
 	if (move.checkPossibleCapture()) {
-		human.captureCards(move, table);
+		consoleLog.addToLogText("Human Move:<br>" + human.captureCards(move, table));
 	}
 
-	checkGameStatus(boardViews, deck, human, computer, table, move);
-	updateView(boardViews, deck, human, computer, table, move, consoleLog);
+	checkGameStatus(tournament, boardViews, deck, human, computer, table, move);
+	updateView(boardViews, tournament, deck, human, computer, table, move, consoleLog);
 });
 
 document.getElementById("button_gameBoard_trail").addEventListener('click', function() {
 	if (move.checkCardSelected()) {
-		human.trailCard(move, table);
-		checkGameStatus(boardViews, deck, human, computer, table, move);
-		updateView(boardViews, deck, human, computer, table, move, consoleLog);
+		consoleLog.addToLogText("Human Move:<br>" + human.trailCard(move, table));
+		checkGameStatus(tournament, boardViews, deck, human, computer, table, move);
+		updateView(boardViews, tournament, deck, human, computer, table, move, consoleLog);
 	}
 });
 
 document.getElementById("button_gameBoard_computer").addEventListener('click', function() {
 	move.setHandCard(computer.getHandCardAtIndex(0));
 	computer.trailCard(move, table);
-	checkGameStatus(boardViews, deck, human, computer, table, move);
-	updateView(boardViews, deck, human, computer, table, move, consoleLog);
+	checkGameStatus(tournament, boardViews, deck, human, computer, table, move);
+	updateView(boardViews, tournament, deck, human, computer, table, move, consoleLog);
 });
 
 document.getElementById("button_gameBoard_console").addEventListener('click', function() {

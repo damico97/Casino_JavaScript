@@ -14,8 +14,16 @@
  		this.mPlayerPile = new Array();
  		this.mScore = 0;
  		this.mRoundScore = 0;
- 		this.mNumSpades = 0;
- 	}
+		this.mNumSpades = 0;
+	}
+	
+	getScore() {
+		return this.mScore;
+	}
+
+	setScore(num) {
+		this.mScore = num;
+	}
 
  	addCardToHand(nCard) {
  		if (undefined == this.mPlayerHand) {
@@ -84,18 +92,32 @@
 	handToString() {
 		var temp = "";
 
-		for (var i = 0; i < this.mPlayerHand.length; i++) {
+		for (var i = 0; i < this.handLength(); i++) {
 			temp += this.mPlayerHand[i].getAbbv() + " ";
 		}
 
 		return temp;
 	}
 
+	pileToString() {
+		var temp = "";
+
+		for (var i = 0; i < this.pileLength(); i++) {
+			temp += this.mPlayerPile[i].getAbbv() + " ";
+		}
+
+		return temp;
+	}
+
  	captureCards(move, table) {
+		var temp = "";
+
  		var card = move.getHandCard();
  		var index = this.mPlayerHand.indexOf(card);
 
  		this.mPlayerHand.splice(index, 1);
+
+		temp = "User played the " + card.getName() + " to capture...<br>";
 
  		this.addCardToPile(move.getHandCard());
 
@@ -103,18 +125,30 @@
 			var tableCard = move.moveGetTableCard(i);
 			var tableIndex = table.findTableCardIndex(tableCard);
 			table.deleteTableCardAtIndex(tableIndex);
+
+			temp += "the " + tableCard.getName() + "<br>";
+
 			this.addCardToPile(tableCard);
 		}
+		temp += "from the table";
 
- 		move.resetMove();
+		move.resetMove();
+		
+		return temp;
  	}
 
  	trailCard(move, table) {
+		var temp = "";
+		
  		var card = move.getHandCard();
  		var index = this.mPlayerHand.indexOf(move.getHandCard());
 
+		temp = "User trailed the " + card.getName() + " from it's hand";
+
 		table.addCardToTable(card);
  		this.mPlayerHand.splice(index, 1);
- 		move.resetMove();
+		move.resetMove();
+		 
+		return temp;
  	}
  }

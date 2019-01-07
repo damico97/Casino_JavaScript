@@ -88,5 +88,23 @@ Jan 6, 2019:
 
 	- Trouble shot some bugs that arrised, all were fixed.
 	(30 Minutes)
+TOTAL: 1.5 Hours
+
+
+Jan 7, 2019:
+	- User capturing now records the move in the consoleLog
+	(15 Minutes)
+
+	- User trailing now records the move in the consoleLog
+	(5 Minutes)
+
+	- Started the creation of a Tournament class to move most of the functions out of the main Casino.js file and into another class 
+	to have a much cleaner looking code.
+	(10 Minutes)
+
+	- Moved the marjority of the functions out of Casino.js and into the Tournament class and had to check if all the functionallity
+	was still working.
+	(45 Minutes)
+
 	
 

@@ -24,7 +24,12 @@
  	}
 
  	tableCardLength() {
- 		return this.mTableCards.length;
+		if (undefined ==  this.mTableCards) {
+			return 0;
+		}
+		else {
+			return this.mTableCards.length;
+		}
  	}
 
  	getTableCardAtIndex(index) {
@@ -42,5 +47,15 @@
 
  	findTableCardIndex(card) {
  		return this.mTableCards.indexOf(card);
- 	}
+	}
+	 
+	tableLooseCardsToString() {
+		var temp = "";
+
+		for (var i = 0; i < this.tableCardLength(); i++) {
+			temp += this.mTableCards[i].getAbbv() + " ";
+		}
+
+		return temp;
+	}
  }
