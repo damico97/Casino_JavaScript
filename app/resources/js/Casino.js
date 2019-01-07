@@ -88,7 +88,7 @@ document.getElementById("button_gameBoard_trail").addEventListener('click', func
 
 document.getElementById("button_gameBoard_computer").addEventListener('click', function() {
 	move.setHandCard(computer.getHandCardAtIndex(0));
-	computer.trailCard(move, table);
+	alert(computer.trailCard(move, table));
 	checkGameStatus(tournament, boardViews, deck, human, computer, table, move);
 	updateView(boardViews, tournament, deck, human, computer, table, move, consoleLog);
 });
