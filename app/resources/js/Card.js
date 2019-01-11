@@ -14,6 +14,7 @@ class Card {
      * @param None
      */
 	Card() {
+		// Initialize Variables to default values 
 		this.mSuit = "";
 		this.mValue = 0;
 		this.mAbbv = "";
@@ -27,6 +28,7 @@ class Card {
      * @param abbv, String containing the abbreviation of the name of the card
      */
 	newCard(suit, value, abbv) {
+		// Initialize variables
 		this.mSuit = suit;
 		this.mValue = value;
 		this.mAbbv = abbv;
@@ -39,62 +41,81 @@ class Card {
      * @return An instance of the card class
      */
 	newCardFromAbbv(abbv) {
+		// Local variables to store the cards suit and value
 		var suit;
 		var value;
 
+		// Check if the abbrevation is the correct length
 		if (abbv.length == 2) {
+			// Set the first character as the Suite of the card
 			suit = abbv[0];
 			
+			// Check if an Ace
 			if (abbv.charAt(1) == "A") {
 				value = 1;
 			}
+			// Check if a 2
 			else if (abbv.charAt(1) == "2") {
 				value = 2; 
 			}
+			// Check if a 3
 			else if (abbv.charAt(1) == "3") {
 				value = 3;
 			} 
+			// Check if a 4
 			else if (abbv.charAt(1) == "4") {
 				value = 4;
 			}
+			// Check if a 5
 			else if (abbv.charAt(1) == "5") {
 				value = 5;
 			}
+			// Check if a 6
 			else if (abbv.charAt(1) == "6") {
 				value = 6;
 			}
+			// Check if a 7
 			else if (abbv.charAt(1) == "7") {
 				value = 7;
 			}
+			// Check if a 8
 			else if (abbv.charAt(1) == "8") {
 				value = 8;
 			}
+			// Check if a 9
 			else if (abbv.charAt(1) == "9") {
 				value = 9;
 			}
+			// Check if a 10
 			else if (abbv.charAt(1) == "X") {
 				value = 10;
 			}
+			// Check if an Jack
 			else if (abbv.charAt(1) == "J") {
 				value = 11;
 			}
+			// Check if a Queen
 			else if (abbv.charAt(1) == "Q") {
 				value = 12;
 			}
+			// Check if a King
 			else if (abbv.charAt(1) == "K") {
 				value = 13;
 			}
+			// Catch any Errors
 			else {
 				console.log("ERROR!! - In newCardFromAbbv()");
 				value = -1;
 			}
 
+			// Catch the error flag set in the value
 			if (value != -1) {
 				this.mSuit = suit;
 				this.mValue = value;
 				this.mAbbv = abbv;
 			}
 		}
+		// Catch any errors
 		else {
 			console.log("ERROR!! - In newCardFromAbbv()");
 		}
