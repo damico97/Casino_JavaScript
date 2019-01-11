@@ -1,9 +1,9 @@
 /*
  * ************************************************************
  * * Name:  Joseph Damico                                     *
- * * Project:  Casino Android-Java                            *
+ * * Project:  Casino JavaScript                              *
  * * Class:  CMPS: 366-01                                     *
- * * Date:  December 12, 2018                                 *
+ * * Date:  February 15, 2019                                 *
  * ************************************************************
  */
 
@@ -21,7 +21,7 @@ class Card {
 
 
 	/**
-     * Card Class Constructor
+     * newCard(), takes in the vlaues for the new card as assigns them
      * @param suit, char The suit of the card represented by a single character (S, H, C, D)
      * @param value, int The value of the card
      * @param abbv, String containing the abbreviation of the name of the card
@@ -34,7 +34,7 @@ class Card {
 
 
 	/**
-     * Card Class Constructor that uses just the abbreviation to create the card, used during serialization
+     * newCardFromAbbv(), uses just the abbreviation to create the card, used during serialization
      * @param abbv, String containing the abbreviation of the card name
      * @return An instance of the card class
      */
@@ -187,9 +187,3 @@ class Card {
         return name;
 	}
 }
-
-
-
-
-
-

@@ -1,4 +1,14 @@
+/*
+ * ************************************************************
+ * * Name:  Joseph Damico                                     *
+ * * Project:  Casino JavaScript                              *
+ * * Class:  CMPS: 366-01                                     *
+ * * Date:  February 15, 2019                                 *
+ * ************************************************************
+ */
+
 class Tournament {
+    
     Tournament() {
         this.mDeck;
         this.mHuman;

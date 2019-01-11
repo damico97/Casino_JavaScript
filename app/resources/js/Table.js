@@ -1,9 +1,9 @@
 /*
  * ************************************************************
  * * Name:  Joseph Damico                                     *
- * * Project:  Casino Android-Java                            *
+ * * Project:  Casino JavaScript                              *
  * * Class:  CMPS: 366-01                                     *
- * * Date:  December 12, 2018                                 *
+ * * Date:  February 15, 2019                                 *
  * ************************************************************
  */
 
@@ -35,7 +35,7 @@
     getTableCards() {
 		return this.mTableCards;
 	}	 
-	
+
  	getTableCardAtIndex(index) {
  		if (index >= 0 && index < this.tableCardLength()) {
  			return this.mTableCards[index];

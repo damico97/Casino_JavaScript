@@ -135,3 +135,7 @@ Jan 11, 2019:
 	abbrervations to find the actual cards to set the move class and execute which ever move the computer chose.
 	(30 Minutes)
 
+	- The computer logic can now capture sets of 3 cards whos values add up to the value of ones of it's hand cards.
+	(15 Minutes)
+
+	

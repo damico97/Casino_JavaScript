@@ -1,4 +1,11 @@
-
+/*
+ * ************************************************************
+ * * Name:  Joseph Damico                                     *
+ * * Project:  Casino JavaScript                              *
+ * * Class:  CMPS: 366-01                                     *
+ * * Date:  February 15, 2019                                 *
+ * ************************************************************
+ */
 
 function updateView(view, tournament, deck, human, computer, table, move, consoleLog) {
 	view.setUpComputerPileView(computer);

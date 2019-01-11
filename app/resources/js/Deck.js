@@ -1,9 +1,9 @@
 /*
  * ************************************************************
  * * Name:  Joseph Damico                                     *
- * * Project:  Casino Android-Java                            *
+ * * Project:  Casino JavaScript                              *
  * * Class:  CMPS: 366-01                                     *
- * * Date:  December 12, 2018                                 *
+ * * Date:  February 15, 2019                                 *
  * ************************************************************
  */
 
@@ -14,6 +14,7 @@
  	 * Deck(), Constructor for the Deck Class
  	 */
  	Deck() {
+		// Initalize Variables
  		this.mCardDeck = new Array();
  		this.mDeckSize = 0;
  	}
@@ -25,6 +26,7 @@
 	 * @return The card from the given index
 	 */
  	get(index) {
+		// Return the card in the deck at the given index
  		return this.mCardDeck[index];
  	}
 
@@ -35,7 +37,16 @@
  	 * @return The size of the deck array
  	 */
  	deckSize() {
- 		return this.mCardDeck.length;
+		// Check if the deck is undefined
+		if (undefined == this.mCardDeck) {
+			// There are no cards in the deck, return size of 0
+			return 0;
+		}
+		// There are cards in the deck
+		else {
+			// Return the length of the deck
+		 	return this.mCardDeck.length;
+		}
  	}
 
 
@@ -44,6 +55,7 @@
  	 * @param None
  	 */
  	shuffleDeck() {
+		// Loop through the deck and shuffle cards
  		for (let i = this.mCardDeck.length - 1; i > 0; i--) {
         	const j = Math.floor(Math.random() * (i + 1));
         	[this.mCardDeck[i], this.mCardDeck[j]] = [this.mCardDeck[j], this.mCardDeck[i]];
@@ -52,24 +64,33 @@
 
 
  	/**
- 	 *
+ 	 * dealCard(), removes the first card from the deck and returns it to give to either one of the players or the table
+	 * @param None 
  	 */
  	dealCard() {
+		// Temp Card to store the card which is being dealt
  		var temp = this.mCardDeck.shift();
- 		return temp;
+		
+		// Return the card
+		return temp;
 	}
 	
 
 	/**
-	 * 
+	 * deckToString(), Converts the deck into a representation of all the cards abbrevations to use in the consoleLog or Serialization
+	 * @param None
 	 */
 	deckToString() {
+		// Temp string to assemble the Deck in text form
 		var temp = "";
 
+		// Loop through the deck
 		for (var i = 0; i < this.deckSize(); i++) {
+			// Add the abbrervation of the card to the string
 			temp += this.mCardDeck[i].getAbbv() + " ";
 		}
 
+		// Return the deck in string form
 		return temp;
 	}
 
