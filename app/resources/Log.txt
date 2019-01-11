@@ -105,6 +105,33 @@ Jan 7, 2019:
 	- Moved the marjority of the functions out of Casino.js and into the Tournament class and had to check if all the functionallity
 	was still working.
 	(45 Minutes)
+TOTAL: 1.25 Hours
 
-	
+
+Jan 9, 2019:
+	- Did some research on how to create inheritance in JavaScript
+	(30 Minutes)
+TOTAL: 0.5 Hours
+
+
+Jan 10, 2019:
+	- Started the creation of the Computer Class.
+	(15 Minutes)
+
+	- Started writing the findNextMove() function that will modifiy the Move Class (SuggestedMove Class changed later on) to setup
+	how any player should play in the next move. As of know the the function can trail the lowest card, capture matching cards and
+	can capture loose sets too, with matching cards at the same time.
+	(45 Minutes)
+TOTAL: 1 Hours
+
+
+Jan 11, 2019:
+	- Created the SuggestedMove class, which is similar to the Move class, but only takes in Abbrervations of the cards to play, so 
+	it doesn't set the move, in case the human player doesn't want to follow the advice of the computer. Changed the findNextMove() 
+	to use Abbrervations and the SuggestedMove Class instead of the cards themself.
+	(45 Minutes)
+
+	- Made the "Computer Move" button to use the logic to create the move, using the new executeMove() Function to convert the 
+	abbrervations to find the actual cards to set the move class and execute which ever move the computer chose.
+	(30 Minutes)
 

@@ -137,6 +137,26 @@
 		cursor: pointer;
 	}
 
+	.computerPile {
+		position: absolute;
+		top: 200px;
+		left: 35px;
+		background-color: #6d0043;
+		border-radius: 25px;
+		overflow: auto;
+		white-space: nowrap;
+		height: 90px;
+		max-width: 900px;
+	}
+
+	.computerPile img {
+		height: 60px;
+		margin-left: 10px;
+		margin-top: 15px;
+		margin-bottom: 5px;
+		padding-right: 10px;
+	}
+
 	.computerHand {
 		position: absolute;
 		top: 185px;
@@ -160,7 +180,7 @@
 		position: absolute;
 		top: 705px;
 		left: 35px;
-		background-color: #6d0043;
+		background-color: #25b99a;
 		border-radius: 25px;
 		overflow: auto;
 		white-space: nowrap;

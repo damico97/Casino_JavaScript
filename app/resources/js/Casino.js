@@ -1,6 +1,7 @@
 
 
 function updateView(view, tournament, deck, human, computer, table, move, consoleLog) {
+	view.setUpComputerPileView(computer);
 	view.showComputerHand(computer);
 	view.setupHumanHandView(human, move);
 	view.setUpHumanPileView(human);
@@ -36,10 +37,12 @@ var consoleViews = new ViewsConsole();
 
 var deck = new Deck();
 var human = new Player();
-var computer = new Player();
+var computer = new Computer();
 var table = new Table();
-var move = new Move();
 var consoleLog = new ConsoleLog();
+
+var move = new Move();
+var suggestedMove = new SuggestedMove();
 
 var humanTurn = true;
 
@@ -59,29 +62,31 @@ updateView(boardViews, tournament, deck, human, computer, table, move, consoleLo
 
 // Even Listeners for the control buttons
 document.getElementById("button_gameBoard_capture").addEventListener('click', function() {
-	for (var i = 0; i < move.moveTableCardLength(); i++) {
-		console.log(move.moveGetTableCard(i).getAbbv());
-	}
-	
-	if (move.checkPossibleCapture()) {
-		consoleLog.addToLogText("Human Move:<br>" + human.captureCards(move, table));
-	}
+	if (humanTurn) {	
+		if (move.checkPossibleCapture()) {
+			consoleLog.addToLogText("Human Move:<br>" + human.captureCards(move, table));
+		}
 
-	checkGameStatus(tournament, boardViews, deck, human, computer, table, move);
-	updateView(boardViews, tournament, deck, human, computer, table, move, consoleLog);
-});
-
-document.getElementById("button_gameBoard_trail").addEventListener('click', function() {
-	if (move.checkCardSelected()) {
-		consoleLog.addToLogText("Human Move:<br>" + human.trailCard(move, table));
 		checkGameStatus(tournament, boardViews, deck, human, computer, table, move);
 		updateView(boardViews, tournament, deck, human, computer, table, move, consoleLog);
 	}
 });
 
+document.getElementById("button_gameBoard_trail").addEventListener('click', function() {
+	if (humanTurn) {
+		if (move.checkCardSelected()) {
+			consoleLog.addToLogText("Human Move:<br>" + human.trailCard(move, table));
+			checkGameStatus(tournament, boardViews, deck, human, computer, table, move);
+			updateView(boardViews, tournament, deck, human, computer, table, move, consoleLog);
+		}
+	}
+});
+
 document.getElementById("button_gameBoard_computer").addEventListener('click', function() {
-	move.setHandCard(computer.getHandCardAtIndex(0));
-	alert("Computer's Move Selection:\n" + computer.trailCard(move, table));
+	computer.findNextMove(suggestedMove, table);
+
+	alert("Computer's Move Selection:\n" + computer.executeMove(suggestedMove, move, table).replace(/<br\s*[\/]?>/gi, "\n"));
+
 	checkGameStatus(tournament, boardViews, deck, human, computer, table, move);
 	updateView(boardViews, tournament, deck, human, computer, table, move, consoleLog);
 });

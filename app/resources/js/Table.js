@@ -32,6 +32,10 @@
 		}
  	}
 
+    getTableCards() {
+		return this.mTableCards;
+	}	 
+	
  	getTableCardAtIndex(index) {
  		if (index >= 0 && index < this.tableCardLength()) {
  			return this.mTableCards[index];

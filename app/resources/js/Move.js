@@ -78,7 +78,12 @@
  	}
 
  	moveTableCardLength() {
- 		return this.mTableCards.length;
+		if (undefined == this.mTableCards) {
+			return 0;
+		}
+		else {
+		 	return this.mTableCards.length;
+		}
  	}
 
  	moveGetTableCard(index) {
@@ -86,7 +91,7 @@
  			return this.mTableCards[index];
  		}
  		else {
- 			console.log("ERROR!! - {Table} [getTableCardAtIndex]");
+ 			console.log("ERROR!! - {Move} [moveGetTable]");
  		}
  	}
 

@@ -31,6 +31,28 @@ class BoardViews {
 		}
 	}
 
+	setUpComputerPileView(computer) {
+		var computerPileView = document.getElementById("computerPileView");
+
+		while (computerPileView.hasChildNodes()) {
+			computerPileView.removeChild(computerPileView.lastChild);
+		}
+
+		for (var i = 0; i <computer.pileLength(); i++) {
+			var card_path = "images/cards/";
+			var card_prefix = "card_";
+			var card_name = "";
+
+			var card = computer.getPileCardAtIndex(i).getAbbv();
+			card_name += card_path + card_prefix;
+			card_name += card.toLowerCase() + ".png";
+
+			var card_image = document.createElement("img");
+			card_image.src = card_name;
+			computerPileView.appendChild(card_image);
+		}
+	}
+
 	setUpHumanPileView(human) {
 		var humanPileView = document.getElementById("humanPileView");
 
