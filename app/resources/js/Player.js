@@ -194,7 +194,7 @@
 						break;
 					}
 					else {
-						smallSmallTableCards.concat(smallTableCards);
+						smallSmallTableCards = smallSmallTableCards.concat(smallTableCards);
 						smallSmallTableCards.splice(k, 1);
 
 						for (var l = 0; l < smallSmallTableCards.length; l++) {
