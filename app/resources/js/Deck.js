@@ -239,7 +239,7 @@
  		card43.newCard("D", 4, "D4");
  		// 5 of Diamonds
  		var card44 = new Card();
- 		card44.newCard("D", 5, "D6");
+ 		card44.newCard("D", 5, "D5");
  		// 6 of Diamonds
  		var card45 = new Card();
  		card45.newCard("D", 6, "D6");

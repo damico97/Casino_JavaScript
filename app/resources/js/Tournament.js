@@ -17,28 +17,79 @@ class Tournament {
         this.mMove;
         this.mConsoleLog;
 
+        this.mCurrentPlayer;
         this.mHumanTurn;
 
-        this.mCoinTossCall
+        this.mCoinTossCall;
+        this.mCoinTossWinner;
     }
 
-    setMembers(deck, human, computer, table, move, consoleLog, humanTurn) {
+    setMembers(deck, human, computer, table, move, consoleLog) {
         this.mDeck = deck;
         this.mHuman = human;
         this.mComputer = computer;
         this.mTable = table;
         this.mMove = move;
         this.mConsoleLog = consoleLog;
-        
-        this.mHumanTurn = humanTurn;
+    }
+
+    getHumanTurn() {
+        return this.mHumanTurn;
+    }
+
+    changeHumanTurn() {
+        if (this.mHumanTurn) {
+            this.mHumanTurn = false;
+        }
+        else {
+            this.mHumanTurn = true;
+        }
+    }
+
+    setHumanTurn(turn) {
+        this.mHumanTurn = turn;
     }
 
     setCoinCall(call) {
         this.mCoinTossCall = call;
     }
 
-    runCoinToss() {
-        
+    getCoinTossWinner() {
+        return this.mCoinTossWinner;
+    }
+
+    runCoinToss(consoleLog) {
+        var text = "Coin Toss:<br>";
+        var coin = Math.floor(Math.random() * 2);
+
+        if (coin == 0) {
+            text += "The Coin Was Heads<br>";
+        }
+        else {
+            text += "The Coin Was Tails<br>";
+        }
+
+        if (this.mCoinTossCall == 0) {
+            text += "The user called Heads<br>";
+        }
+        else {
+            text += "The user called Tails<br>"
+        }
+
+        if (this.mCoinTossCall == coin) {
+            this.mCurrentPlayer = "Human";
+            this.mCoinTossWinner = true;
+            this.mHumanTurn = true;
+            text += "The Human won the coin toss";
+        }
+        else if (this.mCoinTossCall != coin) {
+            this.mCurrentPlayer = "Computer";
+            this.mCoinTossWinner = false;
+            this.mHumanTurn = false;
+            text += "The Computer won the coin toss";
+        }
+
+        consoleLog.addToLog(text);
     }
 
     initalizeDeck() {

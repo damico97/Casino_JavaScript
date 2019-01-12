@@ -12,7 +12,7 @@ function updateView(view, tournament, deck, human, computer, table, move, consol
 	view.showComputerHand(computer);
 	view.setupHumanHandView(human, move);
 	view.setUpHumanPileView(human);
-	view.setupTableCardView(table, move);
+	view.setupTableCardView(table, move, tournament.getHumanTurn());
 	view.setUpDeckView(deck);
 	consoleLog.addToLogText(tournament.boardToString());
 }
@@ -51,11 +51,11 @@ var consoleLog = new ConsoleLog();
 var move = new Move();
 var suggestedMove = new SuggestedMove();
 
-var humanTurn = true;
-
 var tournament = new Tournament();
-tournament.setMembers(deck, human, computer, table, move, consoleLog, humanTurn);
+tournament.setMembers(deck, human, computer, table, move, consoleLog);
 tournament.initalizeScores();
+
+tournament.setHumanTurn(true);
 
 tournament.initalizeDeck();
 consoleLog.initLogText("New Deck:" + '<br>' + deck.deckToString());
@@ -66,41 +66,45 @@ updateView(boardViews, tournament, deck, human, computer, table, move, consoleLo
 
 
 document.getElementById("coin_toss_heads").addEventListener('click', function() {
+	tournament.setCoinCall(0);
 	changePage("PageGameBoard", "PageCoinToss");
 });
 document.getElementById("coin_toss_tails").addEventListener('click', function() {
+	tournament.setCoinCall(1);
 	changePage("PageGameBoard", "PageCoinToss");
 });
 
 
 // Even Listeners for the control buttons
 document.getElementById("button_gameBoard_capture").addEventListener('click', function() {
-	if (humanTurn) {	
+	if (tournament.getHumanTurn()) {	
 		if (move.checkPossibleCapture()) {
 			consoleLog.addToLogText("Human Move:<br>" + human.captureCards(move, table));
+
+			tournament.changeHumanTurn();
+
 			checkGameStatus(tournament, boardViews, deck, human, computer, table, move);
 			updateView(boardViews, tournament, deck, human, computer, table, move, consoleLog);
-
-			humanTurn = false;
 		}
 	}
 });
 
 document.getElementById("button_gameBoard_trail").addEventListener('click', function() {
-	if (humanTurn) {
+	if (tournament.getHumanTurn()) {
 		if (move.checkCardSelected()) {
 			consoleLog.addToLogText("Human Move:<br>" + human.trailCard(move, table));
+
+			tournament.changeHumanTurn();
+
 			checkGameStatus(tournament, boardViews, deck, human, computer, table, move);
 			updateView(boardViews, tournament, deck, human, computer, table, move, consoleLog);
-
-			humanTurn = false;
 		}
 	}
 });
 
 // Event Listener for the COMPUTER MOVE button
 document.getElementById("button_gameBoard_computer").addEventListener('click', function() {
-	if (!humanTurn) {
+	if (!tournament.getHumanTurn()) {
 		// Have the Computer find the next move it will make
 		computer.findNextMove(suggestedMove, table);
 
@@ -112,11 +116,11 @@ document.getElementById("button_gameBoard_computer").addEventListener('click', f
 		// Record the move in the consoleLog for the record
 		consoleLog.addToLogText("Computer Move:<br>" + computerLogic);
 
+		tournament.changeHumanTurn();
+
 		// Update the Game Board
 		checkGameStatus(tournament, boardViews, deck, human, computer, table, move);
 		updateView(boardViews, tournament, deck, human, computer, table, move, consoleLog);
-
-		humanTurn = true;
 	}
 });
 

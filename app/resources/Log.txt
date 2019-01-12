@@ -144,4 +144,12 @@ Jan 11, 2019:
 	- The computer now records it move choice in the consoleLog for the record keeping of the game
 	(15 Minutes)
 
+	- Created the view for the coin toss page, this was done totally in HTML and CSS so it took a bit
+	(1 Hour)
 	
+	- Started the logic for the coin toss, with the setting functions the the main function to run the toss
+	(30 Minutes)
+
+	- Players now alternate, and the user cannot select cards when it is the computers turn 
+	(30 Minutes)
+TOTAL: 4 Hours

@@ -147,7 +147,7 @@ class BoardViews {
 	}
 
 
-	setupTableCardView(table, move) {
+	setupTableCardView(table, move, humanTurn) {
 		var tableCardView = document.getElementById("tableView");
 
 		while (tableCardView.hasChildNodes()) {
@@ -197,14 +197,16 @@ class BoardViews {
 				if (typeof window.addEventListener === 'function'){
 					(function (_td) {
 						td.addEventListener('click', function(){
-							if (cardSelected[_td.id] == false) {
-								_td.style.backgroundColor = "rgb(37, 185, 154)";
-								cardSelected[_td.id] = true;
-								move.moveAddTableCard(table.getTableCardAtIndex(_td.id));
-							}
-							else {
-								_td.style.backgroundColor = "rgb(0, 80, 109)";
-								cardSelected[_td.id] = false;
+							if (humanTurn) {
+								if (cardSelected[_td.id] == false) {
+									_td.style.backgroundColor = "rgb(37, 185, 154)";
+									cardSelected[_td.id] = true;
+									move.moveAddTableCard(table.getTableCardAtIndex(_td.id));
+								}
+								else {
+									_td.style.backgroundColor = "rgb(0, 80, 109)";
+									cardSelected[_td.id] = false;
+								}
 							}
 						});
 					})(td);
