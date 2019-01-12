@@ -28,10 +28,32 @@
 		<link rel="stylesheet" type="text/css" href="css/style.css">
 	</head>
 
+
 	<body>
+		<!-- Coin Toss Page -->
+		<div id="PageCoinToss">
+			<header>
+				<title>Coin Toss</title>
+			</header>
+
+			<div class="coinTossBox">
+				<div class="title">Please Call The Coin Toss</div>
+				<div class="prompt">To start the game we will have a coin toss<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The winner will get the first move</div>
+				<div class="headsTitle">HEADS</div>
+				<div class="heads" id="coin_toss_heads">
+					<img src="images/others/coin_heads.png">
+				</div>
+				<div class="tailsTitle">TAILS</div>
+				<div class="tails" id="coin_toss_tails">
+					<img src="images/others/coin_tails.png">
+				</div>
+			</div>
+		</div>
+		<!-- End Coin Toss Page -->
+			
 
 		<!-- Game Board Pages -->
-		<div id="PageGameBoard">
+		<div id="PageGameBoard"  style="display:none">
 			<header>
 				<title>Casino</title>
 				<button id="button_gameBoard_help">Help</button>
@@ -90,14 +112,6 @@
 		</div>
 		<!-- End Game Board Page -->
 
-		<!-- Test Page -->
-		<div id="PageTest" style="display:none">
-			<header>
-				<title>Test Page</title>
-				<button id="button_save"></button>
-			</header>
-		</div>
-		<!-- End Test Page -->
 
 		<!-- Console Log Page -->
 		<div id="PageConsole" style="display:none">

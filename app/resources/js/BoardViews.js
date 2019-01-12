@@ -190,24 +190,26 @@ class BoardViews {
 		}
 
 
-		var td;
-		for (var i = 0; i < tableCardViews.length; i++) {
-			td = document.getElementById("tableView").appendChild(tableCardViews[i]);
-		    if (typeof window.addEventListener === 'function'){
-		        (function (_td) {
-		            td.addEventListener('click', function(){
-		            	if (cardSelected[_td.id] == false) {
-		            		_td.style.backgroundColor = "rgb(37, 185, 154)";
-		            		cardSelected[_td.id] = true;
-		            		move.moveAddTableCard(table.getTableCardAtIndex(_td.id));
-		            	}
-		                else {
-		                	_td.style.backgroundColor = "rgb(0, 80, 109)";
-		                	cardSelected[_td.id] = false;
-		                }
-		            });
-		        })(td);
-		    }
+		if (undefined != tableCardViews) {
+			var td;
+			for (var i = 0; i < tableCardViews.length; i++) {
+				td = document.getElementById("tableView").appendChild(tableCardViews[i]);
+				if (typeof window.addEventListener === 'function'){
+					(function (_td) {
+						td.addEventListener('click', function(){
+							if (cardSelected[_td.id] == false) {
+								_td.style.backgroundColor = "rgb(37, 185, 154)";
+								cardSelected[_td.id] = true;
+								move.moveAddTableCard(table.getTableCardAtIndex(_td.id));
+							}
+							else {
+								_td.style.backgroundColor = "rgb(0, 80, 109)";
+								cardSelected[_td.id] = false;
+							}
+						});
+					})(td);
+				}
+			}
 		}
 	}
 

@@ -8,7 +8,7 @@
  */
 
 class Tournament {
-    
+
     Tournament() {
         this.mDeck;
         this.mHuman;
@@ -18,6 +18,8 @@ class Tournament {
         this.mConsoleLog;
 
         this.mHumanTurn;
+
+        this.mCoinTossCall
     }
 
     setMembers(deck, human, computer, table, move, consoleLog, humanTurn) {
@@ -29,6 +31,14 @@ class Tournament {
         this.mConsoleLog = consoleLog;
         
         this.mHumanTurn = humanTurn;
+    }
+
+    setCoinCall(call) {
+        this.mCoinTossCall = call;
+    }
+
+    runCoinToss() {
+        
     }
 
     initalizeDeck() {

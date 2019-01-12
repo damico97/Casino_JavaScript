@@ -138,4 +138,10 @@ Jan 11, 2019:
 	- The computer logic can now capture sets of 3 cards whos values add up to the value of ones of it's hand cards.
 	(15 Minutes)
 
+	- Documentation on the Card and Deck Classes
+	(15 Minutes)
+
+	- The computer now records it move choice in the consoleLog for the record keeping of the game
+	(15 Minutes)
+
 	

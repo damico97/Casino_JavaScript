@@ -55,7 +55,6 @@ var humanTurn = true;
 
 var tournament = new Tournament();
 tournament.setMembers(deck, human, computer, table, move, consoleLog, humanTurn);
-
 tournament.initalizeScores();
 
 tournament.initalizeDeck();
@@ -66,16 +65,24 @@ tournament.dealInitalCards();
 updateView(boardViews, tournament, deck, human, computer, table, move, consoleLog);
 
 
+document.getElementById("coin_toss_heads").addEventListener('click', function() {
+	changePage("PageGameBoard", "PageCoinToss");
+});
+document.getElementById("coin_toss_tails").addEventListener('click', function() {
+	changePage("PageGameBoard", "PageCoinToss");
+});
+
 
 // Even Listeners for the control buttons
 document.getElementById("button_gameBoard_capture").addEventListener('click', function() {
 	if (humanTurn) {	
 		if (move.checkPossibleCapture()) {
 			consoleLog.addToLogText("Human Move:<br>" + human.captureCards(move, table));
-		}
+			checkGameStatus(tournament, boardViews, deck, human, computer, table, move);
+			updateView(boardViews, tournament, deck, human, computer, table, move, consoleLog);
 
-		checkGameStatus(tournament, boardViews, deck, human, computer, table, move);
-		updateView(boardViews, tournament, deck, human, computer, table, move, consoleLog);
+			humanTurn = false;
+		}
 	}
 });
 
@@ -85,17 +92,32 @@ document.getElementById("button_gameBoard_trail").addEventListener('click', func
 			consoleLog.addToLogText("Human Move:<br>" + human.trailCard(move, table));
 			checkGameStatus(tournament, boardViews, deck, human, computer, table, move);
 			updateView(boardViews, tournament, deck, human, computer, table, move, consoleLog);
+
+			humanTurn = false;
 		}
 	}
 });
 
+// Event Listener for the COMPUTER MOVE button
 document.getElementById("button_gameBoard_computer").addEventListener('click', function() {
-	computer.findNextMove(suggestedMove, table);
+	if (!humanTurn) {
+		// Have the Computer find the next move it will make
+		computer.findNextMove(suggestedMove, table);
 
-	alert("Computer's Move Selection:\n" + computer.executeMove(suggestedMove, move, table).replace(/<br\s*[\/]?>/gi, "\n"));
+		// Execut the move and store the returned text
+		var computerLogic = computer.executeMove(suggestedMove, move, table);
 
-	checkGameStatus(tournament, boardViews, deck, human, computer, table, move);
-	updateView(boardViews, tournament, deck, human, computer, table, move, consoleLog);
+		// Prompt the user to what the computer has decided to do for it's move
+		alert("Computer's Move Selection:\n" + computerLogic.replace(/<br\s*[\/]?>/gi, "\n"));
+		// Record the move in the consoleLog for the record
+		consoleLog.addToLogText("Computer Move:<br>" + computerLogic);
+
+		// Update the Game Board
+		checkGameStatus(tournament, boardViews, deck, human, computer, table, move);
+		updateView(boardViews, tournament, deck, human, computer, table, move, consoleLog);
+
+		humanTurn = true;
+	}
 });
 
 document.getElementById("button_gameBoard_console").addEventListener('click', function() {
