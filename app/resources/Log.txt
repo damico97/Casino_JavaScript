@@ -166,4 +166,11 @@ Jan 12, 2019:
 	- Finished all coin toss GUI, and functionallity, still will need to change how the game is initalized to allow 
 	for serialzation later one.
 	(45 Minutes)
+
+	- Created the Round Class and moved the card dealing functions and a few other to this class since they
+	should be part of the round not the tournament.
+	(30 Minutes)
+
+	- Troubled shooted some bugs with the coin toss
+	(15 Minutes)
 	

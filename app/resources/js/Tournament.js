@@ -20,8 +20,6 @@ class Tournament {
         this.mCurrentPlayer;
         this.mHumanTurn;
 
-        this.mRoundNumber;
-
         this.mCoinTossCall;
         this.mCoinTossResult;
         this.mCoinTossWinner;
@@ -75,6 +73,9 @@ class Tournament {
         var text = "Coin Toss:<br>";
         var coin = Math.floor(Math.random() * 2);
         this.mCoinTossResult = coin;
+
+        console.log("Coin: " + coin);
+        console.log("Call: " + this.mCoinTossCall);
 
         if (coin == 0) {
             text += "The Coin Was Heads<br>";

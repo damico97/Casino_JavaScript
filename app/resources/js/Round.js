@@ -18,6 +18,13 @@ class Round {
         this.mConsoleLog = consoleLog;
     }
 
+    initalizeRound() {
+        this.mDeck.initializeDeck();
+        this.mConsoleLog.initLogText("New Deck: " + '<br>' + this.mDeck.deckToString());
+
+        this.dealInitalCards();
+    }
+
     dealInitalCards() {
         for (var i = 0; i < 3; i++) {
             for (var j = 0; j < 4; j++) {

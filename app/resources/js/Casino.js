@@ -64,10 +64,14 @@ tournament.initalizeScores();
 
 //tournament.setHumanTurn(true);
 
+/*
 tournament.initalizeDeck();
 consoleLog.initLogText("New Deck:" + '<br>' + deck.deckToString());
 
 round.dealInitalCards();
+*/
+
+round.initalizeRound();
 
 updateView(boardViews, tournament, deck, human, computer, table, move, consoleLog);
 
@@ -85,6 +89,7 @@ document.getElementById("coin_toss_tails").addEventListener('click', function() 
 	//changePage("PageGameBoard", "PageCoinToss");
 });
 document.getElementById("coin_toss_button_start").addEventListener('click', function() {
+	updateView(boardViews, tournament, deck, human, computer, table, move, consoleLog);
 	changePage("PageGameBoard", "PageCoinToss");
 });
 
