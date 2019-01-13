@@ -14,6 +14,8 @@ function updateView(view, tournament, deck, human, computer, table, move, consol
 	view.setUpHumanPileView(human);
 	view.setupTableCardView(table, move, tournament.getHumanTurn());
 	view.setUpDeckView(deck);
+	view.setHeaderText(tournament);
+
 	consoleLog.addToLogText(tournament.boardToString());
 }
 
@@ -41,6 +43,7 @@ function changePage(shown, hidden) {
 
 var boardViews = new BoardViews();
 var consoleViews = new ViewsConsole();
+var coinTossViews = new ViewsCoinToss();
 
 var deck = new Deck();
 var human = new Player();
@@ -55,7 +58,7 @@ var tournament = new Tournament();
 tournament.setMembers(deck, human, computer, table, move, consoleLog);
 tournament.initalizeScores();
 
-tournament.setHumanTurn(true);
+//tournament.setHumanTurn(true);
 
 tournament.initalizeDeck();
 consoleLog.initLogText("New Deck:" + '<br>' + deck.deckToString());
@@ -67,10 +70,17 @@ updateView(boardViews, tournament, deck, human, computer, table, move, consoleLo
 
 document.getElementById("coin_toss_heads").addEventListener('click', function() {
 	tournament.setCoinCall(0);
-	changePage("PageGameBoard", "PageCoinToss");
+	tournament.runCoinToss(consoleLog);
+	coinTossViews.displayWinner(tournament.getCoinCall(), tournament.getCoinResult(), tournament.getCoinTossWinner());
+	//changePage("PageGameBoard", "PageCoinToss");
 });
 document.getElementById("coin_toss_tails").addEventListener('click', function() {
 	tournament.setCoinCall(1);
+	tournament.runCoinToss(consoleLog);
+	coinTossViews.displayWinner(tournament.getCoinCall(), tournament.getCoinResult(), tournament.getCoinTossWinner());
+	//changePage("PageGameBoard", "PageCoinToss");
+});
+document.getElementById("coin_toss_button_start").addEventListener('click', function() {
 	changePage("PageGameBoard", "PageCoinToss");
 });
 

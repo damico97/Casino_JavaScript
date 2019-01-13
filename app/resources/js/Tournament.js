@@ -21,6 +21,7 @@ class Tournament {
         this.mHumanTurn;
 
         this.mCoinTossCall;
+        this.mCoinTossResult;
         this.mCoinTossWinner;
     }
 
@@ -54,6 +55,14 @@ class Tournament {
         this.mCoinTossCall = call;
     }
 
+    getCoinCall() {
+        return this.mCoinTossCall;
+    }
+
+    getCoinResult() {
+        return this.mCoinTossResult;
+    }
+
     getCoinTossWinner() {
         return this.mCoinTossWinner;
     }
@@ -61,6 +70,7 @@ class Tournament {
     runCoinToss(consoleLog) {
         var text = "Coin Toss:<br>";
         var coin = Math.floor(Math.random() * 2);
+        this.mCoinTossResult = coin;
 
         if (coin == 0) {
             text += "The Coin Was Heads<br>";
@@ -89,7 +99,7 @@ class Tournament {
             text += "The Computer won the coin toss";
         }
 
-        consoleLog.addToLog(text);
+        consoleLog.addToLogText(text);
     }
 
     initalizeDeck() {

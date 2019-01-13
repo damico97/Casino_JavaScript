@@ -37,15 +37,24 @@
 			</header>
 
 			<div class="coinTossBox">
-				<div class="title">Please Call The Coin Toss</div>
-				<div class="prompt">To start the game we will have a coin toss<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The winner will get the first move</div>
-				<div class="headsTitle">HEADS</div>
+				<div class="title" id="coin_toss_box_title">Please Call The Coin Toss</div>
+				<div class="prompt" id="coin_toss_box_prompt">To start the game we will have a coin toss<br>The winner will get the first move</div>
+				<div class="headsTitle" id="coin_toss_head_title">HEADS</div>
 				<div class="heads" id="coin_toss_heads">
 					<img src="images/others/coin_heads.png">
 				</div>
-				<div class="tailsTitle">TAILS</div>
+				<div class="tailsTitle" id="coin_toss_tail_title">TAILS</div>
 				<div class="tails" id="coin_toss_tails">
 					<img src="images/others/coin_tails.png">
+				</div>
+			</div>
+
+			<div class="tossControls" id="coin_toss_controls" style="display:none">
+				<div class="gameStart">
+					<button id="coin_toss_button_start">Start Game</button>
+				</div>
+				<div class="loadDeck">
+					<button>Load Deck</button>
 				</div>
 			</div>
 		</div>
@@ -56,6 +65,7 @@
 		<div id="PageGameBoard"  style="display:none">
 			<header>
 				<title>Casino</title>
+				<text id="GameBoardHeaderText"></text>
 				<button id="button_gameBoard_help">Help</button>
 			</header>
 
@@ -143,5 +153,6 @@
 	<script src="js/Tournament.js"></script>
 	<script src="js/BoardViews.js"></script>
 	<script src="js/ViewsConsole.js"></script>
+	<script src="js/ViewsCoinToss.js"></script>
 	<script src="js/Casino.js"></script>
 </html>

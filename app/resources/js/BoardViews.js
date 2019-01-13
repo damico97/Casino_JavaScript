@@ -9,7 +9,16 @@
 
 class BoardViews {
 
-	showComputerHand( computer) {
+	setHeaderText(tournament) {
+		if (tournament.getHumanTurn()) {
+			document.getElementById("GameBoardHeaderText").innerHTML = "Your Move";
+		}
+		else {
+			document.getElementById("GameBoardHeaderText").innerHTML = "Computer's Move";
+		}
+	}
+
+	showComputerHand(computer) {
 		var blankCard = "images/others/blank_card.png";
 
 		document.getElementById("c_card_1").src = blankCard;

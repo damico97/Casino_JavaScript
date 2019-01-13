@@ -153,3 +153,17 @@ Jan 11, 2019:
 	- Players now alternate, and the user cannot select cards when it is the computers turn 
 	(30 Minutes)
 TOTAL: 4 Hours
+
+
+Jan 12, 2019:
+	- Game Board now promps the user to who makes the next move
+	(15 Minutes)
+
+	- Finshed coin toss functionallity, all is needed is the GUI to show who one the toss. But currently the winner 
+	of the toss has the first move of the game.
+	(15 Minutes)
+
+	- Finished all coin toss GUI, and functionallity, still will need to change how the game is initalized to allow 
+	for serialzation later one.
+	(45 Minutes)
+	
