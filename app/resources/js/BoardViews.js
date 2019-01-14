@@ -93,7 +93,7 @@ class BoardViews {
 		}
 	}
 
-	setupHumanHandView(human, move) {
+	setupHumanHandView(human, move, humanTurn) {
 		var humanHandView = document.getElementById("humanHandView");
 
 		while (humanHandView.hasChildNodes()) {
@@ -135,18 +135,20 @@ class BoardViews {
 				if (typeof window.addEventListener === 'function') {
 					(function (_td) {
 						td.addEventListener('click', function() {
-							if (cardSelected[_td.id] == false && !move.checkCardSelected()) {
-								_td.style.backgroundColor = "rgb(37, 185, 154)";
-								cardSelected[_td.id] = true;
-								move.setHandCard(human.getHandCardAtIndex(_td.id));
-							}
-							else if (cardSelected[_td.id] == true) {
-								_td.style.backgroundColor = "rgb(0, 80, 109)";
-								cardSelected[_td.id] = false;
-								move.resetHandCard();
-							}
-							else {
-								// Do Nothing
+							if (humanTurn) {
+								if (cardSelected[_td.id] == false && !move.checkCardSelected()) {
+									_td.style.backgroundColor = "rgb(37, 185, 154)";
+									cardSelected[_td.id] = true;
+									move.setHandCard(human.getHandCardAtIndex(_td.id));
+								}
+								else if (cardSelected[_td.id] == true) {
+									_td.style.backgroundColor = "rgb(0, 80, 109)";
+									cardSelected[_td.id] = false;
+									move.resetHandCard();
+								}
+								else {
+									// Do Nothing
+								}
 							}
 						});
 					})(td);

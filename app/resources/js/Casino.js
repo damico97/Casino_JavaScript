@@ -10,7 +10,7 @@
 function updateView(view, tournament, deck, human, computer, table, move, consoleLog) {
 	view.setUpComputerPileView(computer);
 	view.showComputerHand(computer);
-	view.setupHumanHandView(human, move);
+	view.setupHumanHandView(human, move, tournament.getHumanTurn());
 	view.setUpHumanPileView(human);
 	view.setupTableCardView(table, move, tournament.getHumanTurn());
 	view.setUpDeckView(deck);
