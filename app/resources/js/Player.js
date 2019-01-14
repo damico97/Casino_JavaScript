@@ -17,8 +17,12 @@
 		this.mNumSpades = 0;
 	}
 	
-	getScore() {
+	getTournamentScore() {
 		return this.mScore;
+	}
+
+	addToTournamentScore(value) {
+		this.mScore += value;
 	}
 
 	setScore(num) {

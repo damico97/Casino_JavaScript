@@ -18,6 +18,7 @@ class Tournament {
         this.mConsoleLog;
 
         this.mCurrentPlayer;
+        this.mLastCapture;
         this.mHumanTurn;
 
         this.mCoinTossCall;
@@ -51,6 +52,14 @@ class Tournament {
 
     setHumanTurn(turn) {
         this.mHumanTurn = turn;
+    }
+
+    setLastCapture(player) {
+        this.mLastCapture = player;
+    }
+
+    getLastCapture() {
+        return this.mLastCapture;
     }
 
     setCoinCall(call) {
@@ -124,12 +133,12 @@ class Tournament {
         temp += "Round: " + "<br><br>";
 
         temp += "Computer:<br>";
-        temp += "\u00A0\u00A0\u00A0\u00A0" + "Score: " + this.mComputer.getScore() + "<br>";
+        temp += "\u00A0\u00A0\u00A0\u00A0" + "Score: " + this.mComputer.getTournamentScore() + "<br>";
         temp += "\u00A0\u00A0\u00A0\u00A0" + "Hand: " + this.mComputer.handToString() + "<br>";
         temp += "\u00A0\u00A0\u00A0\u00A0" + "Pile: " + this.mComputer.pileToString() + "<br><br>";
 
         temp += "Human:<br>";
-        temp += "\u00A0\u00A0\u00A0\u00A0" + "Score: " + this.mHuman.getScore() + "<br>";
+        temp += "\u00A0\u00A0\u00A0\u00A0" + "Score: " + this.mHuman.getTournamentScore() + "<br>";
         temp += "\u00A0\u00A0\u00A0\u00A0" + "Hand: " + this.mHuman.handToString() + "<br>";
         temp += "\u00A0\u00A0\u00A0\u00A0" + "Pile: " + this.mHuman.pileToString() + "<br><br>";
 
@@ -137,7 +146,7 @@ class Tournament {
 
         temp += "Build Owner: " + "<br><br>";
 
-        temp += "Last Capture: " + "<br><br>";
+        temp += "Last Capture: " + this.getLastCapture() + "<br><br>";
 
         temp += "Deck: " + this.mDeck.deckToString() + "<br><br>";
 

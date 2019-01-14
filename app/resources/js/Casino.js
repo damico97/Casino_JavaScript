@@ -20,9 +20,18 @@ function updateView(view, tournament, deck, human, computer, table, move, consol
 }
 
 function checkGameStatus(tournament, round, view, deck, human, computer, table, move) {
+	var CONTINUE = 1;
+	var ENDROUND = 2;
+	var ENDTOURNAMENT = 3;
+
 	if (human.handLength() == 0 && computer.handLength() == 0) {
 		if (deck.deckSize() < 8) {
+			if (human.getTournamentScore() >= 21 || computer.getTournamentScore()) {
 
+			}
+			else {
+			
+			}
 		}
 		else {
 			round.dealCards();
@@ -73,7 +82,6 @@ round.dealInitalCards();
 
 round.initalizeRound();
 
-updateView(boardViews, tournament, deck, human, computer, table, move, consoleLog);
 
 
 document.getElementById("coin_toss_heads").addEventListener('click', function() {
@@ -102,6 +110,8 @@ document.getElementById("button_gameBoard_capture").addEventListener('click', fu
 
 			tournament.changeHumanTurn();
 
+			tournament.setLastCapture("Human");
+
 			checkGameStatus(tournament, round, boardViews, deck, human, computer, table, move);
 			updateView(boardViews, tournament, deck, human, computer, table, move, consoleLog);
 		}
@@ -123,6 +133,9 @@ document.getElementById("button_gameBoard_trail").addEventListener('click', func
 
 // Event Listener for the COMPUTER MOVE button
 document.getElementById("button_gameBoard_computer").addEventListener('click', function() {
+	// Constansts for Move Selections
+	const CAPTURE = 4;
+
 	if (!tournament.getHumanTurn()) {
 		// Have the Computer find the next move it will make
 		computer.findNextMove(suggestedMove, table);
@@ -136,6 +149,10 @@ document.getElementById("button_gameBoard_computer").addEventListener('click', f
 		consoleLog.addToLogText("Computer Move:<br>" + computerLogic);
 
 		tournament.changeHumanTurn();
+
+		if (suggestedMove.getSuggestion() == CAPTURE) {
+			tournament.setLastCapture("Computer");
+		}
 
 		// Update the Game Board
 		checkGameStatus(tournament, round, boardViews, deck, human, computer, table, move);
