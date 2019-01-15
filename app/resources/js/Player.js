@@ -47,7 +47,11 @@
  		else {
  			this.mPlayerPile.push(nCard);
  		}
- 	}
+	}
+	 
+	addCardArrayToPile(nCards) {
+		this.mPlayerPile = this.mPlayerPile.concat(nCards);
+	}
 
  	handLength() {
  		if (undefined == this.mPlayerHand) {

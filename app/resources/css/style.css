@@ -58,9 +58,8 @@
 	}
 
 	header button {
-		position: fixed;
-		top: 7px;
-		right: 20px;
+		margin-top: 7px;
+		margin-right: 20px;
 		height: 45px;
 		width: 125px;
 		z-index: 2;
@@ -72,7 +71,7 @@
 		box-shadow: none;
 		outline: none;
 		cursor: pointer;
-		display: inline-block;
+		float: right;
 	}
 	/* ----------------------------------------------------------------------------------------------- */
 

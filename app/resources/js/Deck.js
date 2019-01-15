@@ -17,7 +17,16 @@
 		// Initalize Variables
  		this.mCardDeck = new Array();
  		this.mDeckSize = 0;
- 	}
+	}
+	
+	
+	/**
+	 * deckClear(), Empties the card deck array
+	 * @param None
+	 */
+	deckClear() {
+		this.mCardDeck = [];
+	}
 
 
 	/**
