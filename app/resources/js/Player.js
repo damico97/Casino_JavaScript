@@ -29,6 +29,22 @@
 		this.mScore = num;
 	}
 
+	setRoundScore(value) {
+		this.mRoundScore = value;
+	}
+
+	getRoundScore() {
+		return this.mRoundScore;
+	}
+
+	setNumSpades(value) {
+		this.mNumSpades = value;
+	}
+
+	getNumSpades() {
+		return this.mNumSpades;
+	}
+
  	addCardToHand(nCard) {
  		if (undefined == this.mPlayerHand) {
  			this.mPlayerHand = new Array();

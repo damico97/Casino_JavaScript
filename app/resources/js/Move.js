@@ -44,12 +44,12 @@
  			tableTotal += this.mTableCards[i].getValue();
  		}
 
- 		if (tableTotal % this.mHandCard.getValue() == 0) {
+ 		if (tableTotal % this.mHandCard.getValue() === 0) {
  			console.log("True");
  			return true;
  		}
  		else {
- 			if (tableTotal % this.mHandCard.getValue() + 13 == 0) {
+ 			if (tableTotal % this.mHandCard.getValue() + 13 === 0) {
  				console.log("True");
  				return true;
  			}

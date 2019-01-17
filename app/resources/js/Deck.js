@@ -116,7 +116,7 @@
  		card1.newCard("S", 1, "SA");
  		// 2 of Spades
  		var card2 = new Card();
- 		card2.newCard("S", 2, "S2")
+ 		card2.newCard("S", 2, "S2");
  		// 3 of Spades
  		var card3 = new Card();
  		card3.newCard("S", 3, "S3");

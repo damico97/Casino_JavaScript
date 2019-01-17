@@ -32,9 +32,12 @@ function checkGameStatus(tournament, round, view, deck, human, computer, table, 
 			else {
 				if (tournament.getLastCapture() == "Human") {
 					human.addCardArrayToPile(table.getTableCards());
-					deck.deckClear()
+					deck.deckClear();
 
 					consoleLog.addToLogText("The Human Gets The Cards Left On The Table");
+
+					round.recordPlayerScores();
+
 					consoleLog.addToLogText(tournament.boardToString());
 					changePage("PageRoundEnd", "PageGameBoard");
 				}
@@ -43,15 +46,22 @@ function checkGameStatus(tournament, round, view, deck, human, computer, table, 
 					deck.deckClear();
 
 					consoleLog.addToLogText("The Computer Gets The Cards Left On The Table");
+
+					round.recordPlayerScores();
+					
 					consoleLog.addToLogText(tournament.boardToString());
 					changePage("PageRoundEnd", "PageGameBoard");
 				}
 				else {
-
+					//Error
 				}
 
-			
-				//return ENDROUND;
+				console.log("Human: Tournament Score = " + human.getTournamentScore());
+				console.log("Human: Round Score = " + human.getRoundScore());
+				console.log("Human: Num Spades = " + human.getNumSpades());
+				console.log("Computer: Tournament Score = " + computer.getTournamentScore());
+				console.log("Computer: Round Score = " + computer.getRoundScore());
+				console.log("Computer: Num Spades = " + computer.getNumSpades());
 			}
 		}
 		else {
