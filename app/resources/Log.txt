@@ -173,4 +173,12 @@ Jan 12, 2019:
 
 	- Troubled shooted some bugs with the coin toss
 	(15 Minutes)
+TOTAL: 1.75 Hours
+
+
+Jan 17, 2019:
+	- Added the recordPlayerScores() function to record the players scores when the round is compeleted. There were some 
+	issues with the function that were debuged, and as of now the scores are displayed in the JavaScript console.
+	(2 Hours)
+
 	

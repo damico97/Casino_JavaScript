@@ -35,10 +35,11 @@ function checkGameStatus(tournament, round, view, deck, human, computer, table, 
 					deck.deckClear();
 
 					consoleLog.addToLogText("The Human Gets The Cards Left On The Table");
+					table.clearTableCards();
 
 					round.recordPlayerScores();
 
-					consoleLog.addToLogText(tournament.boardToString());
+					//consoleLog.addToLogText(tournament.boardToString());
 					changePage("PageRoundEnd", "PageGameBoard");
 				}
 				else if (tournament.getLastCapture() == "Computer") {
@@ -46,10 +47,11 @@ function checkGameStatus(tournament, round, view, deck, human, computer, table, 
 					deck.deckClear();
 
 					consoleLog.addToLogText("The Computer Gets The Cards Left On The Table");
+					table.clearTableCards();
 
 					round.recordPlayerScores();
-					
-					consoleLog.addToLogText(tournament.boardToString());
+
+					//consoleLog.addToLogText(tournament.boardToString());
 					changePage("PageRoundEnd", "PageGameBoard");
 				}
 				else {

@@ -34,7 +34,11 @@
 
     getTableCards() {
 		return this.mTableCards;
-	}	 
+	}
+	
+	clearTableCards() {
+		this.mTableCards = [];
+	}
 
  	getTableCardAtIndex(index) {
  		if (index >= 0 && index < this.tableCardLength()) {
