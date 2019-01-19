@@ -181,4 +181,6 @@ Jan 17, 2019:
 	issues with the function that were debuged, and as of now the scores are displayed in the JavaScript console.
 	(2 Hours)
 
-	
+	- Started GUI for the End of Round
+	(45 Minutes)
+TOTAL: 2.75 Hours 

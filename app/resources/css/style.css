@@ -61,7 +61,7 @@
 		margin-top: 7px;
 		margin-right: 20px;
 		height: 45px;
-		width: 125px;
+		width: 150px;
 		z-index: 2;
 		border-radius: 25px;
 		background: #fff;
@@ -178,6 +178,50 @@
 		margin-left: 10px;
 		margin-right: 5px;
 		cursor: pointer;
+	}
+	/* ----------------------------------------------------------------------------------------------- */
+
+
+
+
+	/* ----------------------------------------------------------------------------------------------- */
+	/* CSS For End Round Page */
+	.EndRound {
+		text-align: center;
+	}
+
+	.EndRound .title {
+		margin-top: 10px;
+		color: #fff;
+		font-size: 48px;
+		font-weight: 700;
+	}
+
+	.EndRound .scores {
+		margin-top:10px;
+		color: #fff;
+		font-size: 36px;
+		font-weight: 600;
+	}
+
+	.EndRound .pileSize {
+		margin-top: 40px;
+		color: #fff;
+		font-size: 36px;
+		font-weight: 600;
+	}
+
+	.RoundHuman {
+		position: absolute;
+		left: 1000px;
+		text-align: right;
+	}
+
+	.RoundHuman .humanPileCount {
+		margin-top: 50px;
+		color: #fff;
+		font-size: 32px;
+		font-weight: 600;
 	}
 	/* ----------------------------------------------------------------------------------------------- */
 
