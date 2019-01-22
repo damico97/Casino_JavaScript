@@ -184,3 +184,11 @@ Jan 17, 2019:
 	- Started GUI for the End of Round
 	(45 Minutes)
 TOTAL: 2.75 Hours 
+
+
+Jan 21, 2019:
+	- Finished the GUI for the End of the Round, and the scores are recorded correctly and 
+	and displayed on in the GUI, the scores have been debugged and doubled checked, and 
+	everything seems to be working correctly.
+	(2 Hours)
+	
