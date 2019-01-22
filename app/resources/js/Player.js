@@ -69,6 +69,10 @@
 		this.mPlayerPile = this.mPlayerPile.concat(nCards);
 	}
 
+	clearPile() {
+		this.mPlayerPile = [];
+	}
+
  	handLength() {
  		if (undefined == this.mPlayerHand) {
  			return 0;

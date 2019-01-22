@@ -26,8 +26,13 @@ function checkGameStatus(tournament, round, view, deck, human, computer, table, 
 
 	if (human.handLength() == 0 && computer.handLength() == 0) {
 		if (deck.deckSize() < 8) {
-			if (human.getTournamentScore() >= 21 || computer.getTournamentScore()) {
-				return ENDTOURNAMENT;
+			if (human.getTournamentScore() >= 21 || computer.getTournamentScore() >= 21) {
+				round.recordPlayerScores();
+
+				console.log("Human Score = " + human.getTournamentScore());
+				console.log("Computer Score = " + computer.getTournamentScore());
+
+				changePage("PageTournamentEnd", "PageGameBoard");
 			}
 			else {
 				if (tournament.getLastCapture() == "Human") {
@@ -122,6 +127,7 @@ round.dealInitalCards();
 */
 
 round.initalizeRound();
+tournament.incRoundNumber();
 
 
 
@@ -206,10 +212,25 @@ document.getElementById("button_gameBoard_console").addEventListener('click', fu
 	changePage('PageConsole', 'PageGameBoard');
 });
 
+
+
 document.getElementById("button_roundEnd_console").addEventListener('click', function() {
 	consoleViews.setUpConsoleView(consoleLog);
 	changePage('PageConsole', 'PageRoundEnd');
 });
+document.getElementById("button_roundEnd_nextRound").addEventListener('click', function() {
+	tournament.incRoundNumber();
+	round.initalizeNextRound();
+
+	human.clearPile();
+	computer.clearPile();
+
+	consoleLog.addToLogText("<b>NEXT ROUND STARTED</b>");
+	updateView(boardViews, tournament, deck, human, computer, table, move, consoleLog);
+	lastPage = "PageGameBoard";
+	changePage('PageGameBoard', 'PageRoundEnd');
+});
+
 
 document.getElementById("button_console_goBack").addEventListener('click', function() {
 	if (lastPage === "PageGameBoard") {

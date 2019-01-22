@@ -20,6 +20,7 @@ class Tournament {
         this.mCurrentPlayer;
         this.mLastCapture;
         this.mHumanTurn;
+        this.mRoundNumber;
 
         this.mCoinTossCall;
         this.mCoinTossResult;
@@ -35,6 +36,18 @@ class Tournament {
         this.mConsoleLog = consoleLog;
 
         this.mRoundNumber = roundNum;
+    }
+
+    getRoundNumber() {
+        return this.mRoundNumber;
+    }
+
+    setRoundNumber(num) {
+        this.mRoundNumber = num;
+    }
+
+    incRoundNumber() {
+        this.mRoundNumber++;
     }
 
     getHumanTurn() {
@@ -130,7 +143,7 @@ class Tournament {
         var tab = "   ";
 
         temp = "------------------------------------------------------------------------------------------------------------------------------------------------------" + "<br>";
-        temp += "Round: " + "<br><br>";
+        temp += "Round: " + this.getRoundNumber() + "<br><br>";
 
         temp += "Computer:<br>";
         temp += "\u00A0\u00A0\u00A0\u00A0" + "Score: " + this.mComputer.getTournamentScore() + "<br>";

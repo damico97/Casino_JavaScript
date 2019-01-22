@@ -25,6 +25,13 @@ class Round {
         this.dealInitalCards();
     }
 
+    initalizeNextRound() {
+        this.mDeck.initializeDeck();
+        this.mConsoleLog.addToLogText("New Deck: " + '<br>' + this.mDeck.deckToString());
+
+        this.dealInitalCards();
+    }
+
     dealInitalCards() {
         for (var i = 0; i < 3; i++) {
             for (var j = 0; j < 4; j++) {
