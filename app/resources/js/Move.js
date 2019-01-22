@@ -75,7 +75,13 @@
  		else {
  			this.mTableCards.push(nCard);
  		}
- 	}
+	}
+	 
+	moveRemoveTableCard(rCard) {
+		var index = this.mTableCards.indexOf(rCard);
+
+		this.mTableCards.splice(index, 1);
+	}
 
  	moveTableCardLength() {
 		if (undefined == this.mTableCards) {

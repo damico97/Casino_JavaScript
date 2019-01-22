@@ -217,6 +217,7 @@ class BoardViews {
 								else {
 									_td.style.backgroundColor = "rgb(0, 80, 109)";
 									cardSelected[_td.id] = false;
+									move.moveRemoveTableCard(table.getTableCardAtIndex(_td.id));
 								}
 							}
 						});

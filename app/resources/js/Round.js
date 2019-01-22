@@ -103,47 +103,47 @@ class Round {
         // Check the Human's Pile
         for (var i = 0; i < this.mHuman.pileLength(); i++) {
             // Check if the suit of the card is Spades
-            if (this.mHuman.getPileCardAtIndex(i).getSuit() === 'S') {
+            if (this.mHuman.getPileCardAtIndex(i).getSuit() == 'S') {
                 // Increase the Human's Sapdes count
                 humanSpades++;
                 // Check if the Spades card is the 2 of Spades
-                if (this.mHuman.getPileCardAtIndex(i).getAbbv() === "S2") {
+                if (this.mHuman.getPileCardAtIndex(i).getAbbv() == "S2") {
                     // Human gets the points for the 2 of Spades
                     humanRoundScore += SCORE_2_SPADES;
                 }
             }
 
             // Check if the card is the 10 of Diamonds
-            if (this.mHuman.getPileCardAtIndex(i).getAbbv() === "DX") {
+            if (this.mHuman.getPileCardAtIndex(i).getAbbv() == "DX") {
                 humanRoundScore += SCORE_10_DIAMONDS;
             }
 
             // Check if the card is an Ace
-            if (this.mHuman.getPileCardAtIndex(i).getValue() === 1) {
+            if (this.mHuman.getPileCardAtIndex(i).getValue() == 1) {
                 humanRoundScore += SCORE_ACE;
             }
         }
         // Check the Computer's Pile
-        for (var i = 0; i < this.mComputer.pileLength(); i++) {
+        for (var j = 0; j < this.mComputer.pileLength(); j++) {
             // Check if the suit of the Card is Spades
-            if (this.mComputer.getPileCardAtIndex(i).getSuit() === 'S') {
+            if (this.mComputer.getPileCardAtIndex(j).getSuit() == 'S') {
                 // Inscrease the Computer's Spades count
                 computerSpades++;
                 // Check if the Spades card is the 2 of Spades
-                if (this.mComputer.getPileCardAtIndex(i).getAbbv() === "S2") {
+                if (this.mComputer.getPileCardAtIndex(j).getAbbv() == "S2") {
                     // Computer gets the points for having the 2 of Spades
                     computerRoundScore += SCORE_2_SPADES;
                 }
             }
 
             // Check if the card is the 10 of Diamonds
-            if (this.mComputer.getPileCardAtIndex(i) === "DX") {
+            if (this.mComputer.getPileCardAtIndex(j) == "DX") {
                 // The computer gets the points for having the 10 of Diamonds
                 computerRoundScore += SCORE_10_DIAMONDS;
             }
 
             // Check if the card is an Ace
-            if (this.mComputer.getPileCardAtIndex(i).getValue() === 1) {
+            if (this.mComputer.getPileCardAtIndex(j).getValue() == 1) {
                 // The computer gets the points for having an Ace
                 computerRoundScore += SCORE_ACE;
             }

@@ -31,7 +31,7 @@
 
 	<body>
 		<!-- Coin Toss Page -->
-		<div id="PageCoinToss" style="display:none">
+		<div id="PageCoinToss">
 			<header>
 				<title>Coin Toss</title>
 			</header>
@@ -124,21 +124,40 @@
 
 
 		<!-- Round End Page -->
-		<div id="PageRoundEnd">
+		<div id="PageRoundEnd" style="display:none">
 			<header>
 				<title>Round Over</title>
 				<button id="button_roundEnd_next_round">Next Round</button>
 				<button id="button_roundEnd_console">View Console</button>
 			</header>
 
-			<div class="EndRound">
+			<div class="RoundHumanTotal">Your Total Score</div>
+			<div class="RoundHumanTotalScore" id="EndRoundHumanTotal">8</div>
+
+			<div class="RoundComputerTotal">Computer's Total Score</div>
+			<div class="RoundComputerTotalScore" id="EndRoundComputerTotal">3</div>
+
+			<div class="center">
 				<div class="title">ROUND OVER</div>
 				<div class="scores">Scores</div>
 				<div class="pileSize">Pile Size</div>
+				<div class="numSpades">Number of Spades</div>
+				<div class="roundPoints">Total<br>Round Points</div>
+				<div class="roundWinner" id="RoundWinner">😃😃😃 Your The Winner!!! 😃😃😃</div>
 			</div>
 
 			<div class="RoundHuman">
-				<div class="humanPileCount">23</div>
+				<div class="yourScores">Your Scores</div>
+				<div class="humanPileSize" id="EndRoundHumanPileSize">23</div>
+				<div class="humanNumSpades" id="EndRoundHumanNumSpades">6</div>
+				<div class="humanRoundPoints" id="EndRoundHumanPoints">8</div>
+			</div>
+
+			<div class="RoundComputer">
+				<div class="computerScores">Computer Scores</div>
+				<div class="computerPileSize" id="EndRoundComputerPileSize">33</div>
+				<div class="computerNumSpades" id="EndRoundComputerNumSpades">9</div>
+				<div class="computerRoundPoints" id="EndRoundComputerPoints">9</div>
 			</div>
 		</div>
 		<!-- End Round End Page -->
@@ -176,5 +195,6 @@
 	<script src="js/BoardViews.js"></script>
 	<script src="js/ViewsConsole.js"></script>
 	<script src="js/ViewsCoinToss.js"></script>
+	<script src="js/ViewsRoundEnd.js"></script>
 	<script src="js/Casino.js"></script>
 </html>

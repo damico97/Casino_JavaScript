@@ -19,7 +19,7 @@ function updateView(view, tournament, deck, human, computer, table, move, consol
 	consoleLog.addToLogText(tournament.boardToString());
 }
 
-function checkGameStatus(tournament, round, view, deck, human, computer, table, move, consoleLog) {
+function checkGameStatus(tournament, round, view, deck, human, computer, table, move, consoleLog, endRoundViews) {
 	var CONTINUE = 1;
 	var ENDROUND = 2;
 	var ENDTOURNAMENT = 3;
@@ -40,6 +40,8 @@ function checkGameStatus(tournament, round, view, deck, human, computer, table, 
 					round.recordPlayerScores();
 
 					//consoleLog.addToLogText(tournament.boardToString());
+					endRoundViews.setUpRoundEndView(human, computer);
+					lastPage = "PageRoundEnd";
 					changePage("PageRoundEnd", "PageGameBoard");
 				}
 				else if (tournament.getLastCapture() == "Computer") {
@@ -52,6 +54,8 @@ function checkGameStatus(tournament, round, view, deck, human, computer, table, 
 					round.recordPlayerScores();
 
 					//consoleLog.addToLogText(tournament.boardToString());
+					endRoundViews.setUpRoundEndView(human, computer);
+					lastPage = "PageRoundEnd";
 					changePage("PageRoundEnd", "PageGameBoard");
 				}
 				else {
@@ -87,6 +91,7 @@ function changePage(shown, hidden) {
 var boardViews = new BoardViews();
 var consoleViews = new ViewsConsole();
 var coinTossViews = new ViewsCoinToss();
+var endRoundViews = new ViewsRoundEnd();
 
 var deck = new Deck();
 var human = new Player();
@@ -99,6 +104,8 @@ var suggestedMove = new SuggestedMove();
 
 var tournament = new Tournament();
 var round = new Round();
+
+var lastPage = "PageGameBoard";
 
 tournament.setMembers(deck, human, computer, table, move, consoleLog, 0);
 round.setMembers(deck, human, computer, table, move, consoleLog);
@@ -131,7 +138,7 @@ document.getElementById("coin_toss_tails").addEventListener('click', function() 
 	//changePage("PageGameBoard", "PageCoinToss");
 });
 document.getElementById("coin_toss_button_start").addEventListener('click', function() {
-	updateView(boardViews, tournament, deck, human, computer, table, move, consoleLog);
+	updateView(boardViews, tournament, deck, human, computer, table, move, consoleLog, endRoundViews);
 	changePage("PageGameBoard", "PageCoinToss");
 });
 
@@ -146,7 +153,7 @@ document.getElementById("button_gameBoard_capture").addEventListener('click', fu
 
 			tournament.setLastCapture("Human");
 
-			checkGameStatus(tournament, round, boardViews, deck, human, computer, table, move, consoleLog);
+			checkGameStatus(tournament, round, boardViews, deck, human, computer, table, move, consoleLog, endRoundViews);
 			updateView(boardViews, tournament, deck, human, computer, table, move, consoleLog);
 		}
 	}
@@ -159,7 +166,7 @@ document.getElementById("button_gameBoard_trail").addEventListener('click', func
 
 			tournament.changeHumanTurn();
 
-			checkGameStatus(tournament, round, boardViews, deck, human, computer, table, move, consoleLog);
+			checkGameStatus(tournament, round, boardViews, deck, human, computer, table, move, consoleLog, endRoundViews);
 			updateView(boardViews, tournament, deck, human, computer, table, move, consoleLog);
 		}
 	}
@@ -189,7 +196,7 @@ document.getElementById("button_gameBoard_computer").addEventListener('click', f
 		}
 
 		// Update the Game Board
-		checkGameStatus(tournament, round, boardViews, deck, human, computer, table, move, consoleLog);
+		checkGameStatus(tournament, round, boardViews, deck, human, computer, table, move, consoleLog, endRoundViews);
 		updateView(boardViews, tournament, deck, human, computer, table, move, consoleLog);
 	}
 });
@@ -205,5 +212,13 @@ document.getElementById("button_roundEnd_console").addEventListener('click', fun
 });
 
 document.getElementById("button_console_goBack").addEventListener('click', function() {
-	changePage('PageGameBoard', 'PageConsole');
+	if (lastPage === "PageGameBoard") {
+		changePage('PageGameBoard', 'PageConsole');
+	}
+	else if (lastPage === "PageRoundEnd") {
+		changePage('PageRoundEnd', 'PageConsole');
+	}
+	else {
+		console.log("ERROR");
+	}
 });
