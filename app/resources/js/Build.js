@@ -42,7 +42,12 @@ class Build {
     }
 
     getBuildCards() {
-        return this.mBuildCards;
+        var temp = new Array();
+
+        for (var i = 0; i < this.mBuildCards.length; i++) {
+            temp = temp.concat(this.mBuildCards[i]);
+        }
+        return temp;
     }
 
     buildLength() {

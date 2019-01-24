@@ -80,10 +80,18 @@
 
  	deleteTableCardAtIndex(index) {
  		this.mTableCards.splice(index, 1);
- 	}
+	}
+	 
+	deleteTableBuildAtIndex(index) {
+		this.mTableBuilds.splice(index, 1);
+	}
 
  	findTableCardIndex(card) {
  		return this.mTableCards.indexOf(card);
+	}
+
+	findTableBuildIndex(build) {
+		return this.mTableBuilds.indexOf(build);
 	}
 	 
 	tableLooseCardsToString() {

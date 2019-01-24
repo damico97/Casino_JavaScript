@@ -15,7 +15,8 @@
  		this.mComputerMoveLogic = "";
 
  		this.mHandCard = null;
- 		this.mTableCards = new Array();
+		this.mTableCards = new Array();
+		this.mTableBuilds = new Array(); 
 
  		this.mCardSelected = false;
  	}
@@ -24,12 +25,19 @@
  		this.mHandCard = null;
  		this.mCardSelected = false;
 
- 		if (undefined == this.mTableCards) {
+ 		if (undefined === this.mTableCards) {
 
  		}
  		else {
  			this.mTableCards = [];
- 		}
+		}
+		 
+		if (undefined === this.mTableBuilds) {
+
+		}
+		else {
+			this.mTableBuilds = [];
+		}
  	}
 
 
@@ -87,6 +95,48 @@
  		}
  	}
 
+    moveAddTableBuild(nBuild) {
+		if (undefined == this.mTableBuilds) {
+			this.mTableBuilds = new Array();
+			this.mTableBuilds[0] = nBuild;
+		}
+		else {
+			this.mTableBuilds.push(nBuild);
+		}
+	}
+
+	moveGetAllTableBuild() {
+		if (undefined !== this.mTableBuilds) {
+			return this.mTableBuilds;
+		}
+		else {
+			console.log("ERROR!! - {Move} (moveGetAllTableBuilds()");
+		}
+	}
+
+	moveRemoveTableBuild(rBuild) {
+		var index = this.mTableBuilds.indexOf(rBuild);
+
+		this.mTableBuilds.splice(index, 1);
+	}
+
+	moveTableBuildLength() {
+		if (undefined == this.mTableBuilds) {
+			return 0;
+		}
+		else {
+			return this.mTableBuilds.length;
+		}
+	}
+
+	moveGetTableBuild(index) {
+		if (index >= 0 && index < this.moveTableBuildLength()) {
+			return this.mTableBuilds[index];
+		}
+		else {
+			console.log("ERROR!! - {Moe} (moveGetTableBuild)");
+		}
+	}
 
  	resetHandCard() {
  		this.mHandCard = null;
@@ -100,17 +150,30 @@
 	 
 
 	checkPossibleCapture() {
-	    var tableTotal = 0;
-		for (var i = 0; i < this.mTableCards.length; i++) {
-			tableTotal += this.mTableCards[i].getValue();
+		var tableCardTotal = 0;
+		var tableBuildTotal = 0;
+
+		for (var i = 0; i < this.moveTableCardLength(); i++) {
+			tableCardTotal += this.mTableCards[i].getValue();
 		}
 
-		if (tableTotal % this.mHandCard.getValue() === 0) {
-			return true;
+		for (var j = 0; j < this.moveTableBuildLength(); j++) {
+			tableBuildTotal += this.mTableBuilds[i].getBuildValue();
+		}
+
+		console.log("Card Total = " + tableCardTotal);
+		console.log("Build Total = " + tableBuildTotal);
+
+		if (tableCardTotal % this.mHandCard.getValue() === 0 && tableBuildTotal % this.mHandCard.getValue() === 0) {
+			if (this.moveTableCardLength() !== 0 || this.moveTableBuildLength() !== 0) {
+				return true;
+			}
 		}
 		else {
-			if (tableTotal % this.mHandCard.getValue() + 13 === 0) {
-				return true;
+			if (tableCardTotal % this.mHandCard.getValue() + 13 === 0 && tableBuildTotal % this.mHandCard.getValue() + 13 === 0) {
+				if (this.moveTableCardLength() !== 0 || this.moveTableBuildLength() !== 0) {
+					return true;
+				}
 			}
 			else {
 				return false;

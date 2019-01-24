@@ -204,11 +204,13 @@ class BoardViews {
 							if (humanTurn) {
 								if (buildSelected[_td.id] == false) {
 									buildSelected[_td.id] = true;
+									move.moveAddTableBuild(table.getTableBuildAtIndex(_td.id));
 									_td.changeBackground(1);
 								}
 								else if (buildSelected[_td.id] == true) {
 									buildSelected[_td.id] = false;
 									_td.changeBackground(0);
+									move.moveRemoveTableBuild(table.getTableBuildAtIndex(_td.id));
 								}
 								else {
 

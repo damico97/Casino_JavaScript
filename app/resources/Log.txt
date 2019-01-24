@@ -224,3 +224,21 @@ Jan 23, 2019:
 	nothing has changed.
 	(30 Minutes)
 TOTAL: 6 Hours
+
+
+Jan 24, 2019:
+	- Figured out the build highlighting, dugging it making sure it works for when their are 
+	mutiple different builds on the table. At this time the build is not added to the move class, 
+	so you cannot do anything with the builds yet.
+	(45 Minutes)
+
+	- Extended the Move class to handle the builds that are going to be selected from the table
+	(30 Minutes)
+
+	- Changed the checkPossibleCapture in the Move Class to check if the builds that were selected 
+	are able to be captured with the hand card that is being played
+	(5 Minutes)
+
+	- Debugging for the use of the builds in the gaming, some issues were found and corrected
+	(25 Minutes)
+	

@@ -202,7 +202,17 @@
 
 		temp = "Played the " + card.getName() + " to capture...<br>";
 
- 		this.addCardToPile(move.getHandCard());
+		this.addCardToPile(move.getHandCard());
+		 
+		for (var j = move.moveTableBuildLength() - 1; j >= 0; j--) {
+			var tableBuild = move.moveGetTableBuild(j);
+			var buildIndex = table.findTableBuildIndex(tableBuild);
+			table.deleteTableBuildAtIndex(buildIndex);
+
+			temp += "the build of " + tableBuild.getBuildValue() + "<br>";
+
+			this.addCardArrayToPile(tableBuild.getBuildCards());
+		}
 
  		for (var i = move.moveTableCardLength() - 1; i >= 0; i--) {
 			var tableCard = move.moveGetTableCard(i);
