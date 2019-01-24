@@ -202,12 +202,12 @@ class BoardViews {
 							td.addEventListener('click', function() {
 								if (humanTurn) {
 									if (buildSelected[_td.id] == false) {
-										console.log("selected");
-										_td.childNodes[_td.id].changeBackground(1);
+										buildSelected[_td.id] = true;
+										_td.changeBackground(1);
 									}
 									else {
-										console.log("unselected");
-										_td.childNodes[_td.id].changeBackground(0);
+										buildSelected[_td.id] = false;
+										_td.changeBackground(0);
 									}
 								}
 							});
