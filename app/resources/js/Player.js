@@ -244,6 +244,22 @@
 		 
 		return temp;
 	}
+
+	checkIfBuildCard(cardValue, table) {
+		if (cardValue === 1) {
+			cardValue += 13;
+		}
+
+		for (var i = 0; i < table.tableBuildLength(); i++) {
+			if (table.getTableBuildAtIndex(i).getBuildOwner() === "Human") {
+				if (table.getTableBuildAtIndex(i).getBuildValue() === cardValue) {
+					return true;
+				}
+			}
+		}
+
+		return false;
+	}
 	 
 	findNextMove(suggestedMove, table) {
 		// Constansts for Move Selections
@@ -280,10 +296,12 @@
 
 				for (var k = 0; k < table.tableCardLength(); k++) {
 					if (handCardValue === this.mPlayerHand[i].getValue() + tableCards[k].getValue()) {
-						suggestedMove.setHandCard(this.mPlayerHand[i].getAbbv());
-						suggestedMove.suggestedMoveAddTableCard(table.getTableCardAtIndex(k).getAbbv());
-						suggestedMove.setSuggestion(BUILD);
-						return;
+						if (!this.checkIfBuildCard(handCardValue, table)) {
+							suggestedMove.setHandCard(this.mPlayerHand[i].getAbbv());
+							suggestedMove.suggestedMoveAddTableCard(table.getTableCardAtIndex(k).getAbbv());
+							suggestedMove.setSuggestion(BUILD);
+							return;
+						}
 					}
 				}
 			}
