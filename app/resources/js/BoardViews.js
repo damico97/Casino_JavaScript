@@ -192,27 +192,30 @@ class BoardViews {
 			else {
 				buildSelected.push(false);
 			}
+		}
 
-			if (undefined != tableBuildViews) {
-				var td;
-				for (var j = 0; j < tableBuildViews.length; j++) {
-					td = document.getElementById("tableBuildView").appendChild(tableBuildViews[j]);
-					if (typeof window.addEventListener === 'function') {
-						(function (_td) {
-							td.addEventListener('click', function() {
-								if (humanTurn) {
-									if (buildSelected[_td.id] == false) {
-										buildSelected[_td.id] = true;
-										_td.changeBackground(1);
-									}
-									else {
-										buildSelected[_td.id] = false;
-										_td.changeBackground(0);
-									}
+		if (undefined != tableBuildViews) {
+			var td;
+			for (var j = 0; j < tableBuildViews.length; j++) {
+				td = document.getElementById("tableBuildView").appendChild(tableBuildViews[j]);
+				if (typeof window.addEventListener === 'function') {
+					(function (_td) {
+						td.addEventListener('click', function() {
+							if (humanTurn) {
+								if (buildSelected[_td.id] == false) {
+									buildSelected[_td.id] = true;
+									_td.changeBackground(1);
 								}
-							});
-						})(td);
-					}
+								else if (buildSelected[_td.id] == true) {
+									buildSelected[_td.id] = false;
+									_td.changeBackground(0);
+								}
+								else {
+
+								}
+							}
+						});
+					})(td);
 				}
 			}
 		}
