@@ -15,7 +15,16 @@
  		this.mScore = 0;
  		this.mRoundScore = 0;
 		this.mNumSpades = 0;
+		this.mName = "";
 	}
+
+	getPlayerName() {
+		return this.mName;
+	}
+
+	setPlayerName(nName) {
+		this.mName = nName;
+	} 
 	
 	getTournamentScore() {
 		return this.mScore;
@@ -53,7 +62,11 @@
  		else {
  			this.mPlayerHand.push(nCard);
  		}
- 	}
+	}
+	 
+	getHandCards() {
+		return this.mPlayerHand;
+	}
 
  	addCardToPile(nCard) {
  		if (undefined == this.mPlayerPile) {
@@ -133,6 +146,48 @@
 		for (var i = 0; i < this.pileLength(); i++) {
 			temp += this.mPlayerPile[i].getAbbv() + " ";
 		}
+
+		return temp;
+	}
+
+	createBuild(move, table) {
+		var temp = "";
+
+		var handCard = move.getHandCard();
+		var handIndex = this.mPlayerHand.indexOf(handCard);
+
+		this.mPlayerHand.splice(handIndex, 1);
+
+		var value = 0;
+
+		var nBuild = new Build();
+		var nCards = new Array();
+
+		nCards = nCards.concat(move.moveGetAllTableCards());
+
+		temp = "Played the " + handCard.getName() + " to create a build with...<br>";
+
+		for (var i = move.moveTableCardLength() - 1; i >= 0; i--) {
+			var tableCard = move.moveGetTableCard(i);
+			var tableIndex = table.findTableCardIndex(tableCard);
+			table.deleteTableCardAtIndex(tableIndex);
+
+			temp += "the " + tableCard.getName() + "<br>";
+
+			value += tableCard.getValue();
+		}
+		temp += "from the table";
+
+		value += handCard.getValue();
+		nCards.push(handCard);
+
+		nBuild.setBuildValue(value);
+		nBuild.addToBuildCards(nCards);
+		nBuild.setBuildOwner(this.getPlayerName());
+
+		table.addBuildToTable(nBuild);
+
+		move.resetMove();
 
 		return temp;
 	}

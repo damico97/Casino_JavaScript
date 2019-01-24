@@ -117,7 +117,7 @@ class BoardViews {
 				var card_image = document.createElement("img");
 				card_image.src = card_name;
 				card_image.setAttribute("id", i);
-				viewCount++
+				viewCount++;
 
 				if (undefined == humanCardViews) {
 					humanCardViews = new Array();
@@ -137,7 +137,7 @@ class BoardViews {
 						td.addEventListener('click', function() {
 							if (humanTurn) {
 								if (cardSelected[_td.id] == false && !move.checkCardSelected()) {
-									_td.style.backgroundColor = "rgb(37, 185, 154)";
+									_td.style.backgroundColor = "rgb(0, 161, 75)";
 									cardSelected[_td.id] = true;
 									move.setHandCard(human.getHandCardAtIndex(_td.id));
 								}
@@ -157,6 +157,67 @@ class BoardViews {
 		}
 	}
 
+	setUpTableBuildView(table, move, humanTurn) {
+		var tableBuildView = document.getElementById("tableBuildView");
+
+		while (tableBuildView.hasChildNodes()) {
+			tableBuildView.removeChild(tableBuildView.lastChild);
+		}
+
+		var buildSelected;
+		var tableBuildViews;
+
+		for (var i = 0; i < table.tableBuildLength(); i++) {
+			console.log(table.getTableBuildAtIndex(i).buildToString());
+
+			var nView = document.createElement('x-build-icon');
+			nView.setValue(table.getTableBuildAtIndex(i).getBuildValue());
+			nView.setString(table.getTableBuildAtIndex(i).buildToString());
+			nView.setOwner(table.getTableBuildAtIndex(i).getBuildOwner());
+
+			nView.setAttribute("id", i);
+
+			if (undefined == tableBuildViews) {
+				tableBuildViews = new Array();
+				tableBuildViews[0] = nView; 
+			}
+			else {
+				tableBuildViews.push(nView);
+			}
+
+			if (undefined == buildSelected) {
+				buildSelected = new Array();
+				buildSelected[0] = false;
+			}
+			else {
+				buildSelected.push(false);
+			}
+
+			if (undefined != tableBuildViews) {
+				var td;
+				for (var j = 0; j < tableBuildViews.length; j++) {
+					td = document.getElementById("tableBuildView").appendChild(tableBuildViews[j]);
+					if (typeof window.addEventListener === 'function') {
+						(function (_td) {
+							td.addEventListener('click', function() {
+								if (humanTurn) {
+									if (buildSelected[_td.id] == false) {
+										console.log("selected");
+										_td.childNodes[_td.id].changeBackground(1);
+									}
+									else {
+										console.log("unselected");
+										_td.childNodes[_td.id].changeBackground(0);
+									}
+								}
+							});
+						})(td);
+					}
+				}
+			}
+		}
+	}
+
 
 	setupTableCardView(table, move, humanTurn) {
 		var tableCardView = document.getElementById("tableView");
@@ -167,7 +228,7 @@ class BoardViews {
 
 		var cardSelected;
 		var tableCardViews;
-		var viewcount = 0
+		var viewcount = 0;
 		for (var i = 0; i < table.tableCardLength(); i++) {
 			var card_path = "images/cards/";
 			var card_prefix = "card_";
@@ -210,7 +271,7 @@ class BoardViews {
 						td.addEventListener('click', function(){
 							if (humanTurn) {
 								if (cardSelected[_td.id] == false) {
-									_td.style.backgroundColor = "rgb(37, 185, 154)";
+									_td.style.backgroundColor = "rgb(0, 161, 75)";
 									cardSelected[_td.id] = true;
 									move.moveAddTableCard(table.getTableCardAtIndex(_td.id));
 								}

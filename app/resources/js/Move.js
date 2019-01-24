@@ -38,29 +38,6 @@
  	}
 
 
- 	checkPossibleCapture() {
- 		var tableTotal = 0;
- 		for (var i = 0; i < this.mTableCards.length; i++) {
- 			tableTotal += this.mTableCards[i].getValue();
- 		}
-
- 		if (tableTotal % this.mHandCard.getValue() === 0) {
- 			console.log("True");
- 			return true;
- 		}
- 		else {
- 			if (tableTotal % this.mHandCard.getValue() + 13 === 0) {
- 				console.log("True");
- 				return true;
- 			}
- 			else {
- 				console.log("False");
- 				return false;
- 			}
- 		}
- 	}
-
-
  	setHandCard(nCard) {
  		this.mHandCard = nCard;
  		this.mCardSelected = true;
@@ -75,6 +52,15 @@
  		else {
  			this.mTableCards.push(nCard);
  		}
+	}
+
+	moveGetAllTableCards() {
+		if (undefined !== this.mTableCards) {
+			return this.mTableCards;
+		}
+		else {
+			console.log("ERROR!! - {Move} (moveGetAllTableCards()");
+		}
 	}
 	 
 	moveRemoveTableCard(rCard) {
@@ -110,5 +96,47 @@
 
  	getHandCard() {
  		return this.mHandCard;
- 	}
+	}
+	 
+
+	checkPossibleCapture() {
+	    var tableTotal = 0;
+		for (var i = 0; i < this.mTableCards.length; i++) {
+			tableTotal += this.mTableCards[i].getValue();
+		}
+
+		if (tableTotal % this.mHandCard.getValue() === 0) {
+			return true;
+		}
+		else {
+			if (tableTotal % this.mHandCard.getValue() + 13 === 0) {
+				return true;
+			}
+			else {
+				return false;
+			}
+		}
+	}
+
+
+	checkPossibleBuild(human) {
+		var tempSum = 0;
+
+		for (var i = 0; i < this.mTableCards.length; i++) {
+			tempSum += this.mTableCards[i].getValue();
+		}
+
+		tempSum += this.mHandCard.getValue();
+
+		for (var j = 0; j < human.handLength(); j++) {
+			if (human.getHandCardAtIndex(j).getValue() == tempSum) {
+				return tempSum;
+			}
+			else if (human.getHandCardAtIndex(j).getValue() + 13 == tempSum) {
+				return tempSum;
+			}
+		}
+
+		return -1;
+	}
  }

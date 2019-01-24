@@ -26,12 +26,14 @@
 		<!-- Stylesheets -->
 		<link rel="stylesheet" type="text/css" href="css/reset.css">
 		<link rel="stylesheet" type="text/css" href="css/style.css">
+
+		<script src="js/buildIcon.js"></script>
 	</head>
 
 
 	<body>
 		<!-- Coin Toss Page -->
-		<div id="PageCoinToss" style="display:none">
+		<div id="PageCoinToss">
 			<header>
 				<title>Coin Toss</title>
 			</header>
@@ -62,11 +64,11 @@
 			
 
 		<!-- Game Board Pages -->
-		<div id="PageGameBoard"  style="display:none">
+		<div id="PageGameBoard" style="display:none">
 			<header>
 				<title>Casino</title>
 				<text id="GameBoardHeaderText"></text>
-				<button id="button_gameBoard_help">Help</button>
+				<button id="button_gameBoard_console">View Console</button>
 			</header>
 
 			<!-- Deck Views -->
@@ -90,6 +92,10 @@
 
 
 			<!-- Table Views -->
+			<div class="tableBuildScroll" id="tableBuildView">
+				<x-build-icon></x-build-icon>
+				<x-build-icon></x-build-icon>
+			</div>
 			<!-- Loose Table Cards -->
 			<div class="tableScroll" id="tableView">
 				<!-- Cards -->
@@ -111,13 +117,13 @@
 			<!-- Control Buttons -->
 			<div class="controls" id="controls">
 				<!-- Buttons -->
+				<button id="button_gameBoard_help">Ask For Help</button>
 				<button id="button_gameBoard_build">Build</button>
 				<button id="button_gameBoard_multi">Multi Build</button>
 				<button id="button_gameBoard_extend">Extend Build</button>
 				<button id="button_gameBoard_capture">Capture</button>
 				<button id="button_gameBoard_trail">Trail</button>
 				<button id="button_gameBoard_computer">Computer Move</button>
-				<button id="button_gameBoard_console">View Console</button>
 			</div>
 		</div>
 		<!-- End Game Board Page -->
@@ -164,13 +170,13 @@
 
 
 		<!-- Tournament End Page -->
-		<div id="PageTournamentEnd">
+		<div id="PageTournamentEnd" style="display:none">
 			<header>
 				<title>Tournament Over</title>
 			</header>
 
 			<div class="background">
-				<div class="build"></div>
+				<x-build-icon></x-build-icon>
 			</div>
 		</div>
 		<!-- End Tournament End Page -->
@@ -197,6 +203,7 @@
 	<!-- JavaScripts -->
 	<script src="js/Card.js"></script>
 	<script src="js/Deck.js"></script>
+	<script src="js/Build.js"></script>
 	<script src="js/Player.js"></script>
 	<script src="js/Computer.js"></script>
 	<script src="js/Table.js"></script>

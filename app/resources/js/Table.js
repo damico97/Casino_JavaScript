@@ -10,8 +10,28 @@
  class Table {
 
  	Table() {
- 		this.mTableCards = new Array();
- 	}
+		this.mTableCards = new Array();
+		this.mTableBuilds = new Array();
+	}
+	 
+	addBuildToTable(nBuild) {
+		if (undefined === this.mTableBuilds) {
+			this.mTableBuilds = new Array();
+			this.mTableBuilds[0] = nBuild;
+		}
+		else {
+			this.mTableBuilds.push(nBuild);
+		}
+	}
+
+	getTableBuildAtIndex(index) {
+		if (index >= 0 && index < this.tableBuildLength()) {
+			return this.mTableBuilds[index];
+		}
+		else {
+			console.log("ERROR!! - {Table} [getTableBuildAtIndex]");
+		}
+	}
 
  	addCardToTable(nCard) {
  		if (undefined == this.mTableCards) {
@@ -24,13 +44,22 @@
  	}
 
  	tableCardLength() {
-		if (undefined ==  this.mTableCards) {
+		if (undefined == this.mTableCards) {
 			return 0;
 		}
 		else {
 			return this.mTableCards.length;
 		}
- 	}
+	}
+	 
+	tableBuildLength() {
+		if (undefined == this.mTableBuilds) {
+			return 0;
+		}
+		else {
+			return this.mTableBuilds.length;
+		}
+	}
 
     getTableCards() {
 		return this.mTableCards;

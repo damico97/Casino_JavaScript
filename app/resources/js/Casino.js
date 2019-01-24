@@ -12,6 +12,7 @@ function updateView(view, tournament, deck, human, computer, table, move, consol
 	view.showComputerHand(computer);
 	view.setupHumanHandView(human, move, tournament.getHumanTurn());
 	view.setUpHumanPileView(human);
+	view.setUpTableBuildView(table, move, tournament.getHumanTurn());
 	view.setupTableCardView(table, move, tournament.getHumanTurn());
 	view.setUpDeckView(deck);
 	view.setHeaderText(tournament);
@@ -112,6 +113,9 @@ var round = new Round();
 
 var lastPage = "PageGameBoard";
 
+human.setPlayerName("Human");
+computer.setPlayerName("Computer");
+
 tournament.setMembers(deck, human, computer, table, move, consoleLog, 0);
 round.setMembers(deck, human, computer, table, move, consoleLog);
 
@@ -150,6 +154,19 @@ document.getElementById("coin_toss_button_start").addEventListener('click', func
 
 
 // Even Listeners for the control buttons
+document.getElementById("button_gameBoard_build").addEventListener('click', function() {
+	if (tournament.getHumanTurn()) {
+		var tempValue = move.checkPossibleBuild(human);
+		if (tempValue != -1) {
+			consoleLog.addToLogText("Human Move:<br>" + human.createBuild(move, table));
+
+			tournament.changeHumanTurn();
+
+			checkGameStatus(tournament, round, boardViews, deck, human, computer, table, move, consoleLog, endRoundViews);
+			updateView(boardViews, tournament, deck, human, computer, table, move, consoleLog);
+		}
+	}
+});
 document.getElementById("button_gameBoard_capture").addEventListener('click', function() {
 	if (tournament.getHumanTurn()) {	
 		if (move.checkPossibleCapture()) {
@@ -164,7 +181,6 @@ document.getElementById("button_gameBoard_capture").addEventListener('click', fu
 		}
 	}
 });
-
 document.getElementById("button_gameBoard_trail").addEventListener('click', function() {
 	if (tournament.getHumanTurn()) {
 		if (move.checkCardSelected()) {
@@ -177,7 +193,6 @@ document.getElementById("button_gameBoard_trail").addEventListener('click', func
 		}
 	}
 });
-
 // Event Listener for the COMPUTER MOVE button
 document.getElementById("button_gameBoard_computer").addEventListener('click', function() {
 	// Constansts for Move Selections

@@ -191,4 +191,36 @@ Jan 21, 2019:
 	and displayed on in the GUI, the scores have been debugged and doubled checked, and 
 	everything seems to be working correctly.
 	(2 Hours)
+TOTAL: 2 Hours
+
+
+Jan 23, 2019: 
+	- Started created a custom HTML element to display the builds that are on the table. This 
+	took a long time, as creating the custom layouts are much much more difficult than compared
+	to doing the same thing in the Android envorinment.
+	(2 Hours)
+
+	- Started the Build class, now that their is something to represent the builds on the table.
+	The Build class can only do basic things at the moment as the class is being developed.
+	(45 Minutes)
+
+	- Created the checkPossibleBuild() function in the Move class that checks if the cards the user 
+	has selected are able to be used to make a build.
+	(15 Minutes)
+
+	- Debugging of the functions used to create the build took a very look time, because the error 
+	caused the debugger to crash. 
+	(1 Hour 15 Minutes)
+
+	- Creating the ability to add the new custom items to the board to show the builds that are on 
+	the table.
+	(45 Minutes)
 	
+	- The build view can now show if the build is a multi-build or not and who owns the build by 
+	changing the background color of the icon.
+	(30 Minutes)
+
+	- Started trying to get the build icon to change color when the build is selected, so far 
+	nothing has changed.
+	(30 Minutes)
+TOTAL: 6 Hours
