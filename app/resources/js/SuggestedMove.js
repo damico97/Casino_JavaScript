@@ -14,6 +14,7 @@
         this.mCardSelected = false;
 
         this.mTableCards = new Array();
+        this.mTableBuilds = new Array();
         this.mSuggestion = -1;
     }
 
@@ -87,4 +88,31 @@
         }
     }
 
+    suggestedMoveAddTableBuild(nBuild) {
+        if (undefined == this.mTableBuilds) {
+            this.mTableBuilds = new Array();
+            this.mTableBuilds[0] = nBuild;
+        }
+        else {
+            this.mTableBuilds.push(nBuild);
+        }
+    }
+
+    suggestedMoveTableBuildLength() {
+        if (undefined == this.mTableBuilds) {
+            return 0;
+        }
+        else {
+            return this.mTableBuilds.length;
+        }
+    }
+
+    suggestedMoveGetTableBuild(index) {
+        if (index >= 0 && index < this.suggestedMoveTableBuildLength()) {
+            return this.mTableBuilds[index];
+        }
+        else {
+            console.log("ERROR!! - {Suggested Move} [suggestedMoveGetTableBuild");
+        }
+    }
  }

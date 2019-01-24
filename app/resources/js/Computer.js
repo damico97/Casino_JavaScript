@@ -29,6 +29,15 @@ class Computer extends Player {
             }
         }
 
+        // Setting Table Builds
+        for (var i = 0; i < table.tableBuildLength(); i++) {
+            for (var j = 0; j < suggestedMove.suggestedMoveTableBuildLength(); j++) {
+                if (table.getTableBuildAtIndex(i).getAbbv().charAt(1) == suggestedMove.suggestedMoveGetTableBuild(j).charAt(1)) {
+                    move.moveAddTableBuild(table.getTableBuildAtIndex(i));
+                }
+            }
+        }
+
         // Setting Table Cards
         for (var i = 0; i < table.tableCardLength(); i++) {
             for (var j = 0; j < suggestedMove.suggestedMoveTableCardLength(); j++) {
@@ -38,7 +47,10 @@ class Computer extends Player {
             }
         }
 
-        if (suggestion == 4) {
+        if (suggestion == 1) {
+            return this.createBuild(move, table);
+        }
+        else if (suggestion == 4) {
             return this.captureCards(move, table);
         }
         else if (suggestion == 5) {

@@ -241,4 +241,12 @@ Jan 24, 2019:
 
 	- Debugging for the use of the builds in the gaming, some issues were found and corrected
 	(25 Minutes)
+
+	- Taught the computer to create simple builds, will need to extend the class so the builds
+	can contain more cards
+	(30 Minutes)
+
+	- Getting the computer to capture the build it made on the table, and the debugging of the 
+	functions to get it working
+	(30 Minutes)
 	

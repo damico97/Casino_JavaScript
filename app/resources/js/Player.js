@@ -258,9 +258,57 @@
 		var handCardValue = -1;
 		var captureSetIndex = -1;
 
+		var smallHand = new Array();
+
 		var tableCards = new Array();
 		var smallTableCards = new Array();
 		var smallSmallTableCards = new Array();
+		var smallSmallSmallTableCards = new Array();
+
+		for (var i = 0; i < this.handLength(); i++) {
+			smallHand = smallHand.concat(this.mPlayerHand);
+			smallHand.splice(i, 1);
+
+			for (var j = 0; j < smallHand.length; j++) {
+				handCardValue = smallHand[j].getValue();
+
+				if (handCardValue === 1) {
+					handCardValue += 13;
+				}
+
+				tableCards = table.getTableCards();
+
+				for (var k = 0; k < table.tableCardLength(); k++) {
+					if (handCardValue === this.mPlayerHand[i].getValue() + tableCards[k].getValue()) {
+						suggestedMove.setHandCard(this.mPlayerHand[i].getAbbv());
+						suggestedMove.suggestedMoveAddTableCard(table.getTableCardAtIndex(k).getAbbv());
+						suggestedMove.setSuggestion(BUILD);
+						return;
+					}
+				}
+			}
+		}
+
+		for (var i = 0; i < this.handLength(); i++) {
+			handCardValue = this.mPlayerHand[i].getValue();
+			if (handCardValue === 1) {
+				handCardValue += 13;
+			}
+			
+			for (var j = 0; j < table.tableBuildLength(); j++) {
+				if (handCardValue === table.getTableBuildAtIndex(j).getBuildValue()) {
+					suggestedMove.suggestedMoveAddTableBuild(table.getTableBuildAtIndex(j).getAbbv());
+					suggestedMove.setHandCard(this.mPlayerHand[i].getAbbv());
+					for (var k = 0; k < table.tableCardLength(); k++) {
+						if (this.mPlayerHand[i].getValue() === table.getTableCardAtIndex(k).getValue()) {
+							suggestedMove.suggestedMoveAddTableCard(table.getTableCardAtIndex(k).getAbbv());
+						}
+					}
+					suggestedMove.setSuggestion(CAPTURE);
+					return;
+				}
+			}
+		}
 
 		for (var i = 0; i < this.handLength(); i++) {
 			handCardValue = this.mPlayerHand[i].getValue();
@@ -324,6 +372,11 @@
 			for (var i = 0; i < table.tableCardLength(); i++) {
 				if (suggestedMove.getHandCard()[1] != "A" && suggestedMove.getHandCard()[1] == table.getTableCardAtIndex(i).getAbbv()[1]) {
 					suggestedMove.suggestedMoveAddTableCard(table.getTableCardAtIndex(i).getAbbv());
+				}
+			}
+			for (var j = 0; j < table.tableBuildLength(); j++) {
+				if (suggestedMove.getHandCard()[1] != "A" && suggestedMove.getHandCard()[1] === table.getTableBuildAtIndex(j).getAbbv()[1]) {
+					suggestedMove.suggestedMoveAddTableBuild(table.getTableBuildAtIndex(j).getAbbv());
 				}
 			}
 			return;
