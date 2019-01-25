@@ -45,6 +45,8 @@ function checkGameStatus(tournament, round, view, deck, human, computer, table, 
 
 					round.recordPlayerScores();
 
+					tournament.setHumanTurn(true);
+
 					//consoleLog.addToLogText(tournament.boardToString());
 					endRoundViews.setUpRoundEndView(human, computer);
 					lastPage = "PageRoundEnd";
@@ -58,6 +60,8 @@ function checkGameStatus(tournament, round, view, deck, human, computer, table, 
 					table.clearTableCards();
 
 					round.recordPlayerScores();
+
+					tournament.setHumanTurn(false);
 
 					//consoleLog.addToLogText(tournament.boardToString());
 					endRoundViews.setUpRoundEndView(human, computer);

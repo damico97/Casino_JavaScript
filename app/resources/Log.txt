@@ -249,4 +249,11 @@ Jan 24, 2019:
 	- Getting the computer to capture the build it made on the table, and the debugging of the 
 	functions to get it working
 	(30 Minutes)
+
+	- Start checking if a card to be used in a build is already the capture card for another build
+	(5 Minutes)
+
+	- Continued Build Debugging and testing
+	(10 Minutes)
+
 	

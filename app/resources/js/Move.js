@@ -158,7 +158,7 @@
 		}
 
 		for (var j = 0; j < this.moveTableBuildLength(); j++) {
-			tableBuildTotal += this.mTableBuilds[i].getBuildValue();
+			tableBuildTotal += this.mTableBuilds[j].getBuildValue();
 		}
 
 		console.log("Card Total = " + tableCardTotal);
