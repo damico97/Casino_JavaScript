@@ -28,6 +28,13 @@
         else {
             this.mTableCards = [];
         }
+
+        if (undefined == this.mTableBuilds) {
+
+        }
+        else {
+            this.mTableBuilds = [];
+        }
     }
 
     checkCardSelected() {
