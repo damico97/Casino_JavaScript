@@ -171,6 +171,18 @@ document.getElementById("button_gameBoard_build").addEventListener('click', func
 		}
 	}
 });
+document.getElementById("button_gameBoard_multi").addEventListener('click', function() {
+	if (tournament.getHumanTurn()) {
+		if (move.checkPossibleMultiBuild()) {
+			console.log("Human Move:<br>" + human.createMultiBuild(move, table));
+
+			tournament.changeHumanTurn();
+
+			checkGameStatus(tournament, round, boardViews, deck, human, computer, table, move, consoleLog, endRoundViews);
+			updateView(boardViews, tournament, deck, human, computer, table, move, consoleLog);
+		}
+	}
+});
 document.getElementById("button_gameBoard_capture").addEventListener('click', function() {
 	if (tournament.getHumanTurn()) {	
 		if (move.checkPossibleCapture()) {

@@ -192,6 +192,46 @@
 		return temp;
 	}
 
+	createMultiBuild(move, table) {
+		var temp = "";
+
+		var newBuildInput = new Array();
+
+		var card = move.getHandCard();
+		var index = this.mPlayerHand.indexOf(card);
+		
+		var build = move.moveGetTableBuild(0);
+		var buildIndex = table.findTableBuildIndex(build);
+
+		this.mPlayerHand.splice(index, 1);
+
+		temp = "Played the " + card.getName() + " to create a multi-build with...<br>";
+
+		newBuildInput[0] = card;
+
+		for (var i = move.moveTableCardLength() - 1; i >= 0; i--) {
+			var tableCard = move.moveGetTableCard(i);
+			var tableIndex = table.findTableCardIndex(tableCard);
+			table.deleteTableBuildAtIndex(tableIndex);
+
+			temp += "the " + tableCard.getName() + "<br>";
+
+			if (undefined === newBuildInput) {
+				newBuildInput = new Array();
+				newBuildInput[0] = tableCard;
+			}
+			else {
+				newBuildInput.push(tableCard);
+			}
+		}
+
+		temp += "Using the build of " + build.getBuildValue + " that is on the table<br>";
+
+		table.getTableBuildAtIndex(buildIndex).addToBuildCards(newBuildInput);
+
+		return temp;
+	}
+
  	captureCards(move, table) {
 		var temp = "";
 
@@ -302,6 +342,60 @@
 							suggestedMove.setSuggestion(BUILD);
 							return;
 						}
+					}
+					else {
+						smallTableCards = smallTableCards.concat(tableCards);
+						smallTableCards.splice(k, 1);
+
+						for (var l = 0; l < smallTableCards.length; l++) {
+							if (handCardValue === this.mPlayerHand[i].getValue() + tableCards[k].getValue() + smallTableCards[l].getValue()) {
+								if (!this.checkIfBuildCard(handCardValue, table)) {
+									suggestedMove.setHandCard(this.mPlayerHand[i].getAbbv());
+									suggestedMove.suggestedMoveAddTableCard(table.getTableCardAtIndex(k).getAbbv());
+									suggestedMove.suggestedMoveAddTableCard(smallTableCards[l].getAbbv());
+									suggestedMove.setSuggestion(BUILD);
+									return;
+								}
+							}
+							else {
+								smallSmallTableCards = smallSmallTableCards.concat(smallTableCards);
+								smallSmallTableCards.splice(l, 1);
+
+								for (var m = 0; m < smallSmallTableCards.length; m++) {
+									if (handCardValue === this.mPlayerHand[i].getValue() + tableCards[k].getValue() + smallTableCards[l].getValue() + smallSmallTableCards[m].getValue()) {
+										if (!this.checkIfBuildCard(handCardValue, table)) {
+											suggestedMove.setHandCard(this.mPlayerHand[i].getAbbv());
+											suggestedMove.suggestedMoveAddTableCard(table.getTableCardAtIndex(k).getAbbv());
+											suggestedMove.suggestedMoveAddTableCard(smallTableCards[l].getAbbv());
+											suggestedMove.suggestedMoveAddTableCard(smallSmallTableCards[m].getAbbv());
+											suggestedMove.setSuggestion(BUILD);
+											return;
+										}
+									}
+									else {
+										smallSmallSmallTableCards = smallSmallSmallTableCards.concat(smallSmallTableCards);
+										smallSmallSmallTableCards.splice(m, 1);
+
+										for (var n = 0; n < smallSmallSmallTableCards.length; n++) {
+											if (handCardValue === this.mPlayerHand[i].getValue() + tableCards[k].getValue() + smallTableCards[l].getValue() + smallSmallTableCards[m].getValue() + smallSmallSmallTableCards[n].getValue()) {
+												if (!this.checkIfBuildCard(handCardValue, table)) {
+													suggestedMove.setHandCard(this.mPlayerHand[i].getAbbv());
+													suggestedMove.suggestedMoveAddTableCard(table.getTableCardAtIndex(k).getAbbv());
+													suggestedMove.suggestedMoveAddTableCard(smallTableCards[l].getAbbv());
+													suggestedMove.suggestedMoveAddTableCard(smallSmallTableCards[m].getAbbv());
+													suggestedMove.suggestedMoveAddTableCard(smallSmallSmallTableCards[n].getAbbv());
+													suggestedMove.setSuggestion(BUILD);
+													return;
+												}
+											}
+										}
+										smallSmallSmallTableCards = [];
+									}
+								}
+								smallSmallTableCards = [];
+							}
+						}
+						smallTableCards = [];
 					}
 				}
 			}

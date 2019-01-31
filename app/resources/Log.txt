@@ -255,5 +255,18 @@ Jan 24, 2019:
 
 	- Continued Build Debugging and testing
 	(10 Minutes)
+TOTAL: 3.5 Hours
 
+
+Jan 28, 2019:
+	- Changed the findNextMove() function so it can find a build using upto 3 cards from the table, 
+	where as it used to only use 1 card from the table
+	(15 Minutes)
+
+	- Multi-Build Debugging
+	(30 Minutes)
+TOTAL: 45 Minutes
+
+
+Jan 31, 2019:
 	

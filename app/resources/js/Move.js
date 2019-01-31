@@ -202,4 +202,32 @@
 
 		return -1;
 	}
+
+
+	checkPossibleMultiBuild(human) {
+		var tempSum = 0;
+
+		if (this.mTableBuilds.length === 1) {
+			for (var i = 0; i < this.mTableCards.length; i++) {
+				tempSum += this.mTableCards[i].getValue();
+			}
+
+			tempSum += this.mHandCard.getValue();
+
+			if (tempSum === this.mTableBuilds[0].getBuildValue()) {
+				if (this.mTableBuilds[0].getBuildOwner() === "Human") {
+					return true;
+				}
+				else {
+					return false;
+				}
+			}
+			else {
+				return false;
+			}
+		}
+		else {
+			return false;
+		}
+	}
  }
