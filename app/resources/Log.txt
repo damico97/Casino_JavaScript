@@ -269,4 +269,11 @@ TOTAL: 45 Minutes
 
 
 Jan 31, 2019:
+	- Multi-Build Debugging, trying to fix all the issues with the computer making multi builds and using 
+	a card that was already the capture card for another one of it's builds. I think I finally fixed everything 
+	by the time I was done here.
+	(2 Hour 30 Minutes)
+
+	- Documentation on the Player Class
+	(1 Hour 30 Minutes)
 	
