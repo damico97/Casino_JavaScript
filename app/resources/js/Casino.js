@@ -228,7 +228,7 @@ document.getElementById("button_gameBoard_computer").addEventListener('click', f
 
 		tournament.changeHumanTurn();
 
-		if (suggestedMove.getSuggestion() == CAPTURE) {
+		if (suggestedMove.getSuggestion() === CAPTURE) {
 			tournament.setLastCapture("Computer");
 		}
 

@@ -47,13 +47,16 @@ class Computer extends Player {
             }
         }
 
-        if (suggestion == 1) {
+        if (suggestion === 1) {
             return this.createBuild(move, table);
         }
-        else if (suggestion == 4) {
+        else if (suggestion === 2) {
+            return this.createMultiBuild(move, table);
+        }
+        else if (suggestion === 4) {
             return this.captureCards(move, table);
         }
-        else if (suggestion == 5) {
+        else if (suggestion === 5) {
             return this.trailCard(move, table);
         }
         else {

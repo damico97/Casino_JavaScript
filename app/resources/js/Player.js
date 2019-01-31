@@ -212,7 +212,7 @@
 		for (var i = move.moveTableCardLength() - 1; i >= 0; i--) {
 			var tableCard = move.moveGetTableCard(i);
 			var tableIndex = table.findTableCardIndex(tableCard);
-			table.deleteTableBuildAtIndex(tableIndex);
+			table.deleteTableCardAtIndex(tableIndex);
 
 			temp += "the " + tableCard.getName() + "<br>";
 
@@ -225,9 +225,11 @@
 			}
 		}
 
-		temp += "Using the build of " + build.getBuildValue + " that is on the table<br>";
+		temp += "Using the build of " + build.getBuildValue() + " that is on the table<br>";
 
 		table.getTableBuildAtIndex(buildIndex).addToBuildCards(newBuildInput);
+
+		move.resetMove();
 
 		return temp;
 	}
@@ -291,7 +293,7 @@
 		}
 
 		for (var i = 0; i < table.tableBuildLength(); i++) {
-			if (table.getTableBuildAtIndex(i).getBuildOwner() === "Human") {
+			if (table.getTableBuildAtIndex(i).getBuildOwner() === this.mName) {
 				if (table.getTableBuildAtIndex(i).getBuildValue() === cardValue) {
 					return true;
 				}
@@ -299,6 +301,22 @@
 		}
 
 		return false;
+	}
+
+	checkForPossibleMultiBuild(cardValue, table) {
+		if (cardValue === 1) {
+			cardValue += 13;
+		}
+		// Loop through the builds on the table
+		for (var i = 0; i < table.tableBuildLength(); i++) {
+			if (table.getTableBuildAtIndex(i).getBuildOwner() === this.mName) {
+				if (table.getTableBuildAtIndex(i).getBuildValue() === cardValue) {
+					return i;
+				}
+			}
+		}
+
+		return -1;
 	}
 	 
 	findNextMove(suggestedMove, table) {
@@ -313,6 +331,7 @@
 
 		var handCardValue = -1;
 		var captureSetIndex = -1;
+		var multiBuildIndex = 0;
 
 		var smallHand = new Array();
 
@@ -336,11 +355,21 @@
 
 				for (var k = 0; k < table.tableCardLength(); k++) {
 					if (handCardValue === this.mPlayerHand[i].getValue() + tableCards[k].getValue()) {
-						if (!this.checkIfBuildCard(handCardValue, table)) {
-							suggestedMove.setHandCard(this.mPlayerHand[i].getAbbv());
-							suggestedMove.suggestedMoveAddTableCard(table.getTableCardAtIndex(k).getAbbv());
-							suggestedMove.setSuggestion(BUILD);
-							return;
+						if (!this.checkIfBuildCard(this.mPlayerHand[i].getValue(), table)) {
+							multiBuildIndex = this.checkForPossibleMultiBuild(handCardValue, table);
+							if (multiBuildIndex == -1) {
+								suggestedMove.setHandCard(this.mPlayerHand[i].getAbbv());
+								suggestedMove.suggestedMoveAddTableCard(table.getTableCardAtIndex(k).getAbbv());
+								suggestedMove.setSuggestion(BUILD);
+								return;
+							}
+							else {
+								suggestedMove.setHandCard(this.mPlayerHand[i].getAbbv());
+								suggestedMove.suggestedMoveAddTableBuild(table.getTableBuildAtIndex(multiBuildIndex).getAbbv());
+								suggestedMove.suggestedMoveAddTableCard(table.getTableCardAtIndex(k).getAbbv());
+								suggestedMove.setSuggestion(MULTIBUILD);
+								return;
+							}
 						}
 					}
 					else {
@@ -349,12 +378,23 @@
 
 						for (var l = 0; l < smallTableCards.length; l++) {
 							if (handCardValue === this.mPlayerHand[i].getValue() + tableCards[k].getValue() + smallTableCards[l].getValue()) {
-								if (!this.checkIfBuildCard(handCardValue, table)) {
-									suggestedMove.setHandCard(this.mPlayerHand[i].getAbbv());
-									suggestedMove.suggestedMoveAddTableCard(table.getTableCardAtIndex(k).getAbbv());
-									suggestedMove.suggestedMoveAddTableCard(smallTableCards[l].getAbbv());
-									suggestedMove.setSuggestion(BUILD);
-									return;
+								if (!this.checkIfBuildCard(this.mPlayerHand[i].getValue(), table)) {
+									multiBuildIndex = this.checkForPossibleMultiBuild(handCardValue, table);
+									if (multiBuildIndex == -1) {
+										suggestedMove.setHandCard(this.mPlayerHand[i].getAbbv());
+										suggestedMove.suggestedMoveAddTableCard(table.getTableCardAtIndex(k).getAbbv());
+										suggestedMove.suggestedMoveAddTableCard(smallTableCards[l].getAbbv());
+										suggestedMove.setSuggestion(BUILD);
+										return;
+									}
+									else {
+										suggestedMove.setHandCard(this.mPlayerHand[i].getAbbv());
+										suggestedMove.suggestedMoveAddTableBuild(table.getTableBuildAtIndex(multiBuildIndex).getAbbv());
+										suggestedMove.suggestedMoveAddTableCard(table.getTableCardAtIndex(k).getAbbv());
+										suggestedMove.suggestedMoveAddTableCard(smallTableCards[l].getAbbv());
+										suggestedMove.setSuggestion(MULTIBUILD);
+										return;
+									}
 								}
 							}
 							else {
@@ -363,13 +403,25 @@
 
 								for (var m = 0; m < smallSmallTableCards.length; m++) {
 									if (handCardValue === this.mPlayerHand[i].getValue() + tableCards[k].getValue() + smallTableCards[l].getValue() + smallSmallTableCards[m].getValue()) {
-										if (!this.checkIfBuildCard(handCardValue, table)) {
-											suggestedMove.setHandCard(this.mPlayerHand[i].getAbbv());
-											suggestedMove.suggestedMoveAddTableCard(table.getTableCardAtIndex(k).getAbbv());
-											suggestedMove.suggestedMoveAddTableCard(smallTableCards[l].getAbbv());
-											suggestedMove.suggestedMoveAddTableCard(smallSmallTableCards[m].getAbbv());
-											suggestedMove.setSuggestion(BUILD);
-											return;
+										if (!this.checkIfBuildCard(this.mPlayerHand[i].getValue(), table)) {
+											multiBuildIndex = this.checkForPossibleMultiBuild(handCardValue, table);
+											if (multiBuildIndex == -1) {
+												suggestedMove.setHandCard(this.mPlayerHand[i].getAbbv());
+												suggestedMove.suggestedMoveAddTableCard(table.getTableCardAtIndex(k).getAbbv());
+												suggestedMove.suggestedMoveAddTableCard(smallTableCards[l].getAbbv());
+												suggestedMove.suggestedMoveAddTableCard(smallSmallTableCards[m].getAbbv());
+												suggestedMove.setSuggestion(BUILD);
+												return;
+											}
+											else {
+												suggestedMove.setHandCard(this.mPlayerHand[i].getAbbv());
+												suggestedMove.suggestedMoveAddTableBuild(table.getTableBuildAtIndex(multiBuildIndex).getAbbv());
+												suggestedMove.suggestedMoveAddTableCard(table.getTableCardAtIndex(k).getAbbv());
+												suggestedMove.suggestedMoveAddTableCard(smallTableCards[l].getAbbv());
+												suggestedMove.suggestedMoveAddTableCard(smallSmallTableCards[m].getAbbv());
+												suggestedMove.setSuggestion(MULTIBUILD);
+												return;
+											}
 										}
 									}
 									else {
@@ -378,9 +430,20 @@
 
 										for (var n = 0; n < smallSmallSmallTableCards.length; n++) {
 											if (handCardValue === this.mPlayerHand[i].getValue() + tableCards[k].getValue() + smallTableCards[l].getValue() + smallSmallTableCards[m].getValue() + smallSmallSmallTableCards[n].getValue()) {
-												if (!this.checkIfBuildCard(handCardValue, table)) {
+												multiBuildIndex = this.checkForPossibleMultiBuild(handCardValue, table);
+												if (multiBuildIndex == -1) {
 													suggestedMove.setHandCard(this.mPlayerHand[i].getAbbv());
-													suggestedMove.suggestedMoveAddTableCard(table.getTableCardAtIndex(k).getAbbv());
+													suggestedMove.suggestedMoveAddTableCard(tableCards[k].getAbbv());
+													suggestedMove.suggestedMoveAddTableCard(smallTableCards[l].getAbbv());
+													suggestedMove.suggestedMoveAddTableCard(smallSmallTableCards[m].getAbbv());
+													suggestedMove.suggestedMoveAddTableCard(smallSmallSmallTableCards[n].getAbbv());
+													suggestedMove.setSuggestion(BUILD);
+													return;
+												}
+												else {
+													suggestedMove.setHandCard(this.mPlayerHand[i].getAbbv());
+													suggestedMove.suggestedMoveAddTableBuild(table.getTableBuildAtIndex(multiBuildIndex).getAbbv());
+													suggestedMove.suggestedMoveAddTableCard(tableCards[k].getAbbv());
 													suggestedMove.suggestedMoveAddTableCard(smallTableCards[l].getAbbv());
 													suggestedMove.suggestedMoveAddTableCard(smallSmallTableCards[m].getAbbv());
 													suggestedMove.suggestedMoveAddTableCard(smallSmallSmallTableCards[n].getAbbv());
