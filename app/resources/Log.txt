@@ -280,4 +280,14 @@ Jan 31, 2019:
 	- Made the Multi tag in the build views functional, now that multi-builds are functional in the game
 	(15 Minutes)
 
-	
+	- Added to the ConsoleLog to record the builds and the builds owner that are on the table
+	(15 Minutes)
+
+	- More Bug fixing with the findNextMove() function for finding builds to create, making sure it doesn't 
+	use the same card as the hand card and the capture card for the build it's trying to create
+	(30 Minutes)
+
+	- Finished the ConsoleLog so that everything piece of information is recorded, also this function will be 
+	used for writing the serialization file
+	(15 Minutes)
+TOTAL: 5.25 Hours

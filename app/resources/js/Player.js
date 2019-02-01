@@ -759,6 +759,7 @@
 					}
 				}
 			}
+			smallHand = [];
 		}
 
 		// Look For Cards to Capture

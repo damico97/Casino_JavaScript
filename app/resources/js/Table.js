@@ -103,4 +103,14 @@
 
 		return temp;
 	}
+
+	tableBuildsToString() {
+		var temp = "";
+
+		for (var i = 0; i < this.tableBuildLength(); i++) {
+			temp += this.mTableBuilds[i].buildToString() + " ";
+		}
+
+		return temp;
+	}
  }

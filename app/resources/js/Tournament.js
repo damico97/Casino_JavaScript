@@ -67,6 +67,15 @@ class Tournament {
         this.mHumanTurn = turn;
     }
 
+    getNextPlayer() {
+        if (this.mHumanTurn) {
+            return "Computer";
+        }
+        else {
+            return "Human";
+        }
+    }
+
     setLastCapture(player) {
         this.mLastCapture = player;
     }
@@ -155,15 +164,20 @@ class Tournament {
         temp += "\u00A0\u00A0\u00A0\u00A0" + "Hand: " + this.mHuman.handToString() + "<br>";
         temp += "\u00A0\u00A0\u00A0\u00A0" + "Pile: " + this.mHuman.pileToString() + "<br><br>";
 
-        temp += "Table: " + this.mTable.tableLooseCardsToString() + "<br><br>";
+        temp += "Table: " + this.mTable.tableBuildsToString() + "  " + this.mTable.tableLooseCardsToString() + "<br><br>";
 
-        temp += "Build Owner: " + "<br><br>";
+        temp += "Build Owner: ";
+        for (var i = 0; i < this.mTable.tableBuildLength(); i++) {
+            temp += this.mTable.getTableBuildAtIndex(i).buildToString() + " ";
+            temp += this.mTable.getTableBuildAtIndex(i).getBuildOwner() + "  ";
+        }
+        temp += "<br><br>";
 
         temp += "Last Capture: " + this.getLastCapture() + "<br><br>";
 
         temp += "Deck: " + this.mDeck.deckToString() + "<br><br>";
 
-        temp += "Next Player: " + "<br>";
+        temp += "Next Player: " + this.getNextPlayer() + "<br>";
         temp += "------------------------------------------------------------------------------------------------------------------------------------------------------";
 
         return temp;
