@@ -174,6 +174,7 @@ class BoardViews {
 			nView.setValue(table.getTableBuildAtIndex(i).getBuildValue());
 			nView.setString(table.getTableBuildAtIndex(i).buildToString());
 			nView.setOwner(table.getTableBuildAtIndex(i).getBuildOwner());
+			nView.setMulti(table.getTableBuildAtIndex(i).checkMulti());
 
 			nView.setAttribute("id", i);
 

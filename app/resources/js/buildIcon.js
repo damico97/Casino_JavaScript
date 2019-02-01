@@ -20,7 +20,7 @@ class BuildIcon extends HTMLElement {
         this._buildString = nString;
     }
 
-    setMulit(nBool) {
+    setMulti(nBool) {
         this._buildMulti = nBool;
     }
 

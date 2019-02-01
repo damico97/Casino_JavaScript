@@ -64,6 +64,15 @@ class Build {
         return temp;
     }
 
+    checkMulti() {
+        if (this.buildLength() > 1) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
     setBuildValue(nValue) {
         this.mBuildValue = nValue;
     }

@@ -276,4 +276,8 @@ Jan 31, 2019:
 
 	- Documentation on the Player Class
 	(1 Hour 30 Minutes)
+
+	- Made the Multi tag in the build views functional, now that multi-builds are functional in the game
+	(15 Minutes)
+
 	
