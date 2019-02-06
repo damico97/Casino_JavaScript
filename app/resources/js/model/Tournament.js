@@ -182,4 +182,90 @@ class Tournament {
 
         return temp;
     }
+
+    saveGameToFile(fileName) {
+        /*
+        require(['./js/scripts/fs.js'], function (js) {
+            //foo is now loaded.
+            var fs = require('fs');
+
+            fs.writeFile('./saveFiles/demo.txt', 'This is a test', function(err) {
+                if(err) {
+                    return console.log(err);
+                }
+
+                console.log("Success");
+            });
+        });
+        */
+        /*
+        var fs = require('./js/scripts/fs.js');
+
+        fs.writeFile('./saveFiles/demo.txt', 'This is a test', function(err) {
+            if(err) {
+                return console.log(err);
+            }
+
+            console.log("Success");
+        });
+        */
+    }
+
+    loadDeckFile() {
+        var cards = new Array();
+        var shortLine = "";
+
+        //var fileString = "Deck: S5 C2 DK C7 H3 H5 SJ S3 D5 D7 HJ S6 H4 SQ C8 D3 D9 HQ HK CA DQ S7 C9 HA CK H9 DA CJ C3 SX D2 HX CQ C4 D8 D4 S4 H2 S2 C6 SK C5 DX H6 SA H8 DJ S8 CX D6 H7 S9\n\n";
+        //var fileString = "Deck: S5 C2 DK C7 H3 H5 SJ S3 C4 D8 D4 S4 H2 S2 C6 SK C5 DX H6 SA H8 DJ S8 CX D6 H7 S9\n\n";
+        var fileString;
+
+        var client = new XMLHttpRequest();
+        client.open('GET', '/assets/deck.txt' , false);
+        client.onreadystatechange = function() {
+            fileString = client.responseText;
+        };
+        client.send();
+
+        while(fileString) {
+            if (fileString.substring(0, fileString.indexOf(":")) === "Deck") {
+                shortLine = fileString.substring(fileString.indexOf(":") + 2);
+                shortLine = shortLine.substring(0, shortLine.length - 2);
+                //shortLine.replace("/\n/g", "\0");
+                shortLine += " ";
+                shortLine.replace("/\s/g", " ");
+
+                if (!shortLine.match("/\S/g")) {
+                    var card = "";
+
+                    while (shortLine) {
+                        card = shortLine.substring(0, shortLine.indexOf(" ", 0));
+
+                        if (undefined === cards) {
+                            cards = new Array();
+                            cards[0] = card;
+                        }
+                        else {
+                            cards.push(card);
+                        }
+
+                        shortLine = shortLine.substring(shortLine.indexOf(" ", 2) + 1, shortLine.length);
+
+                        if (shortLine.match("/\s/")) {
+                            shortLing = "";
+                        }
+                    }
+
+                    for (var i = 0; i < cards.length; i++) {
+                        console.log(cards[i]);
+                        var nCard = new Card();
+                        nCard.newCardFromAbbv(cards[i]);
+                        this.mDeck.addCardToDeck(nCard);
+                    }
+                }
+                fileString = "";
+            }
+        }
+
+        return;
+    }
 }

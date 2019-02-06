@@ -1,0 +1,104 @@
+@charset "UTF-8";
+
+    /* ----------------------------------------------------------------------------------------------- */
+	/* CSS For Coin Toss Page*/
+	.coinTossBox {
+		position: absolute;
+		top: 275px;
+		left: 400px;
+		width: 900px;
+		height:300px;
+		background-color: azure;
+		border-radius: 50px;
+
+		text-align: center;
+	}
+
+	.coinTossBox .title {
+		margin-top: 20px;
+		margin-left: auto;
+		font-size: 28px;
+		font-weight: 600;
+	}
+
+	.coinTossBox .prompt {
+		margin-top: 10px;
+		margin-left: auto;
+		font-size: 20px;
+		font-weight: 400;
+	}
+
+	.coinTossBox .headsTitle {
+		position: absolute;
+		top: 115px;
+		left: 205px;
+		font-size: 24px;
+		font-weight: 500;
+	}
+
+	.coinTossBox .heads img {
+		width: 150px;
+		height: 150px;
+		position: absolute;
+		top:150px;
+		left: 175px;
+		border-radius: 100px;
+		cursor: pointer;
+	}
+
+	.coinTossBox .tailsTitle {
+		position: absolute;
+		top: 115px;
+		left: 615px;
+		font-size: 24px;
+		font-weight: 500;
+	}
+	
+	.coinTossBox .tails img {
+		width: 150px;
+		height: 150px;
+		position: absolute;
+		top:150px;
+		left: 575px;
+		border-radius: 100px;
+		cursor: pointer;
+	}
+
+	.tossControls {
+		position: absolute;
+		top: 600px;
+		left: 760px;
+	}
+
+	.tossControls .gameStart button {
+		height: 50px;
+		width: 150px;
+		border-radius: 15px;
+		background-color: #fff;
+		color: black;
+		font-size: 20px;
+		font-weight: 500;
+		padding: 1px;
+		margin-left: 10px;
+		margin-right: 5px;
+		cursor: pointer;
+	}
+
+	.loadDeck {
+		padding-top: 15px;
+	}
+
+	.tossControls .loadDeck button {
+		height: 50px;
+		width: 150px;
+		border-radius: 15px;
+		background-color: #fff;
+		color: black;
+		font-size: 20px;
+		font-weight: 500;
+		padding: 1px;
+		margin-left: 10px;
+		margin-right: 5px;
+		cursor: pointer;
+	}
+	/* ----------------------------------------------------------------------------------------------- */

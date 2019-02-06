@@ -89,6 +89,10 @@ class Build {
         return this.mBuildOwner;
     }
 
+    extendBuild(nCards) {
+        this.mBuildCards[0] = this.mBuildCards[0].concat(nCards);
+    }
+
     addToBuildCards(nCards) {
         if (undefined === this.mBuildCards) {
             this.mBuildCards = new Array();

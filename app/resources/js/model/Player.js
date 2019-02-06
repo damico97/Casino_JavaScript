@@ -303,7 +303,7 @@
 	 * createBuild(), Uses the move class that has been set either by the Human or the Computer AI and creates the Build
 	 * @param move -> The Instance of the Move Class that has been set 
 	 * @param table -> The Table Class so we Can modify the table with our move
-	 * @return A String will the move explained in text form
+	 * @return A String that will the move explained in text form
 	 */
 	createBuild(move, table) {
 		var temp = "";
@@ -362,7 +362,7 @@
 	 * createMultiBuild(), Uses the move class that has been set by the Human or the AI and creates a Multi-Build
 	 * @param move -> The Instance of the Move Class that has been set 
 	 * @param table -> The Table Class so we Can modify the table with our move
-	 * @return A String will the move explained in text form
+	 * @return A String that will the move explained in text form
 	 */
 	createMultiBuild(move, table) {
 		var temp = "";
@@ -422,10 +422,82 @@
 
 
 	/**
+	 * createExtendedBuild(), Allows the player to create an extended build using on of the opponets builds
+	 * @param move -> The Instance of the Move Class that has been set 
+	 * @param table -> The Table Class so we Can modify the table with our move
+	 * @return A String that will the move explained in text form
+	 */
+	createExtendedBuild(move, table) {
+		var temp = "";
+
+		// Array to store the new cards that are going to be added as the next set in the build
+		var newBuildInput = new Array();
+
+		// Get the hand card from the move class
+		var card = move.getHandCard();
+		// Find it's index in the player's array
+		var index = this.mPlayerHand.indexOf(card);
+		
+		// Get the build from the move class
+		var build = move.moveGetTableBuild(0);
+		// Get the builds index from the table array
+		var buildIndex = table.findTableBuildIndex(build);
+
+		// Remove the handcard from the player's hand
+		this.mPlayerHand.splice(index, 1);
+
+		temp = "Played the " + card.getName() + " to extend it's opponet's build of " + build.getBuildValue() + " with...<br>";
+		temp += "the " + card.getName() + "<br>";
+
+		// Add the hand card to the array of card to be added to the build
+		newBuildInput[0] = card;
+
+		// Calculate the new Value of the Build
+		var newValue = card.getValue();
+
+		for (var i = move.moveTableCardLength() - 1; i >= 0; i--) {
+			// Get the table card from the move class
+			var tableCard = move.moveGetTableCard(i);
+			// Get the cards index
+			var tableIndex = table.findTableCardIndex(tableCard);
+
+			// Delete the card from the table
+			table.deleteTableCardAtIndex(tableIndex);
+
+			temp += "the " + tableCard.getName() + "<br>";
+
+			// Add the value of the card
+			newValue += tableCard.getValue();
+
+			// Add the card to the new build cards array
+			if (undefined === newBuildInput) {
+				newBuildInput = new Array();
+				newBuildInput[0] = tableCard;
+			}
+			else {
+				newBuildInput.push(tableCard);
+			}
+		}
+
+		// Add the value of the build to the new value
+		newValue += table.getTableBuildAtIndex(buildIndex).getBuildValue();
+
+		// Add the new build cards array to the build
+		table.getTableBuildAtIndex(buildIndex).extendBuild(newBuildInput);
+		table.getTableBuildAtIndex(buildIndex).setBuildOwner(this.mName);
+		table.getTableBuildAtIndex(buildIndex).setBuildValue(newValue);
+
+		// Reset the move class
+		move.resetMove();
+		return temp;
+	}
+
+
+	/**
 	 * captureCards(), Takes the move class that has already been set by the Human or AI and executes captureing cards
 	 * @param move -> The Instance of the Move Class that has been set 
 	 * @param table -> The Table Class so we Can modify the table with our move
-	 * @return A String will the move explained in text form
+	 * @return A String that will the move explained in text form
 	 */
  	captureCards(move, table) {
 		var temp = "";
@@ -486,7 +558,7 @@
 	 * trailCard(), Takes the move class that has been set and trails the card
 	 * @param move -> The Instance of the Move Class that has been set 
 	 * @param table -> The Table Class so we Can modify the table with our move
-	 * @return A String will the move explained in text form
+	 * @return A String that will the move explained in text form
 	 */
  	trailCard(move, table) {
 		var temp = "";
@@ -564,6 +636,38 @@
 		// No possibe multi-build
 		return -1;
 	}
+
+
+	/**
+	 * getOpponentsBuilds(), Returns an Array with all the builds that could be used to extend
+	 * @param table -> Access to the table to see what is on it 
+	 * @return An array with all the buidls that could be used to extend
+	 */
+	getOpponentsBuilds(table) {
+		// Array to store the builds that could be used
+		var builds = new Array();
+
+		// Loop through the builds on the table
+		for (var i = 0; i < table.tableBuildLength(); i++) {
+			// Check if the build is not owned by the current user
+			if (table.getTableBuildAtIndex(i).getBuildOwner() != this.mName) {
+				// Check if the build is a multi-build
+				if (!table.getTableBuildAtIndex(i).checkMulti()) {
+					// Add the build to the possible build array
+					if (undefined == builds) {
+						builds = new Array();
+						builds[0] = table.getTableBuildAtIndex(i);
+					}
+					else {
+						builds.push(table.getTableBuildAtIndex(i));
+					}
+				}
+			}
+		}
+
+		// Return the possible builds array
+		return builds;
+	}
 	 
 
 	/**
@@ -591,6 +695,82 @@
 		var smallTableCards = new Array();
 		var smallSmallTableCards = new Array();
 		var smallSmallSmallTableCards = new Array();
+
+		// Check For Possible Builds To Extend
+		var possibleBuilds = this.getOpponentsBuilds(table);
+		// Loop through the players hand
+		for (var i = 0; i < this.handLength(); i++) {
+			// Get the value of the capture card
+			handCardValue = this.mPlayerHand[i].getValue();
+
+			// If the card is an Ace treat it as 14
+			if (handCardValue === 1) {
+				handCardValue += 13;
+			}
+
+			// Create a shortened version of the player's hand removing the capture card
+			smallHand = smallHand.concat(this.mPlayerHand);
+			smallHand.splice(i, 1);
+
+			// Loop through the shortened hand
+			for (var j = 0; j < smallHand.length; j++) {
+				// Loop through the possible builds to extend
+				for (var k = 0; k < possibleBuilds.length; k++) {
+					// Check if the hand card is a capture card for another build
+					if (!this.checkIfBuildCard(smallHand[j].getValue(), table)) {
+						// Check if the values add up
+						if (possibleBuilds[k].getBuildValue() + smallHand[j].getValue() === handCardValue) {
+							// Set the Move
+							suggestedMove.setHandCard(smallHand[j].getAbbv());
+							suggestedMove.suggestedMoveAddTableBuild(possibleBuilds[k].getAbbv());
+							suggestedMove.setSuggestion(EXTENDBUILD);
+							return;
+						}
+						else {
+							// Try making the move with 1 losse card from the table
+							// Loop through the cards on the table
+							for (var l = 0; l < table.tableCardLength(); l++) {
+								// Check if the values add up
+								if (possibleBuilds[k].getBuildValue() + smallHand[j].getValue() + table.getTableCardAtIndex(l).getValue() === handCardValue) {
+									// Set the Move
+									suggestedMove.setHandCard(smallHand[j].getAbbv());
+									suggestedMove.suggestedMoveAddTableBuild(possibleBuilds[k].getAbbv());
+									suggestedMove.suggestedMoveAddTableCard(table.getTableCardAtIndex(l).getAbbv());
+									suggestedMove.setSuggestion(EXTENDBUILD);
+									return;
+								}
+								// Try making the move with 2 loose cards from the table
+								else {
+									// Create a shortened version of the cards on the table
+									smallTableCards = smallTableCards.concat(table.getTableCards());
+									smallTableCards.splice(l, 1);
+
+									// Loop through the shortened set of table cards
+									for (var m = 0; m < smallTableCards.length; m++) {
+										// Check if the values add up
+										if (possibleBuilds[k].getBuildCards() + smallHand[j].getValue() + table.getTableCardAtIndex(l).getValue() + smallTableCards[m].getValue() === handCardValue) {
+											// Set the Move
+											suggestedMove.setHandCard(smallHand[j].getAbbv());
+											suggestedMove.suggestedMoveAddTableBuild(possibleBuilds[k].getAbbv());
+											suggestedMove.suggestedMoveAddTableCard(table.getTableCardAtIndex(l).getAbbv());
+											suggestedMove.suggestedMoveAddTableCard(smallTableCards[m].getAbbv());
+											suggestedMove.setSuggestion(EXTENDBUILD);
+											return;
+										}
+									}
+
+									// Clear the small Table sets
+									smallTableCards = [];
+								}
+							}
+						}
+					}
+				}	
+			}
+
+			// Clear the small hand set
+			smallHand = [];
+		}
 
 		// Check For Builds and Multi-Build to Create
 		for (var i = 0; i < this.handLength(); i++) {

@@ -291,3 +291,37 @@ Jan 31, 2019:
 	used for writing the serialization file
 	(15 Minutes)
 TOTAL: 5.25 Hours
+
+
+February 1, 2019:
+	- Worked on the End of Tournament layouts
+	(45 Minutes)
+TOTAL: 45 Minutes
+
+
+February 3, 2019:
+	- Reconfigured the Check Game Status function to accomadate the the ending of the tournament and finished 
+	the end tournament views, and tested the scoring functions.
+	(1 Hour)
+
+	- Cleaned up how the game is handeled between the different files and functions throughout the program, 
+	continued tested to find any bugs with the program.
+	(1 Hour)
+
+	- Added the ability for the the user to extend its opponets builds, if they're holding a card with a value 
+	matching the new value of the extended build.
+	(45 Minutes)
+
+	- Tested the new extend build functionallity
+	(1 Hour)
+
+	- Added the ability for the computer to extend the human's builds. Using upto 2 loose cards from the table
+	(45 Minutes)
+
+	- Testing the ability for the computer to extend builds
+	(30 Minutes)
+
+	- Game Play seems to be compeleted
+	(15 Minutes)
+
+	

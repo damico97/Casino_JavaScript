@@ -104,6 +104,20 @@
 	}
 
 
+	/**
+	 * 
+	 */
+	addCardToDeck(nCard) {
+		if (undefined == this.mCardDeck) {
+			this.mCardDeck = new Array();
+			this.mCardDeck[0] = nCard;
+		}
+		else {
+			this.mCardDeck.push(nCard);
+		}
+	}
+
+
  	/**
  	 * initializeDeck(), Creates a New Deck, fills the deck, and calls the shuffle function
  	 * @param None

@@ -19,21 +19,53 @@
         
 		<title>Casino Game</title>
 
-		<!-- Roboto font embed -->
+		<!-- Roboto Font Embed -->
 		<link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700" rel="stylesheet">
         
 
 		<!-- Stylesheets -->
+		<link rel="stylesheet" type="text/css" href="css/coinToss.css">
+		<link rel="stylesheet" type="text/css" href="css/console.css">
+		<link rel="stylesheet" type="text/css" href="css/endPages.css">
+		<link rel="stylesheet" type="text/css" href="css/gameBoard.css">
+		<link rel="stylesheet" type="text/css" href="css/welcome.css">
 		<link rel="stylesheet" type="text/css" href="css/reset.css">
 		<link rel="stylesheet" type="text/css" href="css/style.css">
 
-		<script src="js/buildIcon.js"></script>
+		<!-- Scripts For Build Icons -->
+		<script src="js/view/buildIcon.js"></script>
 	</head>
 
 
 	<body>
+		<!-- Welcome Page -->
+		<div id="PageWelcome">
+			<header>
+				<title>Casino</title>
+			</header>
+
+			<div class="welcomeTitle">
+				<div class="text">WELCOME TO CASINO</div>
+			</div>
+
+			<div class="center">
+				<img src="images/cards/card_sa.png">
+			</div>
+
+			<div class="welcomeButtons">
+				<div class="newGame">
+					<button id="button_welcome_newGame">Start New Game</button>
+				</div>
+				<div class="loadGame">
+					<button id="button_welcome_loadGame">Load Saved Game</button>
+				</div>
+			</div>
+		</div>
+		<!-- End Welcom Page -->
+
+
 		<!-- Coin Toss Page -->
-		<div id="PageCoinToss">
+		<div id="PageCoinToss"  style="display:none">
 			<header>
 				<title>Coin Toss</title>
 			</header>
@@ -56,7 +88,7 @@
 					<button id="coin_toss_button_start">Start Game</button>
 				</div>
 				<div class="loadDeck">
-					<button>Load Deck</button>
+					<button id="coin_toss_button_loadDeck">Load Deck</button>
 				</div>
 			</div>
 		</div>
@@ -156,7 +188,7 @@
 				<div class="pileSize">Pile Size</div>
 				<div class="numSpades">Number of Spades</div>
 				<div class="roundPoints">Total<br>Round Points</div>
-				<div class="roundWinner" id="RoundWinner">😃😃😃 Your The Winner!!! 😃😃😃</div>
+				<div class="roundWinner" id="RoundWinner">😃😃😃 You're The Winner!!! 😃😃😃</div>
 			</div>
 
 			<div class="RoundHuman">
@@ -180,10 +212,38 @@
 		<div id="PageTournamentEnd" style="display:none">
 			<header>
 				<title>Tournament Over</title>
+				<button id="button_tournamentEnd_exit">Exit</button>
+				<button id="button_tournamentEnd_console">View Console</button>
 			</header>
 
-			<div class="background">
-				
+			<div class="TournamentHumanTotal">Your Total Score</div>
+			<div class="TournamentHumanTotalScore" id="EndTournamentHumanTotal">8</div>
+
+			<div class="TournamentComputerTotal">Computer's Total Score</div>
+			<div class="TournamentComputerTotalScore" id="EndTournamentComputerTotal">3</div>
+
+			<div class="center">
+				<div class="title">Tournament Over</div>
+				<div class="scores">Round Scores</div>
+				<div class="pileSize">Pile Size</div>
+				<div class="numSpades">Number of Spades</div>
+				<div class="roundPoints">Total<br>Round Points</div>
+				<div class="roundWinner" id="TournamentRoundWinner">😃😃😃 You're The Round Winner!!! 😃😃😃</div>
+				<div class="tournamentWinner" id="TournamentWinner">😃😃😃 You Won The Game!!! 😃😃😃</div>
+			</div>
+
+			<div class="TournamentHuman">
+				<div class="yourScores">Your Scores</div>
+				<div class="humanPileSize" id="EndTournamentHumanPileSize">23</div>
+				<div class="humanNumSpades" id="EndTournamentHumanNumSpades">6</div>
+				<div class="humanRoundPoints" id="EndTournamentHumanPoints">8</div>
+			</div>
+
+			<div class="TournamentComputer">
+				<div class="computerScores">Computer Scores</div>
+				<div class="computerPileSize" id="EndTournamentComputerPileSize">33</div>
+				<div class="computerNumSpades" id="EndTournamentComputerNumSpades">9</div>
+				<div class="computerRoundPoints" id="EndTournamentComputerPoints">9</div>
 			</div>
 		</div>
 		<!-- End Tournament End Page -->
@@ -208,20 +268,34 @@
 
 
 	<!-- JavaScripts -->
-	<script src="js/Card.js"></script>
-	<script src="js/Deck.js"></script>
-	<script src="js/Build.js"></script>
-	<script src="js/Player.js"></script>
-	<script src="js/Computer.js"></script>
-	<script src="js/Table.js"></script>
-	<script src="js/Move.js"></script>
-	<script src="js/SuggestedMove.js"></script>
-	<script src="js/ConsoleLog.js"></script>
-	<script src="js/Tournament.js"></script>
-	<script src="js/Round.js"></script>
-	<script src="js/BoardViews.js"></script>
-	<script src="js/ViewsConsole.js"></script>
-	<script src="js/ViewsCoinToss.js"></script>
-	<script src="js/ViewsRoundEnd.js"></script>
-	<script src="js/Casino.js"></script>
+
+	<!-- Model JS Files -->
+	<script src="js/model/Card.js"></script>
+	<script src="js/model/Deck.js"></script>
+	<script src="js/model/Build.js"></script>
+	<script src="js/model/Player.js"></script>
+	<script src="js/model/Computer.js"></script>
+	<script src="js/model/Table.js"></script>
+	<script src="js/model/Move.js"></script>
+	<script src="js/model/SuggestedMove.js"></script>
+	<script src="js/model/ConsoleLog.js"></script>
+	<script src="js/model/Tournament.js"></script>
+	<script src="js/model/Round.js"></script>
+	
+	<!-- View JS Files -->
+	<script src="js/view/ViewsBoard.js"></script>
+	<script src="js/view/ViewsConsole.js"></script>
+	<script src="js/view/ViewsCoinToss.js"></script>
+	<script src="js/view/ViewsRoundEnd.js"></script>
+	<script src="js/view/ViewsTournamentEnd.js"></script>
+
+	<!-- Main JS File -->
+	<!--<script src="js/model/Casino.js"></script>-->
+
+	<!-- JavaScripts -->
+	<!-- data-main attribute tells require.js to load scripts/main.js after require.js loads. -->
+	<script data-main="js/model/Casino" src="js/model/require.js"></script>
+	<!--<script src="js/model/fs.js"></script>-->
+
+	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
 </html>

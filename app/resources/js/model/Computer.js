@@ -53,6 +53,9 @@ class Computer extends Player {
         else if (suggestion === 2) {
             return this.createMultiBuild(move, table);
         }
+        else if (suggestion === 3) {
+            return this.createExtendedBuild(move, table);
+        }
         else if (suggestion === 4) {
             return this.captureCards(move, table);
         }

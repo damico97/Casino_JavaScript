@@ -230,4 +230,32 @@
 			return false;
 		}
 	}
+
+	checkPossibleExtendBuild(human) {
+		var tempSum = 0;
+
+		if (this.mTableBuilds.length === 1) {
+			tempSum += this.mHandCard.getValue();
+			
+			for (var i = 0; i < this.mTableCards.length; i++) {
+				tempSum += this.mTableCards[i].getValue();
+			}
+
+			tempSum += this.mTableBuilds[0].getBuildValue();
+
+			for (var i = 0; i < human.handLength(); i++) {
+				if (human.getHandCardAtIndex(i).getValue() === tempSum || human.getHandCardAtIndex(i).getValue() + 13 === tempSum) {
+					if (this.mTableBuilds[0].getBuildOwner() === "Computer") {
+						if (!this.mTableBuilds[0].checkMulti()) {
+							return true;
+						}
+					}
+				}
+			}
+			return false;
+		}
+		else {
+			return false;
+		}
+	}
  }
