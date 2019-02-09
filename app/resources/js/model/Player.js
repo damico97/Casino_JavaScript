@@ -139,6 +139,16 @@
 
 
 	/**
+	 * getPileards(), returns the Array of cards in the Player's Pile
+	 * @param None
+	 * @return The Array of cards in the player's Pile
+	 */
+	getPileCards() {
+		return this.mPlayerPile;
+	}
+
+
+	/**
 	 * addCardToPile(), Takes in a new Card and adds it to the player's pile
 	 * @param nCard -> The new card to be added to the player's hand
 	 */

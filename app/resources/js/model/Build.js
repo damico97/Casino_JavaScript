@@ -121,6 +121,28 @@ class Build {
         }
     }
 
+    setBuildFromString(nCardList) {
+        // Loop the the 1st Dimension of the of the 2D ArrayList of abbreviations
+        for (var i = 0; i < nCardList.length; i++) {
+            if (i === 0) {
+                this.mBuildCards = new Array();
+            }
+            // Create a new ArrayList of Cards to be added to the mBuildCards 2D ArrayList of Cards
+            this.mBuildCards.push(new Array());
+            // Loop through the 2nd Dimension of the 2D ArrayList of abbreviations
+            for (var j = 0; j < nCardList[i].length; j++) {
+                var nCard = new Card();
+                nCard.newCardFromAbbv(nCardList[i][j]);
+
+                if (j === 0) {
+                    this.mBuildCards[i] = new Array();
+                }
+                // Add a new Card to the mBuildCards ArrayList at 1st Dimension index
+                this.mBuildCards[i].push(nCard);
+            }
+        }
+    }
+
     buildToString() {
         var temp = "";
 

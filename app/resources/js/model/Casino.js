@@ -82,46 +82,47 @@ function changePage(shown, hidden) {
 	return false;
 }
 
-function saveGameToFile(fileName) {
-	/*
-	var fs = require('fs');
 
-    fs.writeFile('./saveFiles/demo.txt', 'This is a test', function(err) {
-        if(err) {
-            return console.log(err);
-        }
+function readFiles(event) {
+    var fileList = event.target.files;
 
-        console.log("Success");
-	});
-	*/
-		var fs = require('fs');
-		content = "Hello Content!";
-		fs.writeFile('mynewfile3.txt', content, 'utf8', function (err) {
-			if (err) {
-				throw err;
-			}
-			console.log('Saved!');
-		});
-	
-	/*
-	require('browserify-fs', function (fs) {
-		//foo is now loaded.
-		fs = require('browserify-fs');
-		data = "Hello Content!";
-
-		fs.writeFile('mynewfile3.txt', data, function (err,data) {
-			if (err) {
-				throw err;
-			}
-			console.log('Saved!');
-		});
-	});
-	*/
+    for(var i=0; i < fileList.length; i++ ) {
+        loadAsText(fileList[i]);
+    }
 }
-// END Functions 
+
+function loadAsText(theFile) {
+    var reader = new FileReader();
+
+    reader.onload = function(loadedEvent) {
+        // result contains loaded file.
+        console.log(loadedEvent.target.result);
+    }
+    reader.readAsText(theFile);
+}
+
+function saveGameToFile(fileName) {
+
+	var pom = document.createElement('a');
+    pom.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(tournament.serializeGame().replace(/<br\s*[\/]?>/gi, "\n")));
+    pom.setAttribute('download', "textfile.txt");
+
+    if (document.createEvent) {
+        var event = document.createEvent('MouseEvents');
+        event.initEvent('click', true, true);
+        pom.dispatchEvent(event);
+	}
+	else {
+        pom.click();
+	}
+	//document.write('<input type="file" style="position" onchange="readFiles(event)" accept=".txt">');
+}
+
+
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 
+/*
 require.config({
 	//Define 3rd party plugins dependencies
 	paths: {
@@ -129,6 +130,9 @@ require.config({
 	  	//"fs": "fs"
 	}
 });
+*/
+
+
 
 // you can now use `fs`
 
@@ -163,6 +167,21 @@ round.setMembers(deck, human, computer, table, move, consoleLog);
 // EVENT LISTENERS FOR THE WELCOME PAGE
 document.getElementById("button_welcome_newGame").addEventListener('click', function() {
 	changePage("PageCoinToss", "PageWelcome");
+});
+//------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+//------------------------------------------------------------------------------------------------------------------------------------------------------
+// EVENT LISTENERS FOR THE LOAD GAME PAGE
+document.getElementById("button_load_case_1").addEventListener('click', function() {
+	tournament.loadCaseFile("/assets/case1.txt");
+});
+document.getElementById("button_load_case_2").addEventListener('click', function() {
+	tournament.loadCaseFile("/assets/case2.txt");
+});
+document.getElementById("button_load_case_3").addEventListener('click', function() {
+	tournament.loadCaseFile("/assets/case3.txt");
 });
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -304,7 +323,6 @@ document.getElementById("button_gameBoard_console").addEventListener('click', fu
 	consoleViews.setUpConsoleView(consoleLog);
 	changePage('PageConsole', 'PageGameBoard');
 });
-
 document.getElementById("button_gameBoard_save").addEventListener('click', function() {
 	saveGameToFile("text.txt");
 	changePage('PageWelcome', 'PageGameBoard');

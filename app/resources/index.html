@@ -39,7 +39,7 @@
 
 	<body>
 		<!-- Welcome Page -->
-		<div id="PageWelcome">
+		<div id="PageWelcome" style="display:none">
 			<header>
 				<title>Casino</title>
 			</header>
@@ -64,8 +64,20 @@
 		<!-- End Welcom Page -->
 
 
+		<!-- Load Saved Game Page -->
+		<div id="PageLoadGame">
+			<header>
+				<title>Load Saved Game</title>
+				<button id="button_load_case_3">Case #3</button>
+				<button id="button_load_case_2">Case #2</button>
+				<button id="button_load_case_1">Case #1</button>
+			</header>
+		</div>
+		<!-- END LOad Saved Game Page-->
+
+
 		<!-- Coin Toss Page -->
-		<div id="PageCoinToss"  style="display:none">
+		<div id="PageCoinToss" style="display:none">
 			<header>
 				<title>Coin Toss</title>
 			</header>
@@ -290,11 +302,11 @@
 	<script src="js/view/ViewsTournamentEnd.js"></script>
 
 	<!-- Main JS File -->
-	<!--<script src="js/model/Casino.js"></script>-->
+	<script src="js/model/Casino.js"></script>
 
 	<!-- JavaScripts -->
 	<!-- data-main attribute tells require.js to load scripts/main.js after require.js loads. -->
-	<script data-main="js/model/Casino" src="js/model/require.js"></script>
+	<!-- <script data-main="js/model/Casino" src="js/model/require.js"></script> -->
 	<!--<script src="js/model/fs.js"></script>-->
 
 	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>

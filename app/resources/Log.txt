@@ -323,5 +323,39 @@ February 3, 2019:
 
 	- Game Play seems to be compeleted
 	(15 Minutes)
+TOTAL: 5.25 Hours
 
-	
+
+Feb 6, 2019:
+	- Added the ability to load a deck from a text file, using an http request to access the assets files.
+	(3 Hours)
+TOTAL: 3 Hours
+
+
+Feb 7, 2019: 
+	- Was trying to figure out how to get the game to save the game state to a text file, trying multiple different 
+	things, including Node.js to get JavaScript to create a file, it took a very very long time to figure out a work 
+	around for to finally get the game to create a file and download it, as the workaround
+	(6 Hours)
+
+	- Added the ability for the file that was created and download to store the current game state in it
+	(15 Minutes)
+TOTAL: 6.25 Hours
+
+
+Feb 8, 2019:
+	- Added the ability to for load game file function to restore the round number.
+	(30 Minutes)
+
+	- Added the functionallity to restore the computers game information, score, hand and pile. And debugged the functions.
+	(1 Hour 30 Minutes)
+
+	- Added the functionallity to restore the humans game information, score, hand and pile. And debugged the functions.
+	(30 Minutes)
+
+	- Now the game can load in the loose cards that are on the table.
+	(45 Minutes)
+
+	- Started working on restoring the build information from the text file. This is not working yet
+	(45 Minutes)
+TOTAL: 4 Hours
