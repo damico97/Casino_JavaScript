@@ -368,7 +368,15 @@ Feb 9, 2019:
 	- Can now restore the Last Capurer information from the text file.
 	(15 Minutes)
 
-	- FInished the functions to load games, as of now It's only the case files that load, but that will be changed.
+	- Finished the functions to load games, as of now It's only the case files that load, but that will be changed.
 	(30 Minutes)
 
-	
+	- Added the functionallity to upload a file to load a game from, and debugged it, finding all the issues for now 
+	with loading the game.
+	(1 Hour 15 Mintues)
+
+	- Created a pop-up form for getting the user input for the name of the file that will save the game.
+	(1 Hour 30 Minutes)
+
+	- At this point, all of the major features are working in the game.
+

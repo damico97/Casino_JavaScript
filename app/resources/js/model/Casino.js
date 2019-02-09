@@ -127,7 +127,7 @@ function saveGameToFile(fileName) {
 
 	var pom = document.createElement('a');
     pom.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(tournament.serializeGame().replace(/<br\s*[\/]?>/gi, "\n")));
-    pom.setAttribute('download', "textfile.txt");
+    pom.setAttribute('download', fileName);
 
     if (document.createEvent) {
         var event = document.createEvent('MouseEvents');
@@ -362,9 +362,23 @@ document.getElementById("button_gameBoard_console").addEventListener('click', fu
 	changePage('PageConsole', 'PageGameBoard');
 });
 document.getElementById("button_gameBoard_save").addEventListener('click', function() {
-	saveGameToFile("text.txt");
+	document.getElementById("myForm").style.display = "block";
+});
+
+document.getElementById("button_gameBoard_form_submit").addEventListener('click', function() {
+	var userInput = document.getElementById("input_gameBoard_form").value;
+
+	if (userInput.substring(userInput.length - 4) != ".txt") {
+		userInput += ".txt";
+	}
+
+	saveGameToFile(userInput);
 	tournament.resetTournament();
 	changePage('PageWelcome', 'PageGameBoard');
+	document.getElementById("myForm").style.display = "none";
+});
+document.getElementById("button_gameBoard_form_close").addEventListener('click', function() {
+	document.getElementById("myForm").style.display = "none";
 });
 // END GAME BOARD PAGE
 //------------------------------------------------------------------------------------------------------------------------------------------------------
