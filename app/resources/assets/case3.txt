@@ -1,16 +1,16 @@
 Round: 2
 
 Computer:
-   Score: 5
-   Hand: CJ D8
-   Pile: C2 D3 C5
+	Score: 5
+	Hand: CJ D8
+	Pile: C2 D3 C5
 
 Human:
-   Score: 9
-   Hand: H2 HA S9
-   Pile:
+	Score: 9
+	Hand: H2 HA S9
+	Pile:
 
-Table: [ [C3 S4] ]  DA D5 HK H8 C6 S8
+Table:  [ [C3 S4] ] DA D5 HK H8 C6 S8
 
 Build Owner: [ [C3 S4] ] Computer
 

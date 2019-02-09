@@ -38,6 +38,13 @@ class Tournament {
         this.mRoundNumber = roundNum;
     }
 
+    resetTournament() {
+        this.mDeck.deckClear();
+        this.mTable.clearTable();
+        this.mHuman.resetPlayer();
+        this.mComputer.resetPlayer();
+    }
+
     getRoundNumber() {
         return this.mRoundNumber;
     }
@@ -69,10 +76,10 @@ class Tournament {
 
     getNextPlayer() {
         if (this.mHumanTurn) {
-            return "Computer";
+            return "Human";
         }
         else {
-            return "Human";
+            return "Computer";
         }
     }
 
@@ -163,16 +170,16 @@ class Tournament {
         temp += "Round: " + this.getRoundNumber() + "<br><br>";
 
         temp += "Computer:<br>";
-        temp += "\u00A0\u00A0\u00A0\u00A0" + "Score: " + this.mComputer.getTournamentScore() + "<br>";
-        temp += "\u00A0\u00A0\u00A0\u00A0" + "Hand: " + this.mComputer.handToString() + "<br>";
-        temp += "\u00A0\u00A0\u00A0\u00A0" + "Pile: " + this.mComputer.pileToString() + "<br><br>";
+        temp += "\t" + "Score: " + this.mComputer.getTournamentScore() + "<br>";
+        temp += "\t" + "Hand: " + this.mComputer.handToString() + "<br>";
+        temp += "\t" + "Pile: " + this.mComputer.pileToString() + "<br><br>";
 
         temp += "Human:<br>";
-        temp += "\u00A0\u00A0\u00A0\u00A0" + "Score: " + this.mHuman.getTournamentScore() + "<br>";
-        temp += "\u00A0\u00A0\u00A0\u00A0" + "Hand: " + this.mHuman.handToString() + "<br>";
-        temp += "\u00A0\u00A0\u00A0\u00A0" + "Pile: " + this.mHuman.pileToString() + "<br><br>";
+        temp += "\t" + "Score: " + this.mHuman.getTournamentScore() + "<br>";
+        temp += "\t" + "Hand: " + this.mHuman.handToString() + "<br>";
+        temp += "\t" + "Pile: " + this.mHuman.pileToString() + "<br><br>";
 
-        temp += "Table: " + this.mTable.tableBuildsToString() + "  " + this.mTable.tableLooseCardsToString() + "<br><br>";
+        temp += "Table: " + this.mTable.tableBuildsToString() + " " + this.mTable.tableLooseCardsToString() + "<br><br>";
 
         temp += "Build Owner: ";
         for (var i = 0; i < this.mTable.tableBuildLength(); i++) {
@@ -181,11 +188,9 @@ class Tournament {
         }
         temp += "<br><br>";
 
-        temp += "Last Capture: " + this.getLastCapture() + "<br><br>";
-
         temp += "Deck: " + this.mDeck.deckToString() + "<br><br>";
 
-        temp += "Next Player: " + this.getNextPlayer() + "<br>";
+        temp += "Next Player: " + this.getNextPlayer() + "<br><br>";
 
         return temp;
     }
@@ -208,6 +213,8 @@ class Tournament {
         var shortLine = "";
 
         var buildCards = new Array();
+
+        fileString = fileString.replace(/\t/g, "");
 
         // Loop while there still is information in the fileString
         while(fileString) {
@@ -243,7 +250,7 @@ class Tournament {
                     shortLine = line.substring(0, line.indexOf("\n"));
                     
                     // Setting the Score
-                    if (shortLine.substring(0, shortLine.indexOf(":")) === "   Score") {
+                    if (shortLine.substring(0, shortLine.indexOf(":")) === "Score") {
                         // Trim the string
                         shortLine = shortLine.substring(shortLine.indexOf(":") + 1, shortLine.length);
                         shortLine = shortLine.replace(/\s/g, "");
@@ -252,7 +259,7 @@ class Tournament {
                         this.mComputer.setScore(parseInt(shortLine));
 
                         // Get the next line
-                        line = line.substring(line.indexOf("\n") + 4, line.length);
+                        line = line.substring(line.indexOf("\n") + 1, line.length);
                     }
                     // Setting the Hand
                     else if (shortLine.substring(0, shortLine.indexOf(":")) === "Hand") {
@@ -281,7 +288,7 @@ class Tournament {
                             }
 
                             // Get the next line
-                            line = line.substring(line.indexOf("\n") + 4, line.length);
+                            line = line.substring(line.indexOf("\n") + 1, line.length);
                         }
                     }
                     // Setting the Pile
@@ -311,7 +318,7 @@ class Tournament {
                             }
 
                             // Get the next line
-                            line = line.substring(line.indexOf("\n") + 4, line.length);
+                            line = line.substring(line.indexOf("\n") + 1, line.length);
                         }
                     }
                 }
@@ -330,7 +337,7 @@ class Tournament {
                     shortLine = line.substring(0, line.indexOf("\n"));
                     
                     // Setting the Score
-                    if (shortLine.substring(0, shortLine.indexOf(":")) === "   Score") {
+                    if (shortLine.substring(0, shortLine.indexOf(":")) === "Score") {
                         // Trim the string
                         shortLine = shortLine.substring(shortLine.indexOf(":") + 1, shortLine.length);
                         shortLine = shortLine.replace(/\s/g, "");
@@ -339,7 +346,7 @@ class Tournament {
                         this.mHuman.setScore(parseInt(shortLine));
 
                         // Get the next line
-                        line = line.substring(line.indexOf("\n") + 4, line.length);
+                        line = line.substring(line.indexOf("\n") + 1, line.length);
                     }
                     // Setting the Hand
                     else if (shortLine.substring(0, shortLine.indexOf(":")) === "Hand") {
@@ -368,7 +375,7 @@ class Tournament {
                             }
 
                             // Get the next line
-                            line = line.substring(line.indexOf("\n") + 4, line.length);
+                            line = line.substring(line.indexOf("\n") + 1, line.length);
                         }
                     }
                     // Setting the Pile
@@ -398,7 +405,7 @@ class Tournament {
                             }
 
                             // Get the next line
-                            line = line.substring(line.indexOf("\n") + 4, line.length);
+                            line = line.substring(line.indexOf("\n") + 1, line.length);
                         }
                     }
                 }
@@ -408,11 +415,11 @@ class Tournament {
             // Loading the Table Information
             else if (line.substring(0, line.indexOf(":")) === "Table") {
                 // Get the Next Line
-                shortLine = line.substring(line.indexOf(":") + 2);
+                shortLine = line.substring(line.indexOf(":") + 3);
 
                 // If the table includes builds, remove them
                 if (shortLine.includes("[") && shortLine.includes("]")) {
-                    shortLine = shortLine.substring(shortLine.lastIndexOf("]") + 3, shortLine.length);
+                    shortLine = shortLine.substring(shortLine.lastIndexOf("]") + 2, shortLine.length);
                 }
 
                 // Trim the string
@@ -514,7 +521,7 @@ class Tournament {
                 fileString = fileString.substring(fileString.indexOf("\n\n") + 2, fileString.length);
             }
             // Loading the Last Capture Information
-            else if (line.substring(0, line.indexOf(":")) === "Last Capturer") {
+            else if (line.substring(0, line.indexOf(":")) === "Last Capture") {
                 // Parse and remove all the unneeded characters
                 shortLine = line.substring(line.indexOf(":") + 1);
                 shortLine = shortLine.replace(/\s+/g, "");

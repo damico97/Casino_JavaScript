@@ -28,6 +28,7 @@
 		<link rel="stylesheet" type="text/css" href="css/console.css">
 		<link rel="stylesheet" type="text/css" href="css/endPages.css">
 		<link rel="stylesheet" type="text/css" href="css/gameBoard.css">
+		<link rel="stylesheet" type="text/css" href="css/load.css">
 		<link rel="stylesheet" type="text/css" href="css/welcome.css">
 		<link rel="stylesheet" type="text/css" href="css/reset.css">
 		<link rel="stylesheet" type="text/css" href="css/style.css">
@@ -72,6 +73,16 @@
 				<button id="button_load_case_2">Case #2</button>
 				<button id="button_load_case_1">Case #1</button>
 			</header>
+
+			<div class="loadCenter">
+				<div class="title">Please Click The Upload Button To Load A Saved File</div>
+				<div class="info">Remember You Can Only Upload Text Files</div>
+
+				<label class="custom-file-upload">
+					<input type="file" onchange="readFiles(event)" accept=".txt"/>
+					Upload File
+				</label>
+			</div>
 		</div>
 		<!-- END LOad Saved Game Page-->
 

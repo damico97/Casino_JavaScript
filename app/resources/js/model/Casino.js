@@ -84,21 +84,43 @@ function changePage(shown, hidden) {
 
 
 function readFiles(event) {
-    var fileList = event.target.files;
+	var fileList = event.target.files;
 
     for(var i=0; i < fileList.length; i++ ) {
         loadAsText(fileList[i]);
-    }
+	}
 }
 
 function loadAsText(theFile) {
-    var reader = new FileReader();
+	var reader = new FileReader();
 
     reader.onload = function(loadedEvent) {
         // result contains loaded file.
-        console.log(loadedEvent.target.result);
-    }
-    reader.readAsText(theFile);
+		//console.log(loadedEvent.target.result);
+		fileContent = loadedEvent.target.result;
+		//fileString = loadedEvent.target.result;
+		//tournament.loadFile(loadedEvent.target.result);
+    };
+	reader.readAsText(theFile);
+
+	setTimeout(function() {
+		loadSavedFile();
+	}, 3000);
+	/*
+	tournament.loadFile(fileString);
+
+	checkGameStatus(tournament, round, boardViews, deck, human, computer, table, move, consoleLog, endRoundViews, endTournamentViews);
+	updateView(boardViews, tournament, deck, human, computer, table, move, consoleLog);
+	changePage("PageGameBoard", "PageLoadGame")
+	*/
+}
+
+function loadSavedFile() {
+	tournament.loadFile(fileContent);
+
+	checkGameStatus(tournament, round, boardViews, deck, human, computer, table, move, consoleLog, endRoundViews, endTournamentViews);
+	updateView(boardViews, tournament, deck, human, computer, table, move, consoleLog);
+	changePage("PageGameBoard", "PageLoadGame");
 }
 
 function saveGameToFile(fileName) {
@@ -135,6 +157,7 @@ require.config({
 
 
 // you can now use `fs`
+var fileContent;
 
 var boardViews = new BoardViews();
 var consoleViews = new ViewsConsole();
@@ -340,6 +363,7 @@ document.getElementById("button_gameBoard_console").addEventListener('click', fu
 });
 document.getElementById("button_gameBoard_save").addEventListener('click', function() {
 	saveGameToFile("text.txt");
+	tournament.resetTournament();
 	changePage('PageWelcome', 'PageGameBoard');
 });
 // END GAME BOARD PAGE

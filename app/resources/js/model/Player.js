@@ -26,6 +26,18 @@
 
 
 	/**
+	 * 
+	 */
+	resetPlayer() {
+		this.mPlayerHand = [];
+		this.mPlayerPile = [];
+		this.mScore = 0;
+		this.mRoundScore = 0;
+		this.mNumSpades = 0;
+	}
+
+
+	/**
 	 * getPlayerName(), Returns the Name of the Player, either Human or Computer
 	 * @param None
 	 * @return The Name of the Player

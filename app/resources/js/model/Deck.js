@@ -96,7 +96,11 @@
 		// Loop through the deck
 		for (var i = 0; i < this.deckSize(); i++) {
 			// Add the abbrervation of the card to the string
-			temp += this.mCardDeck[i].getAbbv() + " ";
+			temp += this.mCardDeck[i].getAbbv();
+
+			if (i != this.deckSize() - 1) {
+				temp += " ";
+			}
 		}
 
 		// Return the deck in string form

@@ -13,6 +13,11 @@
 		this.mTableCards = new Array();
 		this.mTableBuilds = new Array();
 	}
+
+	clearTable() {
+		this.mTableCards = [];
+		this.mTableBuilds = [];
+	}
 	 
 	addBuildToTable(nBuild) {
 		if (undefined === this.mTableBuilds) {
@@ -98,7 +103,11 @@
 		var temp = "";
 
 		for (var i = 0; i < this.tableCardLength(); i++) {
-			temp += this.mTableCards[i].getAbbv() + " ";
+			temp += this.mTableCards[i].getAbbv();
+			
+			if (i != this.tableCardLength() - 1) {
+				temp += " ";
+			}
 		}
 
 		return temp;
@@ -108,7 +117,11 @@
 		var temp = "";
 
 		for (var i = 0; i < this.tableBuildLength(); i++) {
-			temp += this.mTableBuilds[i].buildToString() + " ";
+			temp += this.mTableBuilds[i].buildToString();
+
+			if (i != this.tableBuildLength() - 1) {
+				temp += " ";
+			}
 		}
 
 		return temp;
