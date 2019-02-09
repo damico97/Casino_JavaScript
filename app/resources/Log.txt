@@ -359,3 +359,16 @@ Feb 8, 2019:
 	- Started working on restoring the build information from the text file. This is not working yet
 	(45 Minutes)
 TOTAL: 4 Hours
+
+
+Feb 9, 2019:
+	- Finished Working on restoring the build information from the text file, and debugged, it seemed to be working.
+	(30 Minutes)
+
+	- Can now restore the Last Capurer information from the text file.
+	(15 Minutes)
+
+	- FInished the functions to load games, as of now It's only the case files that load, but that will be changed.
+	(30 Minutes)
+
+	

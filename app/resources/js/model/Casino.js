@@ -168,6 +168,9 @@ round.setMembers(deck, human, computer, table, move, consoleLog);
 document.getElementById("button_welcome_newGame").addEventListener('click', function() {
 	changePage("PageCoinToss", "PageWelcome");
 });
+document.getElementById("button_welcome_loadGame").addEventListener('click', function() {
+	changePage("PageLoadGame", "PageWelcome");
+});
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
@@ -176,12 +179,24 @@ document.getElementById("button_welcome_newGame").addEventListener('click', func
 // EVENT LISTENERS FOR THE LOAD GAME PAGE
 document.getElementById("button_load_case_1").addEventListener('click', function() {
 	tournament.loadCaseFile("/assets/case1.txt");
+
+	checkGameStatus(tournament, round, boardViews, deck, human, computer, table, move, consoleLog, endRoundViews, endTournamentViews);
+	updateView(boardViews, tournament, deck, human, computer, table, move, consoleLog);
+	changePage('PageGameBoard', 'PageLoadGame');
 });
 document.getElementById("button_load_case_2").addEventListener('click', function() {
 	tournament.loadCaseFile("/assets/case2.txt");
+
+	checkGameStatus(tournament, round, boardViews, deck, human, computer, table, move, consoleLog, endRoundViews, endTournamentViews);
+	updateView(boardViews, tournament, deck, human, computer, table, move, consoleLog);
+	changePage('PageGameBoard', 'PageLoadGame');
 });
 document.getElementById("button_load_case_3").addEventListener('click', function() {
 	tournament.loadCaseFile("/assets/case3.txt");
+
+	checkGameStatus(tournament, round, boardViews, deck, human, computer, table, move, consoleLog, endRoundViews, endTournamentViews);
+	updateView(boardViews, tournament, deck, human, computer, table, move, consoleLog);
+	changePage('PageGameBoard', 'PageLoadGame');
 });
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 

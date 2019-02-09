@@ -121,6 +121,20 @@ class Build {
         }
     }
 
+    findBuildValue() {
+        // Value variable used to keep the sum
+        var value = 0;
+
+        // Only need to loop through the 1st Dimension of the Cards ArrayList
+        for (var i = 0; i < this.mBuildCards[0].length; i++) {
+            // Add the value of the Card to the value sum
+            value += this.mBuildCards[0][i].getValue();
+        }
+
+        // Set the mBuildValue member variable to the value just added up.
+        this.mBuildValue = value;
+    }
+
     setBuildFromString(nCardList) {
         // Loop the the 1st Dimension of the of the 2D ArrayList of abbreviations
         for (var i = 0; i < nCardList.length; i++) {

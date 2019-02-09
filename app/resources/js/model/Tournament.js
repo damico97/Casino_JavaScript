@@ -468,7 +468,7 @@ class Tournament {
                             while (shortBuildString) {
                                 card = shortBuildString.substring(0, shortBuildString.indexOf(" "));
 
-                                buildCards.push(card);
+                                buildCards[count].push(card);
 
                                 // Remove the card that was just added
                                 shortBuildString = shortBuildString.substring(shortBuildString.indexOf(" ") + 1, shortBuildString.length);
@@ -482,7 +482,7 @@ class Tournament {
 
                         nBuild.setBuildFromString(buildCards);
 
-                        shortLine = shortLine.substring(shortLine.indexOf(shortLine.indexOf(" ]")));
+                        shortLine = shortLine.substring(shortLine.indexOf("] ]") + 4, shortLine.length);
 
                         var owner = "";
                         if (shortLine.includes("[")) {
@@ -493,7 +493,7 @@ class Tournament {
                         }
 
                         owner = owner.replace(/\n+/g, "");
-                        owner = owner.replace(/\s+/g, " ");
+                        owner = owner.replace(/\s+/g, "");
 
                         nBuild.setBuildOwner(owner);
                         nBuild.findBuildValue();
@@ -512,17 +512,71 @@ class Tournament {
                 }
                 // Load the Next Line from the File
                 fileString = fileString.substring(fileString.indexOf("\n\n") + 2, fileString.length);
+            }
+            // Loading the Last Capture Information
+            else if (line.substring(0, line.indexOf(":")) === "Last Capturer") {
+                // Parse and remove all the unneeded characters
+                shortLine = line.substring(line.indexOf(":") + 1);
+                shortLine = shortLine.replace(/\s+/g, "");
+                shortLine = shortLine.replace(/\n+/g, "");
+
+                //Set the Last Capture
+                this.setLastCapture(shortLine);
+                // Get the next line from the fileString
+                fileString = fileString.substring(fileString.indexOf("\n\n") + 2, fileString.length);
                 break;
             }
+            // Loading the Deck Information
+            else if (line.substring(0, line.indexOf(":")) === "Deck") {
+                // Parse and remove all the unneeded characters from the string
+                shortLine = line.substring(line.indexOf(":") + 2);
+                shortLine = shortLine.replace(/\n+/g, "");
+                shortLine += " ";
+                shortLine = shortLine.replace(/\s+/g, " ");
+
+                // Check if the line is blank
+                if (shortLine.replace(/\s/g, '').length) {
+                    var card;
+                    // Loop while the line is NOT empty
+                    while (shortLine) {
+                        // Get and add to the vector of the first Card in the line
+                        card = shortLine.substring(0, shortLine.indexOf(" "));
+                        
+                        var nCard = new Card();
+                        nCard.newCardFromAbbv(card);
+                        this.mDeck.addCardToDeck(nCard);
+
+                        // Remove the first card that was just added
+                        shortLine = shortLine.substring(shortLine.indexOf(" ") + 1, shortLine.length);
+                    }
+                }
+                // Get the next line from the fileString
+                fileString = fileString.substring(fileString.indexOf("\n\n") + 2, fileString.length);
+            }
+            // Load the next player information
+            else if (line.substring(0, line.indexOf(":")) === "Next Player") {
+                // Parse and clean the string so we only have the needed information
+                shortLine = line.substring(line.indexOf(":") + 1);
+                shortLine = shortLine.replace(/\s+/g, "");
+                shortLine = shortLine.replace(/\n+/g, "");
+
+                // Check if it's the human turn
+                if (shortLine === "Human") {
+                    // If so set the humanTurn
+                    this.setHumanTurn(true);
+                }
+                else {
+                    // Not the human's turn
+                    this.setHumanTurn(false);
+                }
+
+                // Clear out the fileString to end the loop
+                fileString = "";
+            }
+            else {
+                console.log("ERROR");
+            }
         }
-        console.log(this.getRoundNumber());
-        console.log(this.mComputer.getTournamentScore());
-        console.log(this.mComputer.getHandCards());
-        console.log(this.mComputer.getPileCards());
-        console.log(this.mHuman.getTournamentScore());
-        console.log(this.mHuman.getHandCards());
-        console.log(this.mHuman.getPileCards());
-        console.log(this.mTable.getTableCards());
     }
 
     loadDeckFile() {
