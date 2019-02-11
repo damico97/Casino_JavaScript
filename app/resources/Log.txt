@@ -379,4 +379,15 @@ Feb 9, 2019:
 	(1 Hour 30 Minutes)
 
 	- At this point, all of the major features are working in the game.
+TOTAL: 4 Hours
+
+
+Feb 10, 2019:
+	- Added the help function so the human can ask for help, this using the findNextMove() function that is part of the player 
+	class that the computer using to find it's next move. All that was added was the getHelp() function that converts the 
+	SuggestedMove Class into words so the user can read the suggestion.
+	(45 Minutes).
+
+	- Debugging of the Case Files, they are running smoothly, no bugs have been found yet.
+	(30 Minutes).
 

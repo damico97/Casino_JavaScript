@@ -95,24 +95,13 @@ function loadAsText(theFile) {
 	var reader = new FileReader();
 
     reader.onload = function(loadedEvent) {
-        // result contains loaded file.
-		//console.log(loadedEvent.target.result);
 		fileContent = loadedEvent.target.result;
-		//fileString = loadedEvent.target.result;
-		//tournament.loadFile(loadedEvent.target.result);
     };
 	reader.readAsText(theFile);
 
 	setTimeout(function() {
 		loadSavedFile();
 	}, 3000);
-	/*
-	tournament.loadFile(fileString);
-
-	checkGameStatus(tournament, round, boardViews, deck, human, computer, table, move, consoleLog, endRoundViews, endTournamentViews);
-	updateView(boardViews, tournament, deck, human, computer, table, move, consoleLog);
-	changePage("PageGameBoard", "PageLoadGame")
-	*/
 }
 
 function loadSavedFile() {
@@ -137,26 +126,13 @@ function saveGameToFile(fileName) {
 	else {
         pom.click();
 	}
-	//document.write('<input type="file" style="position" onchange="readFiles(event)" accept=".txt">');
 }
 
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 
-/*
-require.config({
-	//Define 3rd party plugins dependencies
-	paths: {
-		"js": "casino"
-	  	//"fs": "fs"
-	}
-});
-*/
 
-
-
-// you can now use `fs`
 var fileContent;
 
 var boardViews = new BoardViews();
@@ -166,7 +142,7 @@ var endRoundViews = new ViewsRoundEnd();
 var endTournamentViews = new ViewsTournamentEnd();
 
 var deck = new Deck();
-var human = new Player();
+var human = new Human();
 var computer = new Computer();
 var table = new Table();
 var consoleLog = new ConsoleLog();
@@ -192,6 +168,7 @@ document.getElementById("button_welcome_newGame").addEventListener('click', func
 	changePage("PageCoinToss", "PageWelcome");
 });
 document.getElementById("button_welcome_loadGame").addEventListener('click', function() {
+	tournament.resetTournament();
 	changePage("PageLoadGame", "PageWelcome");
 });
 //------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -260,6 +237,14 @@ document.getElementById("coin_toss_button_loadDeck").addEventListener('click', f
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 // EVENT LISTENERS FOR THE GAME BOARD PAGE
+// Event Listener for the HELP button
+document.getElementById("button_gameBoard_help").addEventListener('click', function() {
+	if (tournament.getHumanTurn()) {
+		human.findNextMove(suggestedMove, table);
+		alert("HELP SUGGESTION....\n" + human.getHelp(suggestedMove));
+		suggestedMove.resetMove();
+	}
+});
 // Event Listeners for the BUILD button
 document.getElementById("button_gameBoard_build").addEventListener('click', function() {
 	if (tournament.getHumanTurn()) {
@@ -351,6 +336,8 @@ document.getElementById("button_gameBoard_computer").addEventListener('click', f
 			tournament.setLastCapture("Computer");
 		}
 
+		suggestedMove.resetMove();
+
 		// Update the Game Board
 		checkGameStatus(tournament, round, boardViews, deck, human, computer, table, move, consoleLog, endRoundViews, endTournamentViews);
 		updateView(boardViews, tournament, deck, human, computer, table, move, consoleLog);
@@ -414,10 +401,11 @@ document.getElementById("button_roundEnd_nextRound").addEventListener('click', f
 // EVENT LISTENERS FOR THE END TOURNAMENT PAGE
 document.getElementById("button_tournamentEnd_console").addEventListener('click', function() {
 	consoleViews.setUpConsoleView(consoleLog);
-	changePage('PageConsole', 'PageRoundEnd');
+	changePage('PageConsole', 'PageTournamentEnd');
 });
 document.getElementById("button_tournamentEnd_exit").addEventListener('click', function() {
-
+	tournament.resetTournament();
+	changePage('PageWelcome', 'PageTournamentEnd');
 });
 // END END TOURNAMENT PAGE
 //------------------------------------------------------------------------------------------------------------------------------------------------------
