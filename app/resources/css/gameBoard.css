@@ -194,6 +194,24 @@
 		padding-right: 80px;
 	}
 
+	.computerScoreLabel {
+		position: absolute;
+		top: 295px;
+		left: 30px;
+		color: #fff;
+		font-size: 40px;
+		font-weight: 600;
+	}
+
+	.computerScore {
+		position: absolute;
+		top: 297px;
+		left: 395px;
+		color: #fff;
+		font-size: 40px;
+		font-weight: 700;
+	}
+
 
 	.humanPile {
 		position: absolute;
@@ -234,5 +252,23 @@
 		margin-right: 60px;
 		border-radius: 15px;
 		cursor: pointer;
+	}
+
+	.humanScoreLabel {
+		position: absolute;
+		top: 635px;
+		left: 30px;
+		color: #fff;
+		font-size: 44px;
+		font-weight: 600;
+	}
+
+	.humanScore {
+		position: absolute;
+		top: 638px;
+		left: 280px;
+		color: #fff;
+		font-size: 44px;
+		font-weight: 700;
 	}
 	/* ----------------------------------------------------------------------------------------------- */

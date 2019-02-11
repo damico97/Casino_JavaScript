@@ -18,6 +18,11 @@ class BoardViews {
 		}
 	}
 
+	showPlayerScores(human, computer) {
+		document.getElementById("computerScore").innerHTML = computer.getTournamentScore();
+		document.getElementById("humanScore").innerHTML = human.getTournamentScore();
+	}
+
 	showComputerHand(computer) {
 		var blankCard = "images/others/blank_card.png";
 

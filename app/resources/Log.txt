@@ -408,3 +408,7 @@ Feb 10, 2019:
 
 	- Added a check so the user cannot trail if they have a possibel capture
 	(20 Minutes)
+
+	- Added the players tournament scores to the GameBoard View
+	(30 Minutes)
+TOTAL: 2.75 Hours

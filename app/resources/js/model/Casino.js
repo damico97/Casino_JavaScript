@@ -17,6 +17,7 @@ function updateView(view, tournament, deck, human, computer, table, move, consol
 	view.setupTableCardView(table, move, tournament.getHumanTurn());
 	view.setUpDeckView(deck);
 	view.setHeaderText(tournament);
+	view.showPlayerScores(human, computer);
 
 	consoleLog.addToLogText(tournament.boardToString());
 }
