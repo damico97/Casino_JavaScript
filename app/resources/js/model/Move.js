@@ -182,6 +182,32 @@
 	}
 
 
+	checkPossibleTrail(human, table) {
+		
+		// Loop through the player's hand
+		for (var i = 0; i < human.handLength(); i++) {
+			// Loop through the builds on the table
+			for (var j = 0; j < table.tableBuildLength(); j++) {
+				// Check if the hand card value matches a build value
+				if (human.getHandCardAtIndex(i).getValue() === table.getTableBuildAtIndex(j).getBuildValue()) {
+					return false;
+				}
+			}
+
+			// Loop through the cards on the table
+			for (var k = 0; k < table.tableCardLength(); k++) {
+				// Check if the hand card value matches a loose card value
+				if (human.getHandCardAtIndex(i).getValue() === table.getTableCardAtIndex(k).getValue()) {
+					return false;
+				}
+			}
+		}
+
+		// Cannot Capture, so you Can Trail
+		return true;
+	}
+
+
 	checkPossibleBuild(human) {
 		var tempSum = 0;
 

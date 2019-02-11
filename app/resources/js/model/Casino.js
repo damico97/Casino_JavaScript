@@ -304,12 +304,14 @@ document.getElementById("button_gameBoard_capture").addEventListener('click', fu
 document.getElementById("button_gameBoard_trail").addEventListener('click', function() {
 	if (tournament.getHumanTurn()) {
 		if (move.checkCardSelected()) {
-			consoleLog.addToLogText("Human Move:<br>" + human.trailCard(move, table));
+			if (move.checkPossibleTrail()) {
+				consoleLog.addToLogText("Human Move:<br>" + human.trailCard(move, table));
 
-			tournament.changeHumanTurn();
+				tournament.changeHumanTurn();
 
-			checkGameStatus(tournament, round, boardViews, deck, human, computer, table, move, consoleLog, endRoundViews, endTournamentViews);
-			updateView(boardViews, tournament, deck, human, computer, table, move, consoleLog);
+				checkGameStatus(tournament, round, boardViews, deck, human, computer, table, move, consoleLog, endRoundViews, endTournamentViews);
+				updateView(boardViews, tournament, deck, human, computer, table, move, consoleLog);
+			}
 		}
 	}
 });

@@ -109,7 +109,8 @@
 
 
 	/**
-	 * 
+	 * addCardToDeck(), Takes in a new Card and adds it to the deck Array
+	 * @param nCard, the new Card to be added to the Deck
 	 */
 	addCardToDeck(nCard) {
 		if (undefined == this.mCardDeck) {
@@ -352,6 +353,4 @@
  		this.shuffleDeck();
  	}
  }
-
-
-
+ 

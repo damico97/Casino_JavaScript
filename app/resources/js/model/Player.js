@@ -26,7 +26,8 @@
 
 
 	/**
-	 * 
+	 * resetPlayer(), All it does is clear out all the member variables, so we do not have any thing sticking around that we don't want to
+	 * @param None
 	 */
 	resetPlayer() {
 		this.mPlayerHand = [];

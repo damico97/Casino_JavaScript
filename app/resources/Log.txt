@@ -386,8 +386,25 @@ Feb 10, 2019:
 	- Added the help function so the human can ask for help, this using the findNextMove() function that is part of the player 
 	class that the computer using to find it's next move. All that was added was the getHelp() function that converts the 
 	SuggestedMove Class into words so the user can read the suggestion.
-	(45 Minutes).
+	(45 Minutes)
 
 	- Debugging of the Case Files, they are running smoothly, no bugs have been found yet.
-	(30 Minutes).
+	(30 Minutes)
 
+	- Documentation finished on the Human Class
+	(10 Minutes)
+
+	- Documentation finished on the Deck Class
+	(5 Minutes)
+
+	- Documentation finished on the Player Class
+	(5 Minutes)
+
+	- Documentation finished on the Computer Class
+	(10 Minutes)
+
+	- Documentation finished on the ConsoleLog Class
+	(10 Minutes)
+
+	- Added a check so the user cannot trail if they have a possibel capture
+	(20 Minutes)
