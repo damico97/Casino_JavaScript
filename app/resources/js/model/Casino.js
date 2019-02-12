@@ -305,7 +305,7 @@ document.getElementById("button_gameBoard_capture").addEventListener('click', fu
 document.getElementById("button_gameBoard_trail").addEventListener('click', function() {
 	if (tournament.getHumanTurn()) {
 		if (move.checkCardSelected()) {
-			if (move.checkPossibleTrail()) {
+			if (move.checkPossibleTrail(human, table)) {
 				consoleLog.addToLogText("Human Move:<br>" + human.trailCard(move, table));
 
 				tournament.changeHumanTurn();
