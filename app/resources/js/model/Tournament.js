@@ -9,6 +9,9 @@
 
 class Tournament {
 
+    /**
+     * Tournament(), The constructor for the Tournament Class
+     */
     Tournament() {
         this.mDeck;
         this.mHuman;
@@ -27,7 +30,19 @@ class Tournament {
         this.mCoinTossWinner;
     }
 
+
+    /**
+     * setMembers(), Set the memeber variables of the Tournament Class
+     * @param deck -> The Deck class instance
+     * @param human -> The Human Player instance
+     * @param computer -> The Computer Player instance
+     * @param table -> The Table class instance 
+     * @param move -> The Move class instance
+     * @param consoleLog -> The ConsoleLog class instance
+     * @param roundNum -> The Round Number
+     */
     setMembers(deck, human, computer, table, move, consoleLog, roundNum) {
+        // Set Member Variables
         this.mDeck = deck;
         this.mHuman = human;
         this.mComputer = computer;
@@ -38,21 +53,40 @@ class Tournament {
         this.mRoundNumber = roundNum;
     }
 
+
+    /**
+     * resetTournament(), resets the the Deck, Table, and Both Players
+     */
     resetTournament() {
+        // Reset Everything
         this.mDeck.deckClear();
         this.mTable.clearTable();
         this.mHuman.resetPlayer();
         this.mComputer.resetPlayer();
     }
 
+
+    /**
+     * getRoundNumber(), Returns the Round Number
+     * @return The round number
+     */
     getRoundNumber() {
         return this.mRoundNumber;
     }
 
+
+    /**
+     * setRoundNumber(), Takes in a number to set the Round Number As
+     * @param num -> The New round number
+     */
     setRoundNumber(num) {
         this.mRoundNumber = num;
     }
 
+    
+    /**
+     * incRoundNumber(), Increases the Round Number by One
+     */
     incRoundNumber() {
         this.mRoundNumber++;
     }
@@ -487,10 +521,13 @@ class Tournament {
                             buildString = buildString.substring(buildString.indexOf("]") + 1, buildString.length);
                         }
 
+                        // Set the new build
                         nBuild.setBuildFromString(buildCards);
 
+                        // update the line
                         shortLine = shortLine.substring(shortLine.indexOf("] ]") + 4, shortLine.length);
 
+                        // Get the build owner information
                         var owner = "";
                         if (shortLine.includes("[")) {
                             owner = shortLine.substring(0, shortLine.indexOf("["));
@@ -499,20 +536,27 @@ class Tournament {
                             owner = shortLine;
                         }
 
+                        // Replace all new line characters and spaces
                         owner = owner.replace(/\n+/g, "");
                         owner = owner.replace(/\s+/g, "");
 
+                        // Set the build variables
                         nBuild.setBuildOwner(owner);
                         nBuild.findBuildValue();
 
+                        // Add the build to the table
                         this.mTable.addBuildToTable(nBuild);
 
+                        // Reset build cards variable
                         buildCards = [];
 
+                        // Check if theres another build
                         if (shortLine.includes("[")) {
+                            // Load the next build
                             shortLine = shortLine.substring(shortLine.indexOf("["), shortLine.length);
                         }
                         else {
+                            // empty the line
                             shortLine = "";
                         }
                     }

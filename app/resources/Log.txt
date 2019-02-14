@@ -27,14 +27,14 @@ Dec 28, 2018:
 	- Created a Basic view to show both player's hands, using image views that are hardcoded.
 	This was mostly done to prove that the game was working when dealing cards to both players.
 	(45 Minutes)
-TOTAL: 45 Minutes
+TOTAL: 0.75 Hours
 
 
 Dec 29, 2018:
 	- Added the ability to click on the cards to select them and highlight the background to show
 	that the cards have been selected.
 	(45 Minutes)
-TOTAL: 45 Minutes
+TOTAL: 0.75 Hours
 
 
 Jan 1, 2019:
@@ -74,7 +74,7 @@ Jan 5, 2019:
 	- Started testing how to have multiple view pages in the HTML File so we can have multiple views throughout the game
 	without loosing all the game data
 	(30 Minutes)
-TOTAL: 30 Minutes
+TOTAL: 0.5 Hours
 
 
 Jan 6, 2019:
@@ -429,4 +429,25 @@ Feb 13, 2019:
 
 	- Documentation finished on the Round Class
 	(15 Minutes)
-	
+TOTAL: 1.5 Hours
+
+
+Feb 14, 2019:
+	- Added the Old Case Files to the game, based of an E-Mail from Professor Kumar, and made sure all the case files worked
+	(45 Minutes)
+
+	- Documentation finished on the Table Class
+	(30 Minutes)
+
+	- Documentation finsiehd on the Build Class
+	(30 Minutes)
+
+	- Slightly Changed the CheckPossibleMultiBuild() from the Move Class Function
+	(30 Minutes)
+
+	- Documentation finished on the Move Class
+	(45 Minutes)
+
+
+
+GRAND TOTAL = 70.0 Hours

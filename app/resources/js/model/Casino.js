@@ -282,9 +282,9 @@ document.getElementById("button_welcome_loadGame").addEventListener('click', fun
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------
 // EVENT LISTENERS FOR THE LOAD GAME PAGE
-// Case 1 Event Listener
-document.getElementById("button_load_case_1").addEventListener('click', function() {
-	tournament.loadCaseFile("/assets/case1.txt");
+// Old Case 1 Event Listener
+document.getElementById("button_load_old_case_1").addEventListener('click', function() {
+	tournament.loadCaseFile("/assets/old_case1.txt");
 
 	consoleLog.initLogText("Game Loaded From Text File");
 
@@ -292,9 +292,9 @@ document.getElementById("button_load_case_1").addEventListener('click', function
 	updateView(boardViews, tournament, deck, human, computer, table, move, consoleLog);
 	changePage('PageGameBoard', 'PageLoadGame');
 });
-// Case 2 Event Listener
-document.getElementById("button_load_case_2").addEventListener('click', function() {
-	tournament.loadCaseFile("/assets/case2.txt");
+// Old Case 2 Event Listener
+document.getElementById("button_load_old_case_2").addEventListener('click', function() {
+	tournament.loadCaseFile("/assets/old_case2.txt");
 
 	consoleLog.initLogText("Game Loaded From Text File");
 
@@ -302,9 +302,39 @@ document.getElementById("button_load_case_2").addEventListener('click', function
 	updateView(boardViews, tournament, deck, human, computer, table, move, consoleLog);
 	changePage('PageGameBoard', 'PageLoadGame');
 });
-// Case 3 Event Listener
-document.getElementById("button_load_case_3").addEventListener('click', function() {
-	tournament.loadCaseFile("/assets/case3.txt");
+// Old Case 3 Event Listener
+document.getElementById("button_load_old_case_3").addEventListener('click', function() {
+	tournament.loadCaseFile("/assets/old_case3.txt");
+
+	consoleLog.initLogText("Game Loaded From Text File");
+
+	checkGameStatus(tournament, round, deck, human, computer, table, consoleLog, endRoundViews, endTournamentViews);
+	updateView(boardViews, tournament, deck, human, computer, table, move, consoleLog);
+	changePage('PageGameBoard', 'PageLoadGame');
+});
+// New Case 1 Event Listener
+document.getElementById("button_load_new_case_1").addEventListener('click', function() {
+	tournament.loadCaseFile("/assets/new_case1.txt");
+
+	consoleLog.initLogText("Game Loaded From Text File");
+
+	checkGameStatus(tournament, round, deck, human, computer, table, consoleLog, endRoundViews, endTournamentViews);
+	updateView(boardViews, tournament, deck, human, computer, table, move, consoleLog);
+	changePage('PageGameBoard', 'PageLoadGame');
+});
+// New Case 2 Event Listener
+document.getElementById("button_load_new_case_2").addEventListener('click', function() {
+	tournament.loadCaseFile("/assets/new_case2.txt");
+
+	consoleLog.initLogText("Game Loaded From Text File");
+
+	checkGameStatus(tournament, round, deck, human, computer, table, consoleLog, endRoundViews, endTournamentViews);
+	updateView(boardViews, tournament, deck, human, computer, table, move, consoleLog);
+	changePage('PageGameBoard', 'PageLoadGame');
+});
+// New Case 3 Event Listener
+document.getElementById("button_load_new_case_3").addEventListener('click', function() {
+	tournament.loadCaseFile("/assets/new_case3.txt");
 
 	consoleLog.initLogText("Game Loaded From Text File");
 
