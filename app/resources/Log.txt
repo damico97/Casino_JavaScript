@@ -412,3 +412,21 @@ Feb 10, 2019:
 	- Added the players tournament scores to the GameBoard View
 	(30 Minutes)
 TOTAL: 2.75 Hours
+
+
+Feb 12, 2019:
+	- Debugging, and running through the Case Files
+	(45 Minutes)
+TOTAL: 0.75 Hours
+
+
+Feb 13, 2019:
+	- Running through the case files, and trying to find bugs
+	(45 Minutes)
+
+	- Documentation on the main Casino.js File
+	(30 Minutes)
+
+	- Documentation finished on the Round Class
+	(15 Minutes)
+	

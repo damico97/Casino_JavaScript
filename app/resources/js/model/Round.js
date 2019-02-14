@@ -1,5 +1,17 @@
+/*
+ * ************************************************************
+ * * Name:  Joseph Damico                                     *
+ * * Project:  Casino JavaScript                              *
+ * * Class:  CMPS: 366-01                                     *
+ * * Date:  February 15, 2019                                 *
+ * ************************************************************
+ */
+
 class Round {
 
+    /**
+     * Round(), Constructor for the Round Class
+     */
     Round() {
         this.mDeck;
         this.mHuman;
@@ -9,7 +21,18 @@ class Round {
         this.mConsoleLog;
     }
 
+
+    /**
+     * setMembers(), Takes in all the members for the Round Class and set them locally
+     * @param deck -> The Deck Class
+     * @param human -> The Human Class Player
+     * @param computer -> The Computer Class Player
+     * @param table -> The Table Class
+     * @param move -> The Move class used to set moves
+     * @param consoleLog -> The ConsoleLog Class to record events
+     */
     setMembers(deck, human, computer, table, move, consoleLog) {
+        // Set All The Members
         this.mDeck = deck;
         this.mHuman = human;
         this.mComputer = computer;
@@ -18,62 +41,104 @@ class Round {
         this.mConsoleLog = consoleLog;
     }
 
+
+    /**
+     * initRoundFromDeck(), Used when the user wants to load the deck file
+     */
     initRoundFromDeck() {
+        // Record the loading of the deck
         this.mConsoleLog.initLogText("Load Deck: " + '<br>' + this.mDeck.deckToString());
 
+        // Deal the initial cards
         this.dealInitalCards();
     }
 
+
+    /**
+     * initalizeRound(), Used to create the first round of the tournament
+     */
     initalizeRound() {
+        // Initialize the Deck
         this.mDeck.initializeDeck();
+        // Record the new deak in the ConsoleLog
         this.mConsoleLog.initLogText("New Deck: " + '<br>' + this.mDeck.deckToString());
-
+        // Deal the initial cards
         this.dealInitalCards();
     }
 
+
+    /**
+     * initializeNextRound(), Same functionallity as the initalizeRound but calls addToLogText instead of initLogText
+     */
     initalizeNextRound() {
+        // Initialize the Deck
         this.mDeck.initializeDeck();
+        // Record the New Deck to the ConsoleLog
         this.mConsoleLog.addToLogText("New Deck: " + '<br>' + this.mDeck.deckToString());
-
+        // Deal the cards
         this.dealInitalCards();
     }
 
+
+    /**
+     * dealInitalCards(), Deals 4 Cards to each player and the table, used at the beginning of the round
+     */
     dealInitalCards() {
+        // Loop for the 3 things to deal cards to; Human Computer & Table
         for (var i = 0; i < 3; i++) {
+            // Loop for the 4 Cards to be dealt to each
             for (var j = 0; j < 4; j++) {
+                // Deal Cards to Human First
                 if (i == 0) {
                     this.mHuman.addCardToHand(this.mDeck.dealCard());
                 }
+                // Deal Cards to Computer Second
                 else if (i == 1) {
                     this.mComputer.addCardToHand(this.mDeck.dealCard());
                 }
+                // Deal Cards to the Table Last
                 else if (i == 2) {
                     this.mTable.addCardToTable(this.mDeck.dealCard());
                 }
+                // Error
                 else {
-                    console.log("ERROR - In Dealing Cards");
+                    console.log("ERROR - [Round] dealInitialCards()");
                 }
             }
         }
     }
 
+
+    /**
+     * dealCards(), deals 4 cards to both the Human and Computer Players
+     */
     dealCards() {
+        // Loop for the 2 players to deal cards to
         for (var i = 0; i < 2; i++) {
+            // Loop for the 4 cards to be dealt to each player
             for (var j = 0; j < 4; j++) {
+                // Deal cards to the Human first
                 if (i == 0) {
                     this.mHuman.addCardToHand(this.mDeck.dealCard());
                 }
+                // Deal cards to the Computer second
                 else if (i == 1) {
                     this.mComputer.addCardToHand(this.mDeck.dealCard());
                 }
+                // Error
                 else {
-                    console.log("ERROR");
+                    console.log("ERROR - [Round] dealCards()");
                 }
             }
         }
     }
 
+
+    /**
+     * recordPlayerScores(), Calculates the Player's Scores, and records them
+     */
     recordPlayerScores() {
+        // Constants for the Scores
         const SCORE_LARGEST_PILE = 3;
         const SCORE_MOST_SPADES = 1;
         const SCORE_10_DIAMONDS = 2;
