@@ -8,6 +8,11 @@
  */
 
 class ViewsConsole {
+
+    /**
+     * setUpConsoleView(), Used to set up the views in the ConsoleLog page
+     * @param consoleLog -> Access to the consoleLog to get the text to show the view
+     */
     setUpConsoleView(consoleLog) {
         var textView = document.getElementById("consoleTextView");
 

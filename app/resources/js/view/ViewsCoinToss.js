@@ -1,4 +1,20 @@
+/*
+ * ************************************************************
+ * * Name:  Joseph Damico                                     *
+ * * Project:  Casino JavaScript                              *
+ * * Class:  CMPS: 366-01                                     *
+ * * Date:  February 15, 2019                                 *
+ * ************************************************************
+ */
+
 class ViewsCoinToss {
+
+    /**
+     * displayWinner(), Sets up the views for the coin toss page
+     * @param coinCall -> The side of the coin the user called
+     * @param coinResult -> The side of the coin that came up during the toss
+     * @param winner -> The winner of the coin toss
+     */
     displayWinner(coinCall, coinResult, winner) {
         if (coinResult == 0) {
             document.getElementById("coin_toss_tails").style.display = 'none';

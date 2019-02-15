@@ -448,6 +448,33 @@ Feb 14, 2019:
 	- Documentation finished on the Move Class
 	(45 Minutes)
 
+	- Documentation finished on the Tournament Class
+	(45 Minutes)
 
+	- Documentation finished on the buildIcon class
+	(15 Minutes)
 
-GRAND TOTAL = 70.0 Hours
+	- Documentation finished on the ViewsCoinToss class
+	(5 Minutes)
+	
+	- Documentation finished on the ViewsConsole class
+	(5 Minutes)
+
+	- Documentation finished on the ViewsRoundEnd Class
+	(10 Minutes)
+
+	- Documentation finsihed on the ViewsTournamentEnd Class
+	(10 Minutes)
+	
+	- Documentation finsihed on the ViewsBoard class
+	(30 Minutes)
+TOTAL: 5 Hours
+
+/************************\
+ GRAND TOTAL = 75.0 Hours
+\************************/
+
+LINE TOTAL:
+JaveScript = 5,631 Lines
+      HTML =   349 Lines
+	   CSS =   669 Lines

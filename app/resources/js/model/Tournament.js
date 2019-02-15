@@ -91,64 +91,119 @@ class Tournament {
         this.mRoundNumber++;
     }
 
+
+    /**
+     * getHumanTurn(), Returns the boolean if it's the Human's turn or not
+     * @return Boolean, True if it's the Human's Turn, FALSE if not
+     */
     getHumanTurn() {
         return this.mHumanTurn;
     }
 
+
+    /**
+     * changeHumanTurn(), Changes the Human Turns Boolean
+     */
     changeHumanTurn() {
+        // If it's the human turn, set it false
         if (this.mHumanTurn) {
             this.mHumanTurn = false;
         }
+        // Set human turn to true
         else {
             this.mHumanTurn = true;
         }
     }
 
+
+    /**
+     * setHumanTurn(), Takes in a boolean wether if it's the humans turn or not
+     * @param turn -> Wether it's the human's turn or not
+     */
     setHumanTurn(turn) {
         this.mHumanTurn = turn;
     }
 
+
+    /**
+     * getNextPlayer(), Returns who the next player is, used for serialization
+     * @return The name of the next player
+     */
     getNextPlayer() {
+        // If it's the humans turn
         if (this.mHumanTurn) {
             return "Human";
         }
+        // If it's the computer turn
         else {
             return "Computer";
         }
     }
 
+
+    /**
+     * setLastCaputre(), Takes in the name of the player who made the last capture move
+     * @param player -> The name of the player that made the last capture
+     */
     setLastCapture(player) {
         this.mLastCapture = player;
     }
 
+
+    /**
+     * getLastCapture(), Returns the name of the player that made the last capture move
+     * @return The name of the player
+     */
     getLastCapture() {
         return this.mLastCapture;
     }
 
+    
+    /**
+     * setCoinCall(), Set which side of the coin the player called for the coin toss
+     * @param call -> The side of the coin the player called
+     */
     setCoinCall(call) {
         this.mCoinTossCall = call;
     }
 
+
+    /**
+     * getCoinCall(), Returns the side of the coin the player called
+     * @return The side of the coin
+     */
     getCoinCall() {
         return this.mCoinTossCall;
     }
 
+
+    /**
+     * getCoinResult(), Return the result of the coin toss call
+     * @return The result of the coin toss
+     */
     getCoinResult() {
         return this.mCoinTossResult;
     }
 
+
+    /**
+     * getCoinTossWinner(), Returns the name of the player who own the coin toss
+     * @return The name of the player of the winner of the toss
+     */
     getCoinTossWinner() {
         return this.mCoinTossWinner;
     }
 
+
+    /**
+     * runCoinToss(),  Excutes the coin toss
+     */
     runCoinToss(consoleLog) {
         var text = "Coin Toss:<br>";
         var coin = Math.floor(Math.random() * 2);
         this.mCoinTossResult = coin;
 
-        console.log("Coin: " + coin);
-        console.log("Call: " + this.mCoinTossCall);
-
+        // Get the coin from the flip
         if (coin == 0) {
             text += "The Coin Was Heads<br>";
         }
@@ -156,19 +211,22 @@ class Tournament {
             text += "The Coin Was Tails<br>";
         }
 
+        // Check if the user called the correct side
         if (this.mCoinTossCall == 0) {
             text += "The user called Heads<br>";
         }
         else {
-            text += "The user called Tails<br>"
+            text += "The user called Tails<br>";
         }
 
+        // Player won the toss
         if (this.mCoinTossCall == coin) {
             this.mCurrentPlayer = "Human";
             this.mCoinTossWinner = true;
             this.mHumanTurn = true;
             text += "The Human won the coin toss";
         }
+        // Player loss the toss
         else if (this.mCoinTossCall != coin) {
             this.mCurrentPlayer = "Computer";
             this.mCoinTossWinner = false;
@@ -176,18 +234,31 @@ class Tournament {
             text += "The Computer won the coin toss";
         }
 
+        // Record the coin toss in the ConsoleLog
         consoleLog.addToLogText(text);
     }
 
+
+    /**
+     * initalizeDeck(), Initialize the deck
+     */
     initalizeDeck() {
         this.mDeck.initializeDeck();
     }
 
+
+    /**
+     * initalizeScore(), Set both players scores to 0
+     */
     initalizeScores() {
         this.mHuman.setScore(0);
         this.mComputer.setScore(0);
     }
 
+
+    /**
+     * boardToString(), Converts the board to string for the ConsoleLog, using the serializeGame() function
+     */
     boardToString() {
         var temp = "";
 
@@ -198,23 +269,32 @@ class Tournament {
         return temp;
     }
 
+
+    /**
+     * serializeGame(), Covnerts the board to a string to be used for serialization or the boardToStringFunction()
+     */
     serializeGame() {
         var temp = "";
 
+        // Get Round Information
         temp += "Round: " + this.getRoundNumber() + "<br><br>";
 
+        // Get Computer's Information
         temp += "Computer:<br>";
         temp += "\t" + "Score: " + this.mComputer.getTournamentScore() + "<br>";
         temp += "\t" + "Hand: " + this.mComputer.handToString() + "<br>";
         temp += "\t" + "Pile: " + this.mComputer.pileToString() + "<br><br>";
 
+        // Get Human's Information
         temp += "Human:<br>";
         temp += "\t" + "Score: " + this.mHuman.getTournamentScore() + "<br>";
         temp += "\t" + "Hand: " + this.mHuman.handToString() + "<br>";
         temp += "\t" + "Pile: " + this.mHuman.pileToString() + "<br><br>";
 
+        // Get The Table Information
         temp += "Table: " + this.mTable.tableBuildsToString() + " " + this.mTable.tableLooseCardsToString() + "<br><br>";
 
+        // Get The Build Information
         temp += "Build Owner: ";
         for (var i = 0; i < this.mTable.tableBuildLength(); i++) {
             temp += this.mTable.getTableBuildAtIndex(i).buildToString() + " ";
@@ -222,26 +302,42 @@ class Tournament {
         }
         temp += "<br><br>";
 
+        // Get The Deck Information
         temp += "Deck: " + this.mDeck.deckToString() + "<br><br>";
 
+        // Get The Next Player
         temp += "Next Player: " + this.getNextPlayer() + "<br><br>";
 
         return temp;
     }
 
+
+    /**
+     * loadCaseFile(), Takes in the case file name and opens it
+     * @param fileName -> The Name of the case file to load
+     */
     loadCaseFile(fileName) {
+        // String with the infomation in the file
         var fileString;
 
+        // Open the File
         var client = new XMLHttpRequest();
         client.open('GET', fileName, false);
         client.onreadystatechange = function() {
+            // Store the contents of the file
             fileString = client.responseText;
         };
         client.send();
 
+        // Load the case file
         this.loadFile(fileString);
     }
 
+
+    /**
+     * loadFile(), Takes in the string with file contents and parses it, and loads the information into the tournament
+     * @param fileString -> The contents of the file
+     */
     loadFile(fileString) {
         var line = "";
         var shortLine = "";
@@ -630,6 +726,10 @@ class Tournament {
         }
     }
 
+
+    /**
+     * loadDeckFile(), Loades the Deck file and enters the deck information into the deck
+     */
     loadDeckFile() {
         var cards = new Array();
         var shortLine = "";
@@ -643,7 +743,9 @@ class Tournament {
         };
         client.send();
 
+        // While the fileString contains infomration
         while(fileString) {
+            // Deck the deck information
             if (fileString.substring(0, fileString.indexOf(":")) === "Deck") {
                 shortLine = fileString.substring(fileString.indexOf(":") + 2);
                 shortLine = shortLine.substring(0, shortLine.length - 2);
@@ -672,7 +774,6 @@ class Tournament {
                     }
 
                     for (var i = 0; i < cards.length; i++) {
-                        console.log(cards[i]);
                         var nCard = new Card();
                         nCard.newCardFromAbbv(cards[i]);
                         this.mDeck.addCardToDeck(nCard);
