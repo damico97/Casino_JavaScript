@@ -750,67 +750,7 @@
 							return;
 						}
 						else {
-							// Try making the move with 1 losse card from the table
-							// Loop through the cards on the table
-							for (var l = 0; l < table.tableCardLength(); l++) {
-								// Check if the values add up
-								if (possibleBuilds[k].getBuildValue() + smallHand[j].getValue() + table.getTableCardAtIndex(l).getValue() === handCardValue) {
-									// Set the Move
-									suggestedMove.setHandCard(smallHand[j].getAbbv());
-									suggestedMove.suggestedMoveAddTableBuild(possibleBuilds[k].getAbbv());
-									suggestedMove.suggestedMoveAddTableCard(table.getTableCardAtIndex(l).getAbbv());
-									suggestedMove.setSuggestion(EXTENDBUILD);
-									return;
-								}
-								// Try making the move with 2 loose cards from the table
-								else {
-									// Create a shortened version of the cards on the table
-									smallTableCards = smallTableCards.concat(table.getTableCards());
-									smallTableCards.splice(l, 1);
-
-									// Loop through the shortened set of table cards
-									for (var m = 0; m < smallTableCards.length; m++) {
-										// Check if the values add up
-										if (possibleBuilds[k].getBuildCards() + smallHand[j].getValue() + table.getTableCardAtIndex(l).getValue() + 
-											smallTableCards[m].getValue() === handCardValue) {
-											// Set the Move
-											suggestedMove.setHandCard(smallHand[j].getAbbv());
-											suggestedMove.suggestedMoveAddTableBuild(possibleBuilds[k].getAbbv());
-											suggestedMove.suggestedMoveAddTableCard(table.getTableCardAtIndex(l).getAbbv());
-											suggestedMove.suggestedMoveAddTableCard(smallTableCards[m].getAbbv());
-											suggestedMove.setSuggestion(EXTENDBUILD);
-											return;
-										}
-										else {
-											// Create a shortened version of the shortened cards from the table
-											smallSmallTableCards = smallSmallTableCards.concat(smallTableCards);
-											smallSmallTableCards.splice(m, 1);
-
-											// Loop through the shortened shortened set of table cards
-											for (var n = 0; n < smallSmallTableCards.length; n++) {
-												// Check if the values add up
-												if (possibleBuilds[k].getBuildCards() + smallHand[j].getValue() + table.getTableCardAtIndex(l).getValue() + 
-													smallTableCards[m].getValue() + smallSmallTableCards[n].getValue() === handCardValue) {
-													// Set the Move
-													suggestedMove.setHandCard(smallHand[j].getAbbv());
-													suggestedMove.suggestedMoveAddTableBuild(possibleBuilds[k].getAbbv());
-													suggestedMove.suggestedMoveAddTableCard(table.getTableCardAtIndex(l).getAbbv());
-													suggestedMove.suggestedMoveAddTableCard(smallTableCards[m].getAbbv());
-													suggestedMove.suggestedMoveAddTableCard(smallSmallTableCards[n].getAbbv());
-													suggestedMove.setSuggestion(EXTENDBUILD);
-													return;
-												}
-											}
-
-											// Clear the small small Tabel set
-											smallSmallTableCards = [];
-										}
-									}
-
-									// Clear the small Table sets
-									smallTableCards = [];
-								}
-							}
+							
 						}
 					}
 				}	

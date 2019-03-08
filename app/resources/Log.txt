@@ -2,7 +2,7 @@ Joe Damico Work Log for JavaScript Casino Project
 
 Dec 26, 2018:
 	- Started research for working in JavaScript, and using HTML for views
-	- Watched a few tutorials for working in this envorinment
+	- Watched a few tutorials for working in this environment
 	(1 Hour 30 Minutes)
 
 	- Ported the Card Class into JavaScript
@@ -39,21 +39,21 @@ TOTAL: 0.75 Hours
 
 Jan 1, 2019:
 	- Added the table view, having to create my own view handler, similar to a Recycler View in Android
-	so I can have any number of cards but also have an index assosiated with each card so we can understand
+	so I can have any number of cards but also have an index associated with each card so we can understand
 	which card the user has clicked on.
 	(2 Hours)
 
 	- Added the ability for the user to trail a card from it's hand
 	(30 Minutes)
 
-	- Created a custom scroll bar for the entire html page so that if the program is ran on a windows maching, 
+	- Created a custom scroll bar for the entire html page so that if the program is ran on a windows matching, 
 	the scroll bar doesn't look like it's from Windows 95
 	(15 Minutes)
 
 	- Changed the human's hand view to use the custom indexed view adapter that I created for the Table so we don't
 	have to use the hardcoded image views for the human's hand. At this time I left the computers hand with the hardcoded
-	views because we do not have to click on anything their. It's just for show.
-	(45 Mintues)
+	views because we do not have to click on anything there. It's just for show.
+	(45 Minutes)
 TOTAL: 3.5 Hours
 
 
@@ -65,7 +65,7 @@ Jan 4, 2019:
 	- Created the view for the human's pile
 	(30 Minutes)
 
-	- Extended the player's class to handel the pile and making a capture move.
+	- Extended the player's class to handle the pile and making a capture move.
 	(15 Minutes)
 TOTAL: 3 Hours
 
@@ -86,7 +86,7 @@ Jan 6, 2019:
 	class so when the user wants to see the console, you can see every status change in the game.
 	(30 Minutes)
 
-	- Trouble shot some bugs that arrised, all were fixed.
+	- Trouble shot some bugs that arised, all were fixed.
 	(30 Minutes)
 TOTAL: 1.5 Hours
 
@@ -102,7 +102,7 @@ Jan 7, 2019:
 	to have a much cleaner looking code.
 	(10 Minutes)
 
-	- Moved the marjority of the functions out of Casino.js and into the Tournament class and had to check if all the functionallity
+	- Moved the majority of the functions out of Casino.js and into the Tournament class and had to check if all the functionality
 	was still working.
 	(45 Minutes)
 TOTAL: 1.25 Hours
@@ -118,7 +118,7 @@ Jan 10, 2019:
 	- Started the creation of the Computer Class.
 	(15 Minutes)
 
-	- Started writing the findNextMove() function that will modifiy the Move Class (SuggestedMove Class changed later on) to setup
+	- Started writing the findNextMove() function that will modify the Move Class (SuggestedMove Class changed later on) to setup
 	how any player should play in the next move. As of know the the function can trail the lowest card, capture matching cards and
 	can capture loose sets too, with matching cards at the same time.
 	(45 Minutes)
@@ -126,16 +126,16 @@ TOTAL: 1 Hours
 
 
 Jan 11, 2019:
-	- Created the SuggestedMove class, which is similar to the Move class, but only takes in Abbrervations of the cards to play, so 
+	- Created the SuggestedMove class, which is similar to the Move class, but only takes in Abbreviations of the cards to play, so 
 	it doesn't set the move, in case the human player doesn't want to follow the advice of the computer. Changed the findNextMove() 
-	to use Abbrervations and the SuggestedMove Class instead of the cards themself.
+	to use Abervations and the SuggestedMove Class instead of the cards themself.
 	(45 Minutes)
 
 	- Made the "Computer Move" button to use the logic to create the move, using the new executeMove() Function to convert the 
-	abbrervations to find the actual cards to set the move class and execute which ever move the computer chose.
+	Abbreviations to find the actual cards to set the move class and execute which ever move the computer chose.
 	(30 Minutes)
 
-	- The computer logic can now capture sets of 3 cards whos values add up to the value of ones of it's hand cards.
+	- The computer logic can now capture sets of 3 cards who's values add up to the value of ones of its hand cards.
 	(15 Minutes)
 
 	- Documentation on the Card and Deck Classes
@@ -156,29 +156,29 @@ TOTAL: 4 Hours
 
 
 Jan 12, 2019:
-	- Game Board now promps the user to who makes the next move
+	- Game Board now prompts the user to who makes the next move
 	(15 Minutes)
 
-	- Finshed coin toss functionallity, all is needed is the GUI to show who one the toss. But currently the winner 
+	- Finished coin toss functionality, all is needed is the GUI to show who one the toss. But currently the winner 
 	of the toss has the first move of the game.
 	(15 Minutes)
 
-	- Finished all coin toss GUI, and functionallity, still will need to change how the game is initalized to allow 
-	for serialzation later one.
+	- Finished all coin toss GUI, and functionality, still will need to change how the game is initialized to allow 
+	for serialization later one.
 	(45 Minutes)
 
 	- Created the Round Class and moved the card dealing functions and a few other to this class since they
 	should be part of the round not the tournament.
 	(30 Minutes)
 
-	- Troubled shooted some bugs with the coin toss
+	- Troubled shot some bugs with the coin toss
 	(15 Minutes)
 TOTAL: 1.75 Hours
 
 
 Jan 17, 2019:
-	- Added the recordPlayerScores() function to record the players scores when the round is compeleted. There were some 
-	issues with the function that were debuged, and as of now the scores are displayed in the JavaScript console.
+	- Added the recordPlayerScores() function to record the players scores when the round is completed. There were some 
+	issues with the function that were debugged, and as of now the scores are displayed in the JavaScript console.
 	(2 Hours)
 
 	- Started GUI for the End of Round
@@ -197,10 +197,10 @@ TOTAL: 2 Hours
 Jan 23, 2019: 
 	- Started created a custom HTML element to display the builds that are on the table. This 
 	took a long time, as creating the custom layouts are much much more difficult than compared
-	to doing the same thing in the Android envorinment.
+	to doing the same thing in the Android environment.
 	(2 Hours)
 
-	- Started the Build class, now that their is something to represent the builds on the table.
+	- Started the Build class, now that there is something to represent the builds on the table.
 	The Build class can only do basic things at the moment as the class is being developed.
 	(45 Minutes)
 
@@ -227,8 +227,8 @@ TOTAL: 6 Hours
 
 
 Jan 24, 2019:
-	- Figured out the build highlighting, dugging it making sure it works for when their are 
-	mutiple different builds on the table. At this time the build is not added to the move class, 
+	- Figured out the build highlighting, debugging it making sure it works for when their are 
+	multiple different builds on the table. At this time the build is not added to the move class, 
 	so you cannot do anything with the builds yet.
 	(45 Minutes)
 
@@ -259,7 +259,7 @@ TOTAL: 3.5 Hours
 
 
 Jan 28, 2019:
-	- Changed the findNextMove() function so it can find a build using upto 3 cards from the table, 
+	- Changed the findNextMove() function so it can find a build using up to 3 cards from the table, 
 	where as it used to only use 1 card from the table
 	(15 Minutes)
 
@@ -270,7 +270,7 @@ TOTAL: 45 Minutes
 
 Jan 31, 2019:
 	- Multi-Build Debugging, trying to fix all the issues with the computer making multi builds and using 
-	a card that was already the capture card for another one of it's builds. I think I finally fixed everything 
+	a card that was already the capture card for another one of its builds. I think I finally fixed everything 
 	by the time I was done here.
 	(2 Hour 30 Minutes)
 
@@ -300,28 +300,28 @@ TOTAL: 45 Minutes
 
 
 February 3, 2019:
-	- Reconfigured the Check Game Status function to accomadate the the ending of the tournament and finished 
+	- Reconfigured the Check Game Status function to accommodate the the ending of the tournament and finished 
 	the end tournament views, and tested the scoring functions.
 	(1 Hour)
 
-	- Cleaned up how the game is handeled between the different files and functions throughout the program, 
+	- Cleaned up how the game is handled between the different files and functions throughout the program, 
 	continued tested to find any bugs with the program.
 	(1 Hour)
 
-	- Added the ability for the the user to extend its opponets builds, if they're holding a card with a value 
+	- Added the ability for the the user to extend its opponents builds, if they're holding a card with a value 
 	matching the new value of the extended build.
 	(45 Minutes)
 
-	- Tested the new extend build functionallity
+	- Tested the new extend build functionality
 	(1 Hour)
 
-	- Added the ability for the computer to extend the human's builds. Using upto 2 loose cards from the table
+	- Added the ability for the computer to extend the human's builds. Using up to 2 loose cards from the table
 	(45 Minutes)
 
 	- Testing the ability for the computer to extend builds
 	(30 Minutes)
 
-	- Game Play seems to be compeleted
+	- Game Play seems to be completed
 	(15 Minutes)
 TOTAL: 5.25 Hours
 
@@ -347,10 +347,10 @@ Feb 8, 2019:
 	- Added the ability to for load game file function to restore the round number.
 	(30 Minutes)
 
-	- Added the functionallity to restore the computers game information, score, hand and pile. And debugged the functions.
+	- Added the functionality to restore the computers game information, score, hand and pile. And debugged the functions.
 	(1 Hour 30 Minutes)
 
-	- Added the functionallity to restore the humans game information, score, hand and pile. And debugged the functions.
+	- Added the functionality to restore the humans game information, score, hand and pile. And debugged the functions.
 	(30 Minutes)
 
 	- Now the game can load in the loose cards that are on the table.
@@ -365,15 +365,15 @@ Feb 9, 2019:
 	- Finished Working on restoring the build information from the text file, and debugged, it seemed to be working.
 	(30 Minutes)
 
-	- Can now restore the Last Capurer information from the text file.
+	- Can now restore the Last Capture information from the text file.
 	(15 Minutes)
 
 	- Finished the functions to load games, as of now It's only the case files that load, but that will be changed.
 	(30 Minutes)
 
-	- Added the functionallity to upload a file to load a game from, and debugged it, finding all the issues for now 
+	- Added the functionality to upload a file to load a game from, and debugged it, finding all the issues for now 
 	with loading the game.
-	(1 Hour 15 Mintues)
+	(1 Hour 15 Minutes)
 
 	- Created a pop-up form for getting the user input for the name of the file that will save the game.
 	(1 Hour 30 Minutes)
@@ -384,7 +384,7 @@ TOTAL: 4 Hours
 
 Feb 10, 2019:
 	- Added the help function so the human can ask for help, this using the findNextMove() function that is part of the player 
-	class that the computer using to find it's next move. All that was added was the getHelp() function that converts the 
+	class that the computer using to find its next move. All that was added was the getHelp() function that converts the 
 	SuggestedMove Class into words so the user can read the suggestion.
 	(45 Minutes)
 
@@ -406,7 +406,7 @@ Feb 10, 2019:
 	- Documentation finished on the ConsoleLog Class
 	(10 Minutes)
 
-	- Added a check so the user cannot trail if they have a possibel capture
+	- Added a check so the user cannot trail if they have a possible capture
 	(20 Minutes)
 
 	- Added the players tournament scores to the GameBoard View
@@ -439,7 +439,7 @@ Feb 14, 2019:
 	- Documentation finished on the Table Class
 	(30 Minutes)
 
-	- Documentation finsiehd on the Build Class
+	- Documentation finished on the Build Class
 	(30 Minutes)
 
 	- Slightly Changed the CheckPossibleMultiBuild() from the Move Class Function
@@ -463,10 +463,10 @@ Feb 14, 2019:
 	- Documentation finished on the ViewsRoundEnd Class
 	(10 Minutes)
 
-	- Documentation finsihed on the ViewsTournamentEnd Class
+	- Documentation finished on the ViewsTournamentEnd Class
 	(10 Minutes)
 	
-	- Documentation finsihed on the ViewsBoard class
+	- Documentation finished on the ViewsBoard class
 	(30 Minutes)
 TOTAL: 5 Hours
 

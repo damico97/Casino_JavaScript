@@ -68,12 +68,6 @@ class Human extends Player {
             temp += "Play the " + this.convertAbbvToName(suggestedMove.getHandCard()) + " from your hand\n";
             temp += "With....\n";
 
-            for (var j = 0; j < suggestedMove.suggestedMoveTableCardLength(); j++) {
-                temp += this.convertAbbvToName(suggestedMove.suggestedMoveGetTableCard(j)) + "\n";
-            }
-
-            temp += "From the Table\n";
-
             return temp;
         }
         // A Capture Suggestion

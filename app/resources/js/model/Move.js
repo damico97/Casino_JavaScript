@@ -403,9 +403,8 @@
 			tempSum += this.mHandCard.getValue();
 			
 			// Loop through the array of selected cards
-			for (var i = 0; i < this.mTableCards.length; i++) {
-				// Add the value of the card
-				tempSum += this.mTableCards[i].getValue();
+			if (this.mTableCards != undefined) {
+				return false;
 			}
 
 			// Add the value of the build
